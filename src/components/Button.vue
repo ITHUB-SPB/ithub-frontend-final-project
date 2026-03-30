@@ -1,6 +1,6 @@
 <script lang="ts" setup>
 import { computed } from 'vue';
-import { props as iconProps } from './Icon.vue'
+import Icon from './Icon.vue';
 
 const props = withDefaults(
   defineProps<{
@@ -21,9 +21,9 @@ const props = withDefaults(
      */
     color?: "white" | "black";
     /**
-     * background color of the button
+     * icon inside button
      */
-    icon?: (typeof iconProps)["variant"];
+    icon?: "twitter" | "close" | "toEdit";
     /**
      * onClick handler
      */
@@ -42,7 +42,12 @@ const classes = computed(() => ({
 </script>
 
 <template>
-  <button type="button" :class="classes" @click="props.onClick">{{ props.label }}</button>
+  <button type="button" :class="classes" @click="props.onClick">
+    {{ props.label }}
+    <template v-if="props.icon">
+      <Icon :variant="props.icon" />
+    </template>
+  </button>
 </template>
 
 <style scoped>
@@ -59,6 +64,7 @@ const classes = computed(() => ({
   height: 56px;
   width: 150px;
   font-size: 16px;
+  gap: 8px;
   font-family: 'Nunito Sans', 'Helvetica Neue', Helvetica, Arial, sans-serif;
 }
 

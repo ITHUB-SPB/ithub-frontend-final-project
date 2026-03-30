@@ -10,7 +10,6 @@
 
 - `Logo`
 - `Icon`
-- `Radio`
 - `Checkbox`
 - `PageNumber`
 - `Dropdown`

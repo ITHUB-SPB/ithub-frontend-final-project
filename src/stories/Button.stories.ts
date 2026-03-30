@@ -2,23 +2,21 @@ import type { Meta, StoryObj } from '@storybook/vue3-vite';
 
 import { fn } from 'storybook/test';
 
-import Button from '../components/Button.vue';
+import Button from '@/components/Button.vue';
 
-// More on how to set up stories at: https://storybook.js.org/docs/writing-stories
 const meta = {
   title: 'Atoms/Button',
   component: Button,
-  // This component will have an automatically generated docsPage entry: https://storybook.js.org/docs/writing-docs/autodocs
   tags: ['autodocs'],
   argTypes: {
     variant: { control: 'select', options: ['fill', 'stroke'] },
     color: { control: 'select', options: ['white', 'black'] },
     small: { control: 'boolean' },
     label: { control: 'text' },
+    icon: { control: 'select', options: ["twitter", "close", "toEdit"] }
   },
   args: {
     label: "Label",
-    // Use `fn` to spy on the onClick arg, which will appear in the actions panel once invoked: https://storybook.js.org/docs/essentials/actions#story-args
     onClick: fn(),
   },
 } satisfies Meta<typeof Button>;
@@ -64,5 +62,12 @@ export const BlackStrokeSmall: Story = {
   args: {
     ...BlackStroke.args,
     small: true
+  }
+}
+
+export const WithIcon: Story = {
+  args: {
+    ...BlackStrokeSmall.args,
+    icon: "close"
   }
 }
