@@ -1,8 +1,48 @@
+<script lang="ts" setup>
+import { computed } from 'vue';
+import { props as iconProps } from './Icon.vue'
+
+const props = withDefaults(
+  defineProps<{
+    /**
+     * The label of the button
+     */
+    label: string;
+    /**
+     * make button small
+     */
+    small?: boolean;
+    /**
+     * size of the button
+     */
+    variant?: 'fill' | 'stroke';
+    /**
+     * background color of the button
+     */
+    color?: "white" | "black";
+    /**
+     * background color of the button
+     */
+    icon?: (typeof iconProps)["variant"];
+    /**
+     * onClick handler
+     */
+    onClick: (event: EventInit) => void;
+  }>(),
+  { small: false, variant: 'fill', color: "white" }
+);
+
+const classes = computed(() => ({
+  'button': true,
+  'button--small': props.small,
+  [`button--${props.variant || 'fill'}`]: true,
+  [`button--${props.color || 'white'}`]: true,
+}));
+
+</script>
+
 <template>
-  <button type="button" :class="classes" @click="props.onClick">
-    {{ props.label }}
-    <slot name="icon"></slot>
-  </button>
+  <button type="button" :class="classes" @click="props.onClick">{{ props.label }}</button>
 </template>
 
 <style scoped>
@@ -47,41 +87,3 @@
   font-size: 14px;
 }
 </style>
-
-<script lang="ts" setup>
-import { computed } from 'vue';
-
-const props = withDefaults(
-  defineProps<{
-    /**
-     * The label of the button
-     */
-    label: string;
-    /**
-     * make button small
-     */
-    small?: boolean;
-    /**
-     * size of the button
-     */
-    variant?: 'fill' | 'stroke';
-    /**
-     * background color of the button
-     */
-    color?: "white" | "black";
-    /**
-     * onClick handler
-     */
-    onClick: (event: EventInit) => void;
-  }>(),
-  { small: false, variant: 'fill', color: "white" }
-);
-
-const classes = computed(() => ({
-  'button': true,
-  'button--small': props.small,
-  [`button--${props.variant || 'fill'}`]: true,
-  [`button--${props.color || 'white'}`]: true,
-}));
-
-</script>

@@ -1,5 +1,5 @@
 <script setup lang="ts">
-const props = defineProps<{
+export const props = defineProps<{
     variant: "twitter" | "close" | "toEdit"
 }>()
 
