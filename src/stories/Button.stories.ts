@@ -6,16 +6,18 @@ import Button from '../components/Button.vue';
 
 // More on how to set up stories at: https://storybook.js.org/docs/writing-stories
 const meta = {
-  title: 'Example/Button',
+  title: 'Atoms/Button',
   component: Button,
   // This component will have an automatically generated docsPage entry: https://storybook.js.org/docs/writing-docs/autodocs
   tags: ['autodocs'],
   argTypes: {
-    size: { control: 'select', options: ['small', 'medium', 'large'] },
-    backgroundColor: { control: 'color' },
+    variant: { control: 'select', options: ['fill', 'stroke'] },
+    color: { control: 'select', options: ['white', 'black'] },
+    small: { control: 'boolean' },
+    label: { control: 'text' },
   },
   args: {
-    primary: false,
+    label: "Label",
     // Use `fn` to spy on the onClick arg, which will appear in the actions panel once invoked: https://storybook.js.org/docs/essentials/actions#story-args
     onClick: fn(),
   },
@@ -24,30 +26,43 @@ const meta = {
 export default meta;
 type Story = StoryObj<typeof meta>;
 
-export const Primary: Story = {
+export const WhiteStroke: Story = {
   args: {
-    primary: true,
-    label: 'Button',
+    variant: "stroke",
+    color: "black"
   },
 };
 
-export const Secondary: Story = {
+export const Fill: Story = {
   args: {
-    primary: false,
-    label: 'Button',
+    variant: "fill",
+    color: "white"
+  }
+};
+
+export const BlackStroke: Story = {
+  args: {
+    variant: 'stroke',
+    color: 'black',
   },
 };
 
-export const Large: Story = {
+export const WhiteStrokeSmall: Story = {
   args: {
-    label: 'Button',
-    size: 'large',
-  },
+    ...WhiteStroke.args,
+    small: true
+  }
+}
+
+export const FillSmall: Story = {
+  args: {
+    small: true
+  }
 };
 
-export const Small: Story = {
+export const BlackStrokeSmall: Story = {
   args: {
-    label: 'Button',
-    size: 'small',
-  },
-};
+    ...BlackStroke.args,
+    small: true
+  }
+}
