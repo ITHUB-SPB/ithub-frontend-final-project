@@ -1,42 +1,38 @@
 # ithub-frontend-vue-storybook
 
-This template should help get you started developing with Vue 3 in Vite.
+(контрольная точка №5)
 
-## Recommended IDE Setup
+## Задание
 
-[VS Code](https://code.visualstudio.com/) + [Vue (Official)](https://marketplace.visualstudio.com/items?itemName=Vue.volar) (and disable Vetur).
+На основе вкладки "Компоненты" следующего [макета](https://www.figma.com/design/EQC47Bzy09sBIVIj7iF3ij/%D0%98%D1%82%D0%BE%D0%B3%D0%BE%D0%B2%D1%8B%D0%B9-%D0%BF%D1%80%D0%BE%D0%B5%D0%BA%D1%82-%22%D0%9F%D1%80%D0%BE%D0%B5%D0%BA%D1%82%D0%BD%D1%8B%D0%B9-%D1%81%D0%B5%D0%BC%D0%B8%D0%BD%D0%B0%D1%80%22?node-id=2-2&t=sYjzDJjRgB7ZUjZ3-1) реализовать их на `Vue 3` и задокументировать с помощью `Storybook`.
 
-## Recommended Browser Setup
+### Атомы
 
-- Chromium-based browsers (Chrome, Edge, Brave, etc.):
-  - [Vue.js devtools](https://chromewebstore.google.com/detail/vuejs-devtools/nhdogjmejiglipccpnnnanhbledajbpd)
-  - [Turn on Custom Object Formatter in Chrome DevTools](http://bit.ly/object-formatters)
-- Firefox:
-  - [Vue.js devtools](https://addons.mozilla.org/en-US/firefox/addon/vue-js-devtools/)
-  - [Turn on Custom Object Formatter in Firefox DevTools](https://fxdx.dev/firefox-devtools-custom-object-formatters/)
+- `Logo`
+- `Icon`
+- `Radio`
+- `Checkbox`
+- `PageNumber`
+- `Dropdown`
+- `Button` (без иконок)
 
-## Type Support for `.vue` Imports in TS
+### Молекулы
 
-TypeScript cannot handle type information for `.vue` imports by default, so we replace the `tsc` CLI with `vue-tsc` for type checking. In editors, we need [Volar](https://marketplace.visualstudio.com/items?itemName=Vue.volar) to make the TypeScript language service aware of `.vue` types.
+- `Field`
+- `FieldLabeled`
+- `ButtonWithIcon`
+- `Card`
+- `Tabs`
+- `CheckboxLabeled`
+- `ProductCard`
+- `Pagination`
+- `PriceFilter`
 
-## Customize configuration
+### Организмы
 
-See [Vite Configuration Reference](https://vite.dev/config/).
+- `ReviewSection`
 
-## Project Setup
+### Шаблоны
 
-```sh
-npm install
-```
-
-### Compile and Hot-Reload for Development
-
-```sh
-npm run dev
-```
-
-### Type-Check, Compile and Minify for Production
-
-```sh
-npm run build
-```
+- `Header`
+- `Footer`
