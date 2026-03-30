@@ -8,30 +8,26 @@
 
 ### Атомы
 
-- `Logo`
-- `Icon`
-- `Checkbox`
-- `PageNumber`
-- `Dropdown`
-- `Button` (без иконок)
+- [x] `Logo` 
+- [ ] `Icon` (2 балла за 10 случайных штук)
+- [x] `Checkbox`
+- [ ] `PageNumber` 
+- [x] `Button`
+- [ ] `Tab` (1 балл)
 
 ### Молекулы
 
-- `Field`
-- `FieldLabeled`
-- `ButtonWithIcon`
-- `Card`
-- `Tabs`
-- `CheckboxLabeled`
-- `ProductCard`
-- `Pagination`
-- `PriceFilter`
+- [ ] `Field` (без подписи и с подписью, с опциональной кнопкой внутри) (1 балл)
+- [ ] `Card` (2 балла)
+- [ ] `ProductCard` (2 балла)
+- [ ] `Pagination` (1 балл)
+- [ ] `PriceFilter` (2 балла)
 
 ### Организмы
 
-- `ReviewSection`
+- [ ] `ReviewSection`
 
 ### Шаблоны
 
-- `Header`
-- `Footer`
+- [ ] `Header` (1 балл)
+- [ ] `Footer` (2 балла)

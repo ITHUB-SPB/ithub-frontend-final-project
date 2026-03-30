@@ -21,16 +21,14 @@ type Story = StoryObj<typeof meta>;
 
 export const Default: Story = {};
 
-export const Checked: Story = {};
-
 export const WithSlot: Story = {
   decorators: [
     (story) => ({
-      components: { story },
+      components: { story, Checkbox },
       template: `
-        <story>
+        <Checkbox label="Apple">
             <span>120</span>
-        </story>
+        </Checkbox>
       `
     })
   ]

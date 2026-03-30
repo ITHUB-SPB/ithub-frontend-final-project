@@ -1,5 +1,7 @@
 <script lang="ts" setup>
-import checkIcon from '@/assets/icons/check.svg'
+import { ref } from 'vue';
+
+const checked = ref<boolean>(false);
 
 const props = withDefaults(
   defineProps<{
@@ -19,14 +21,26 @@ const props = withDefaults(
 
 <template>
   <label>
-    <input type="checkbox" @change="props.onChange" />
+    <input type="checkbox" v-model="checked"/>
     {{ props.label }}
+    <slot></slot>
   </label>
-  <slot></slot>
 </template>
 
 <style scoped>
+label {
+  display: flex;
+  align-items: center;
+  font-size: 12px;
+  font-weight: 500;
+  line-height: 24px;
+  color: black;
+  gap: 8px;
+  font-family: inherit;
+}
+
 input {
+  appearance: none;
   box-sizing: border-box;
   display: inline-flex;
   cursor: pointer;
@@ -37,6 +51,7 @@ input {
   height: 16px;
   width: 16px;
   background-color: transparent;
+  font-family: inherit;
 }
 
 input::after {
@@ -44,15 +59,24 @@ input::after {
   position: absolute;
   width: 0px;
   height: 0px;
-  font-size: 30px;
-  background-image: url("/favicon.ico");
+  background-image: url("../assets/icons/check.svg");
   background-repeat: no-repeat;
-  transition: 500ms;
+  background-position: center;
+  border-radius: 3px;
+  transition: 200ms;
 }
 
 input:checked {
   border-color: black;
   background-color: black;
   color: white;
+}
+
+input:checked::after {
+  border-color: black;
+  background-color: black;
+  color: white;
+  width: 16px;
+  height: 16px;
 }
 </style>
