@@ -2,7 +2,7 @@
 const props = defineProps<{
     variant: 
         | "twitter" | "close" | "toEdit" | "burger" | "cameras" | "computers" | "gaming" | "headphones" | "phones" | "smartWatches" | "delivery" | "guaranteed" | "stock" | "battery" | "location" | "shipping" | "favorites" | "cart" | "search" 
-        | "computersLarge" | "gamingLarge" | "headphonesLarge"
+        | "computersLarge" | "gamingLarge" | "headphonesLarge" | "arrow"
 }>()
 
 import twitter from '../assets/icons/16px/Twitter.svg'
@@ -15,6 +15,7 @@ import shipping from '../assets/icons/24px/Shipping.svg'
 import computers from '../assets/icons/24px/Computers.svg'
 import gaming from '../assets/icons/24px/Gaming.svg'
 import headphones from '../assets/icons/24px/Headphones.svg'
+import arrow from '../assets/icons/24px/Arrow.svg'
 
 import favorites from '../assets/icons/32px/Favorites.svg'
 import cart from '../assets/icons/32px/Cart.svg'
@@ -38,6 +39,7 @@ const sources = {
     twitter,
     close,
     toEdit,
+    arrow,
     burger,
     cameras,
     computers,

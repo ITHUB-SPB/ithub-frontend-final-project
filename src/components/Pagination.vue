@@ -25,8 +25,8 @@ const pages = computed(() => Array.from({
 
 <template>
 <nav>
-    <button v-show="props.activePage > 1" @click="updateActivePage(Math.max(1, props.activePage - 1))">
-        <Icon variant="toEdit" />
+    <button class="arrow" v-show="props.activePage > 1" @click="updateActivePage(Math.max(1, props.activePage - 1))">
+        <Icon variant="arrow" />
     </button>
     
     <template v-for="pageNumber in pages">
@@ -34,8 +34,8 @@ const pages = computed(() => Array.from({
         <button @click="updateActivePage(pageNumber)" v-else class="button">{{ pageNumber }}</button>
     </template>
 
-    <button v-show="props.activePage < props.pageQuantity" @click="updateActivePage(Math.min(props.pageQuantity, props.activePage + 1))">
-        <Icon variant="close" />
+    <button class="arrow" v-show="props.activePage < props.pageQuantity" @click="updateActivePage(Math.min(props.pageQuantity, props.activePage + 1))">
+        <Icon variant="arrow" />
     </button>
 </nav>
 </template>
@@ -69,6 +69,16 @@ nav {
     color: white;
     pointer-events: none;
     cursor: default;
+}
+
+.arrow {
+    background-color: transparent;
+    border: 0;
+    cursor: pointer
+}
+
+.arrow:first-of-type {
+    transform: rotate(180deg);
 }
 
 </style>

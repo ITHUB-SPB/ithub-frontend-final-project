@@ -13,7 +13,7 @@ const meta = {
       control: 'select',
       options: [
         "twitter", "close", "toEdit", "burger", "cameras", "headphones", "phones", "smartWatches", "delivery", "guaranteed", "stock", "battery", "computers", "gaming", "location", "shipping", "favorites", "cart", "search",
-        "computersLarge", "gamingLarge", "headphonesLarge"]
+        "computersLarge", "gamingLarge", "headphonesLarge", "arrow"]
     },
   },
   decorators: [
