@@ -2,39 +2,55 @@
 const props = withDefaults(
   defineProps<{
     placeholder?: string | undefined;
-    type?: "text" | "password" | "search" | "email";
+    type?: "text" | "password" | "search" | "email" | "number";
     required?: boolean;
     name?: string | undefined;
     label?: string | undefined;
+    defaultValue?: string | number | undefined;
+    justify?: "left" | "center" | "end" | undefined;
     style?: Partial<CSSStyleDeclaration>;
   }>(),
   {
     type: "text",
     placeholder: "",
     required: false,
+    defaultValue: "",
+    justify: "left"
   }
 );
+
+  const styles: Partial<CSSStyleDeclaration> = {
+    textAlign: props.justify ?? "left"
+  }
 </script>
 
 <template>
-  <label v-if="props.label" :for="props.name" class="label">{{ props.label }}</label>
-  <section class="input" :style="props.style">
-    <slot name="icon-left"></slot>
-    <input
-      :id="props.name"
-      :type="props.type"
-      :placeholder="props.placeholder"
-      :required="props.required"
-      :name="props.name"
-      class="input__inner"
-    />
-    <slot name="right"></slot>
+  <section class="wrapper">
+    <label :style="styles" v-if="props.label" :for="props.name" class="label">{{ props.label }}</label>
+    <div class="input" :style="props.style">
+      <slot name="icon-left"></slot>
+      <input
+        :id="props.name"
+        :type="props.type"
+        :placeholder="props.placeholder"
+        :required="props.required"
+        :name="props.name"
+        :value="props.defaultValue"
+        :style="styles"
+        class="input__inner"
+      />
+      <slot name="right"></slot>
+    </div>
   </section>
 </template>
 
 <style scoped>
 * {
   box-sizing: border-box;
+}
+.wrapper {
+  display: flex;
+  flex-direction: column;
 }
 .label {
   font-size: 14px;

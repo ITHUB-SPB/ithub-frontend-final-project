@@ -1,5 +1,6 @@
 <script setup lang="ts">
 import { ref, computed } from 'vue'
+import Field from './Field.vue'
 
 const min = 0
 const max = 1100
@@ -32,8 +33,8 @@ const rangeStyle = computed(() => {
 <template>
     <div class="slider-container">
         <div class="values">
-            <span>{{ minValue }}</span>
-            <span>{{ maxValue }}</span>
+            <Field label="From" type="number" :default-value="minValue" :placeholder="String(minValue)"/>
+            <Field justify="end" label="To" type="number" :default-value="maxValue" :placeholder="String(maxValue)"/>
         </div>
 
         <div class="slider">
@@ -57,6 +58,10 @@ const rangeStyle = computed(() => {
     justify-content: space-between;
     margin-bottom: 10px;
 }
+
+/* .values > section:last-of-type {
+    text-align: right;
+} */
 
 .slider {
     position: relative;
