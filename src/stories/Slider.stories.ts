@@ -1,18 +1,25 @@
 import type { Meta, StoryObj } from '@storybook/vue3-vite';
-import { fn } from 'storybook/test';
-import { ref } from 'vue';
-
 import Slider from '@/components/Slider.vue';
 
-const activePage = ref<number>(1)
 
 const meta = {
-  title: 'Molecules/Slider',
+  title: 'Organisms/Slider',
   component: Slider,
-  
+  argTypes: {
+    min: { control: "number" },
+    max: { control: "number" }
+  },
+  args: {
+    min: 0,
+    max: 1000
+  }
 } satisfies Meta<typeof Slider>;
 
 export default meta;
 type Story = StoryObj<typeof meta>;
 
-export const Default: Story = {};
+export const Default: Story = {
+  args: {
+    min: 10
+  }
+};

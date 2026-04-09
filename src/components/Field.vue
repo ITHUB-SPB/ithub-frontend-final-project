@@ -9,6 +9,7 @@ const props = withDefaults(
     defaultValue?: string | number | undefined;
     justify?: "left" | "center" | "end" | undefined;
     style?: Partial<CSSStyleDeclaration>;
+    modelValue?: number;
   }>(),
   {
     type: "text",
@@ -19,9 +20,11 @@ const props = withDefaults(
   }
 );
 
-  const styles: Partial<CSSStyleDeclaration> = {
-    textAlign: props.justify ?? "left"
-  }
+const emits = defineEmits([ 'update:modelValue' ])
+
+const styles: Partial<CSSStyleDeclaration> = {
+  textAlign: props.justify ?? "left"
+}
 </script>
 
 <template>
@@ -29,16 +32,16 @@ const props = withDefaults(
     <label :style="styles" v-if="props.label" :for="props.name" class="label">{{ props.label }}</label>
     <div class="input" :style="props.style">
       <slot name="icon-left"></slot>
-      <input
-        :id="props.name"
-        :type="props.type"
-        :placeholder="props.placeholder"
+      <input 
+        :id="props.name" 
+        :type="props.type" 
+        :placeholder="props.placeholder" 
         :required="props.required"
-        :name="props.name"
-        :value="props.defaultValue"
-        :style="styles"
-        class="input__inner"
-      />
+        :name="props.name" 
+        :value="props.modelValue || props.defaultValue" 
+        @input="emits('update:modelValue', '$event.target.value')"
+        :style="styles" 
+        class="input__inner" />
       <slot name="right"></slot>
     </div>
   </section>
@@ -48,16 +51,19 @@ const props = withDefaults(
 * {
   box-sizing: border-box;
 }
+
 .wrapper {
   display: flex;
   flex-direction: column;
 }
+
 .label {
   font-size: 14px;
   line-height: 16px;
   color: rgb(84, 84, 84);
   font-weight: 500;
 }
+
 .input {
   display: flex;
   align-items: center;
@@ -68,6 +74,7 @@ const props = withDefaults(
   padding: 16px;
   margin-top: 8px;
 }
+
 .input__inner {
   background-color: transparent;
   border: 0;
@@ -77,6 +84,7 @@ const props = withDefaults(
   letter-spacing: -0.5%;
   flex: 1 0 104px;
 }
+
 .input__inner::placeholder {
   color: #656565;
 }

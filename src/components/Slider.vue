@@ -2,27 +2,28 @@
 import { ref, computed } from 'vue'
 import Field from './Field.vue'
 
-const min = 0
-const max = 1100
+const props = defineProps<{
+    min: number,
+    max: number
+}>()
 
-const minValue = ref(1)
-const maxValue = ref(1000)
+const minValue = defineModel<number>('minModelValue')
+const maxValue = defineModel<number>('maxModelValue')
+
+minValue.value = props.min
+maxValue.value = props.max
 
 const handleMin = () => {
-    if (minValue.value > maxValue.value - 10) {
-        minValue.value = maxValue.value - 10
-    }
+    minValue.value = Math.min(minValue.value!, maxValue.value! - 10)
 }
 
 const handleMax = () => {
-    if (maxValue.value < minValue.value + 10) {
-        maxValue.value = minValue.value + 10
-    }
+    maxValue.value = Math.max(maxValue.value!, minValue.value! + 10)
 }
 
 const rangeStyle = computed(() => {
-    const left = (minValue.value / max) * 100
-    const right = (maxValue.value / max) * 100
+    const left = (minValue.value! / props.max) * 100
+    const right = (maxValue.value! / props.max) * 100
     return {
         left: left + '%',
         width: right - left + '%'
@@ -33,8 +34,23 @@ const rangeStyle = computed(() => {
 <template>
     <div class="slider-container">
         <div class="values">
-            <Field label="From" type="number" :default-value="minValue" :placeholder="String(minValue)"/>
-            <Field justify="end" label="To" type="number" :default-value="maxValue" :placeholder="String(maxValue)"/>
+            <Field 
+                :modelValue="minValue"
+                @update:modelValue="$event => (minValue = $event)"
+                label="From" 
+                type="number" 
+                :default-value="minValue" 
+                :placeholder="String(minValue)"
+            />
+            <Field 
+                :modelValue="maxValue"
+                @update:modelValue="$event => (maxValue = $event)"
+                justify="end" 
+                label="To" 
+                type="number" 
+                :default-value="maxValue" 
+                :placeholder="String(maxValue)"
+            />
         </div>
 
         <div class="slider">
