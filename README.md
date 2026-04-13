@@ -10,7 +10,7 @@
 
 #### Настройка монорепозитория
 
-Установите `pnpm`:
+1. Установите `pnpm`
 
 ```powershell
 Invoke-WebRequest https://get.pnpm.io/install.ps1 -UseBasicParsing | Invoke-Expression
@@ -18,4 +18,16 @@ Invoke-WebRequest https://get.pnpm.io/install.ps1 -UseBasicParsing | Invoke-Expr
 
 ```bash
 curl -fsSL https://get.pnpm.io/install.sh | sh -
+```
+
+2. Отключите `corepack`
+
+```powershell
+corepack disable
+```
+
+3. Установите зависимости
+
+```sh
+pnpm i
 ```
