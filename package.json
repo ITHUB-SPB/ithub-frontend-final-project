@@ -1,36 +1,12 @@
 {
-  "name": "ithub-frontend-vue-storybook",
-  "version": "0.0.0",
-  "private": true,
-  "type": "module",
+  "name": "ithub-frontend-vue-final-project",
+  "version": "1.0.0",
+  "description": "",
   "scripts": {
-    "dev": "vite",
-    "build": "run-p type-check \"build-only {@}\" --",
-    "preview": "vite preview",
-    "build-only": "vite build",
-    "type-check": "vue-tsc --build",
-    "format": "oxfmt src/",
-    "storybook": "storybook dev -p 6006",
-    "build-storybook": "storybook build"
+    "storybook": "pnpm -F @repo/ui storybook"
   },
-  "dependencies": {
-    "vue": "^3.5.30"
-  },
-  "devDependencies": {
-    "@tsconfig/node24": "^24.0.4",
-    "@types/node": "^24.12.0",
-    "@vitejs/plugin-vue": "^6.0.4",
-    "@vue/tsconfig": "^0.9.0",
-    "npm-run-all2": "^8.0.4",
-    "oxfmt": "^0.37.0",
-    "typescript": "~5.9.3",
-    "vite": "beta",
-    "vite-plugin-vue-devtools": "^8.0.7",
-    "vue-tsc": "^3.2.5",
-    "storybook": "^10.3.3",
-    "@storybook/vue3-vite": "^10.3.3"
-  },
-  "engines": {
-    "node": "^20.19.0 || >=22.12.0"
-  }
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "packageManager": "pnpm@10.33.0"
 }
