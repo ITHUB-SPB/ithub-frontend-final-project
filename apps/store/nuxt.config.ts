@@ -6,6 +6,6 @@ export default defineNuxtConfig({
   devtools: { enabled: true },
   modules: ['better-convex-nuxt'],
   convex: {
-    url: 'http://localhost:1331/'
+    url: process.env.CONVEX_SELF_HOSTED_URL
   }
 } as NuxtConfig)
