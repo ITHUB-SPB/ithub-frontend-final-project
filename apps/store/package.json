@@ -12,6 +12,7 @@
     "convex:import": "convex import --table brands ./convex/data/brands.jsonl"
   },
   "dependencies": {
+    "@repo/ui": "workspace:*",
     "better-convex-nuxt": "^0.3.4",
     "convex": "^1.35.1",
     "nuxt": "^4.4.2",

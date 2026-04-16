@@ -41,6 +41,7 @@ header {
   padding: 16px 200px 15px 160px;
   font-family: "Nunito Sans", "Helvetica Neue", Helvetica, Arial, sans-serif;
 }
+
 .icons {
   display: flex;
   gap: 24px;
@@ -50,14 +51,14 @@ header {
   display: none;
 }
 
-
 @media (max-width: 600px) {
   header {
-    padding: 0;
+    padding: 24px 16px;
   }
 
   .icons,
-  .input {
+  .input,
+  .wrapper {
     display: none;
   }
 
