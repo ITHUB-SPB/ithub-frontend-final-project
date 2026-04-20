@@ -20,10 +20,35 @@
 </template>
 
 <style scoped>
+    .wrapper {
+        padding: 64px 16px;
+    }
+    .categories-header {
+        display: flex;
+        align-items: center;
+        gap: 16px;
+    }
     .arrow-left, .arrow-right {
         cursor: pointer;
     }
     .arrow-left {
+        margin-left: auto;
         transform: rotate(180deg);
+    }
+    .categories {
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        grid-template-rows: repeat(3, 128px);
+        gap: 16px;
+    }
+    .category-card:nth-child(7),
+    .category-card:nth-child(8) {
+        display: none;
+    }
+</style>
+
+<style>
+    .category-title {
+        text-transform: capitalize;
     }
 </style>

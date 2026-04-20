@@ -30,7 +30,8 @@
     .category-card {
         background-color: rgb(246, 246, 246);
         border-radius: 9px;
-        width: 200px;
+        min-width: 135px;
+        width: 100%;
         display: flex;
         flex-direction: column;
         gap: 16px;
