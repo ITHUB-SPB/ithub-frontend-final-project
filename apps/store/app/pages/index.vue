@@ -1,5 +1,6 @@
 
 <script lang="ts" setup>
+import Featured from '~/components/Featured.vue';
 import { api } from '../../convex/_generated/api'
 
 const { data: brands, error } = await useConvexQuery(
@@ -12,6 +13,7 @@ const { data: brands, error } = await useConvexQuery(
 <template>
   <Cta />
   <BrowseByCategory />
+  <Featured />
 
   <p v-if="error">
     {{ error?.message }}

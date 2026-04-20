@@ -7,6 +7,7 @@ import Pagination from "./components/Pagination.vue";
 import ProductCard from "./components/ProductCard.vue";
 import Slider from "./components/Slider.vue";
 import CategoryCard from "./components/CategoryCard.vue";
+import Footer from "./components/Footer.vue";
 
 export {
     Button,
@@ -17,5 +18,6 @@ export {
     Pagination,
     ProductCard,
     Slider,
-    CategoryCard
+    CategoryCard,
+    Footer
 }
