@@ -1,11 +1,28 @@
 <script setup lang="ts">
-    import Icon from './Icon.vue';
+    import Icon, { type IconVariant } from './Icon.vue';
+
+    type CategoryName = "phones" | "smart watches" | "cameras" | "headphones" | "computers" | "gaming" | "favorites" | "discounts"
+
+    const props = defineProps<{
+        name: CategoryName
+    }>()
+
+    const icons: { [key: string] : IconVariant } = {
+        phones: "phones",
+        "smart watches": "smartWatches",
+        cameras: "cameras",
+        headphones: "headphonesLarge",
+        computers: "computersLarge",
+        gaming: "gamingLarge",
+        favorites: "favorites",
+        discounts: "favorites"
+    } as const;
 </script>
 
 <template>
     <article class="category-card">
-        <Icon variant="favorites" class="category-icon" />
-        <h5 class="category-title">Tablets</h5>
+        <Icon :variant="icons[props.name] ?? 'cart'" class="category-icon" />
+        <h5 class="category-title">{{ props.name }}</h5>
     </article>
 </template>
 

@@ -1,8 +1,12 @@
 <script setup lang="ts">
+export type IconVariant = 
+    | "twitter" | "close" | "toEdit" | "burger" | "cameras" | "computers" 
+    | "gaming" | "headphones" | "phones" | "smartWatches" | "delivery" 
+    | "guaranteed" | "stock" | "battery" | "location" | "shipping" | "favorites" 
+    | "cart" | "search" | "computersLarge" | "gamingLarge" | "headphonesLarge" | "arrow"
+
 const props = defineProps<{
-    variant: 
-        | "twitter" | "close" | "toEdit" | "burger" | "cameras" | "computers" | "gaming" | "headphones" | "phones" | "smartWatches" | "delivery" | "guaranteed" | "stock" | "battery" | "location" | "shipping" | "favorites" | "cart" | "search" 
-        | "computersLarge" | "gamingLarge" | "headphonesLarge" | "arrow"
+    variant: IconVariant
 }>()
 
 import twitter from '../assets/icons/16px/Twitter.svg'
