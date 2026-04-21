@@ -5,11 +5,10 @@ export default defineSchema({
     brands: defineTable({ title: v.string() }),
     categories: defineTable({ title: v.string() }),
     products: defineTable({
-        brand_id: v.float64(),
-        category_id: v.float64(),
+        brand_id: v.id("brands"),
+        category_id: v.id("categories"),
         current_price: v.float64(),
         raw_price: v.float64(),
-        summary: v.string(),
         title: v.string(),
     }),
 });

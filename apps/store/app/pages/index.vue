@@ -3,8 +3,8 @@
 import Featured from '~/components/Featured.vue';
 import { api } from '../../convex/_generated/api'
 
-const { data: brands, error } = await useConvexQuery(
-  api.brands.get, 
+const { data: products, error } = await useConvexQuery(
+  api.products.get, 
   {}
 )
 
@@ -21,7 +21,7 @@ const { data: brands, error } = await useConvexQuery(
 
   <div v-if="!error">
     <ul>
-      <li v-for="brand in brands" :key="brand._id">{{ brand.title }}</li>
+      <li v-for="product in products" :key="product._id">{{ product.title }}</li>
     </ul>
   </div>
 </template>

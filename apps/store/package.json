@@ -9,7 +9,8 @@
     "preview": "nuxt preview",
     "postinstall": "nuxt prepare",
     "convex:init": "convex dev",
-    "convex:import": "convex import --table brands ./convex/data/brands.jsonl"
+    "convex:import": "convex import ./convex/backup.zip --replace",
+    "convex:backup": "convex export --path ./convex/backup.zip"
   },
   "dependencies": {
     "@repo/ui": "workspace:*",

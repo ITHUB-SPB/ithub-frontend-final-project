@@ -6,7 +6,8 @@
     "storybook": "pnpm -F @repo/ui storybook",
     "store:dev": "pnpm -F store dev",
     "convex:init": "pnpm -F store convex:init",
-    "convex:import": "pnpm -F store convex:import"
+    "convex:import": "pnpm -F store convex:import",
+    "convex:backup": "pnpm -F store convex:backup"
   },
   "keywords": [],
   "author": "",
