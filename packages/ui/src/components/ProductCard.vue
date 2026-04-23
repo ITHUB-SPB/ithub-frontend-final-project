@@ -2,15 +2,22 @@
     import Icon from './Icon.vue';
     import Button from './Button.vue';
     import productImage from '../assets/images/iphone14.png'
+
+    const props = defineProps<{
+        title: string,
+        current_price: number
+        image?: string;
+        handleClick?: () => void
+    }>()
 </script>
 
 <template>
     <article class="product-card">
         <Icon variant="favorites" class="product-icon" />
-        <img class="product-image" :src="productImage" alt="iphone 14"/>
-        <h3 class="product-title">Apple iPhone 14 Pro Max 128GB Deep Purple (MQ9T3RX/A)</h3>
-        <span class="product-price">$1399</span>
-        <Button small label="Buy Now" @click="console.log('!')"/>
+        <img class="product-image" :src="props.image ?? productImage" alt="iphone 14"/>
+        <h3 class="product-title">{{ props.title }}</h3>
+        <span class="product-price">${{ props.current_price }}</span>
+        <Button small label="Buy Now" @click="handleClick ?? {}"/>
     </article>
 </template>
 
@@ -18,7 +25,7 @@
     .product-card {
         background-color: rgb(246, 246, 246);
         border-radius: 9px;
-        width: 200px;
+        /* max-width: 200px; */
         display: flex;
         flex-direction: column;
         gap: 16px;
@@ -37,6 +44,10 @@
         text-align: center;
         font-size: 16px;
         line-height: 24px;
+        min-height: 48px;
+        max-height: 48px;
+        overflow-y: hidden;
+        text-overflow: ellipsis;
     }
 
     .product-icon {

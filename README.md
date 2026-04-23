@@ -51,3 +51,16 @@ corepack disable
 pnpm i
 ```
 
+4. Запустите докер-контейнеры
+
+```sh
+docker compose up
+```
+
+5. (при необходимости) Сгенерируйте ключ доступа 
+
+```sh
+docker compose exec backend ./generate_admin_key.sh
+```
+
+6. (при отсутствии) Создайте файл `apps/store/.env.local` и внесите в него ключ

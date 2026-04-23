@@ -62,7 +62,8 @@ const classes = computed(() => ({
   justify-content: center;
   align-items: center;
   height: 56px;
-  width: 150px;
+  width: 100%;
+  max-width: 150px;
   font-size: 16px;
   gap: 8px;
   font-family: 'Nunito Sans', 'Helvetica Neue', Helvetica, Arial, sans-serif;
@@ -89,7 +90,8 @@ const classes = computed(() => ({
 
 .button--small {
   height: 48px;
-  width: 162px;
+  width: 100%;
+  max-width: 162px;
   font-size: 14px;
 }
 </style>
