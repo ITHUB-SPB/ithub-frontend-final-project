@@ -1,4 +1,3 @@
-// For more information, see https://crawlee.dev/
 import { PlaywrightCrawler } from 'crawlee';
 
 // PlaywrightCrawler crawls the web using a headless
@@ -15,12 +14,14 @@ const crawler = new PlaywrightCrawler({
         // Extract links from the current page
         // and add them to the crawling queue.
         await enqueueLinks();
+
+        // await enqueueLinks({ globs: ['https://www.mvideo.ru/products/*'] });
     },
     // Comment this option to scrape the full website.
     maxRequestsPerCrawl: 20,
     // Uncomment this option to see the browser window.
-    // headless: false,
+    headless: false,
 });
 
 // Add first URL to the queue and start the crawl.
-await crawler.run(['https://crawlee.dev']);
+await crawler.run(['https://www.mvideo.ru/search?q=apple']);
