@@ -1,9 +1,0 @@
-{
-	"id": "xPfa2l3gSPatmc7",
-	"json": "{\"id\":\"xPfa2l3gSPatmc7\",\"url\":\"https://pitergsm.ru/catalog/watch/\",\"loadedUrl\":\"https://pitergsm.ru/catalog/watch/\",\"uniqueKey\":\"https://pitergsm.ru/catalog/watch\",\"method\":\"GET\",\"noRetry\":false,\"retryCount\":0,\"errorMessages\":[],\"headers\":{},\"userData\":{\"__crawlee\":{\"state\":4}},\"handledAt\":\"2026-04-27T10:19:58.456Z\"}",
-	"method": "GET",
-	"orderNo": null,
-	"retryCount": 0,
-	"uniqueKey": "https://pitergsm.ru/catalog/watch",
-	"url": "https://pitergsm.ru/catalog/watch/"
-}

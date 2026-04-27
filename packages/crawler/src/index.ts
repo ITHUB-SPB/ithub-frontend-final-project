@@ -1,8 +1,10 @@
 import { PlaywrightCrawler, FileDownload } from 'crawlee';
 import { BrowserName, DeviceCategory, OperatingSystemsName } from '@crawlee/browser-pool';
 import { launchOptions } from 'camoufox-js';
-import { firefox } from 'playwright';
+import { firefox } from 'playwright-extra';
+import stealthPlugin from 'puppeteer-extra-plugin-stealth';
 
+firefox.use(stealthPlugin());
 
 const downloadCrawler = new FileDownload({
     async requestHandler({ body, request, contentType, getKeyValueStore }) {
@@ -53,13 +55,18 @@ const crawler = new PlaywrightCrawler({
         const category = await page.locator('.breadcrumbs__item').nth(2).locator('a').first().innerText()
         // const specsBrand = await page.locator('.specs__name', { hasText: "Бренд" })
 
-        await pushData({ title, raw_price, category });
+        await page.locator('[data-target="#tab-about"]').first().click()
+        await page.waitForSelector('.textoverflow__text')
+        const description = await page.locator('.textoverflow__text').innerHTML()
 
-        const images = await page.locator('.prodslider__pic-img').all()
+
+        await pushData({ title, raw_price, category, description });
+
+        const image = await page.locator('.prodslider__pic-img').first().getAttribute('src')
 
         try {
             await downloadCrawler.addRequests([
-                ...images.map(image => 'https://pitergsm.ru' + image.getAttribute('src'))
+                'https://pitergsm.ru' + image
             ])
         } catch (error) {
             console.error(error)
@@ -67,8 +74,12 @@ const crawler = new PlaywrightCrawler({
 
         // log.info(`Title of ${request.loadedUrl} is '${title}'`);
     },
+    failedRequestHandler({ request, log }) {
+        log.error(`Request ${request.url} failed too many times.`);
+    },
     maxRequestsPerCrawl: 10,
-    headless: false,
+    headless: true,
 });
 
 await crawler.run(['https://pitergsm.ru/catalog/watch/']);
+await downloadCrawler.run()
