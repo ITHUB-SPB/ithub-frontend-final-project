@@ -1,9 +1,9 @@
 {
-  "usableSessionsCount": 11,
+  "usableSessionsCount": 6,
   "retiredSessionsCount": 0,
   "sessions": [
     {
-      "id": "session_V5bKEUbXXh",
+      "id": "session_h2qRbC2CaE",
       "cookieJar": {
         "version": "tough-cookie@6.0.1",
         "storeType": "MemoryCookieStore",
@@ -16,14 +16,14 @@
       "userData": {},
       "maxErrorScore": 3,
       "errorScoreDecrement": 0.5,
-      "expiresAt": "2026-04-27T10:06:33.782Z",
-      "createdAt": "2026-04-27T09:16:33.782Z",
+      "expiresAt": "2026-04-27T11:09:22.647Z",
+      "createdAt": "2026-04-27T10:19:22.647Z",
       "usageCount": 0,
       "maxUsageCount": 50,
       "errorScore": 0
     },
     {
-      "id": "session_Ooh21qaepr",
+      "id": "session_guCudRfard",
       "cookieJar": {
         "version": "tough-cookie@6.0.1",
         "storeType": "MemoryCookieStore",
@@ -34,273 +34,233 @@
         "cookies": [
           {
             "key": "__ddg1_",
-            "value": "OVl1sVaWk45w7JSY7HyV",
-            "expires": "2027-04-27T09:16:46.000Z",
+            "value": "2z1Wz4aFiJtnergPUStX",
+            "expires": "2027-04-27T10:19:35.000Z",
             "domain": "pitergsm.ru",
             "path": "/",
             "httpOnly": true,
             "hostOnly": false,
-            "creation": "2026-04-27T09:17:08.248Z",
-            "lastAccessed": "2026-04-27T09:17:57.881Z"
+            "creation": "2026-04-27T10:19:58.289Z",
+            "lastAccessed": "2026-04-27T10:20:13.155Z"
           },
           {
             "key": "PHPSESSID",
-            "value": "44ZWFMEc6w7ITXwsYddTpgiXhiaUMFC1",
-            "expires": "2026-04-27T10:07:08.000Z",
+            "value": "Tej3kEcbOdQ2BGa3KXJEyPb1Y0QLreM1",
+            "expires": "2026-04-27T11:09:58.286Z",
             "domain": "pitergsm.ru",
             "path": "/",
             "httpOnly": true,
             "hostOnly": false,
-            "creation": "2026-04-27T09:17:08.248Z",
-            "lastAccessed": "2026-04-27T09:17:57.881Z"
+            "creation": "2026-04-27T10:19:58.290Z",
+            "lastAccessed": "2026-04-27T10:20:13.155Z"
           },
           {
             "key": "BITRIX_SM_CLEARED_CURRENT_CITY_ID",
             "value": "Y",
-            "expires": "2027-04-22T09:16:46.000Z",
+            "expires": "2027-04-22T10:19:35.000Z",
             "domain": "pitergsm.ru",
             "path": "/",
             "hostOnly": false,
-            "creation": "2026-04-27T09:17:08.248Z",
-            "lastAccessed": "2026-04-27T09:17:57.881Z"
-          },
-          {
-            "key": "BITRIX_CONVERSION_CONTEXT_s1",
-            "value": "%7B%22ID%22%3A14%2C%22EXPIRE%22%3A1777323540%2C%22UNIQUE%22%3A%5B%22conversion_visit_day%22%5D%7D",
-            "expires": "2027-04-27T09:16:48.000Z",
-            "domain": "pitergsm.ru",
-            "path": "/",
-            "hostOnly": false,
-            "creation": "2026-04-27T09:17:08.248Z",
-            "lastAccessed": "2026-04-27T09:17:57.881Z"
-          },
-          {
-            "key": "theme",
-            "value": "null",
-            "expires": "2026-05-27T09:16:48.000Z",
-            "domain": "pitergsm.ru",
-            "path": "/",
-            "hostOnly": true,
-            "creation": "2026-04-27T09:17:08.248Z",
-            "lastAccessed": "2026-04-27T09:17:57.881Z"
+            "creation": "2026-04-27T10:19:58.290Z",
+            "lastAccessed": "2026-04-27T10:20:13.155Z"
           },
           {
             "key": "mindboxDeviceUUID",
-            "value": "cf9d64f3-19f6-41f2-b4a7-d26ab7980abc",
-            "expires": "2027-06-01T09:16:48.000Z",
+            "value": "118142a7-616e-4c3c-a104-dcaeedf4466a",
+            "expires": "2027-06-01T10:19:38.000Z",
             "domain": "pitergsm.ru",
             "path": "/",
             "hostOnly": false,
-            "creation": "2026-04-27T09:17:08.248Z",
-            "lastAccessed": "2026-04-27T09:17:57.881Z"
+            "creation": "2026-04-27T10:19:58.290Z",
+            "lastAccessed": "2026-04-27T10:20:13.155Z"
           },
           {
             "key": "directCrm-session",
-            "value": "%7B%22deviceGuid%22%3A%22cf9d64f3-19f6-41f2-b4a7-d26ab7980abc%22%7D",
-            "expires": "2027-06-01T09:16:48.000Z",
+            "value": "%7B%22deviceGuid%22%3A%22118142a7-616e-4c3c-a104-dcaeedf4466a%22%7D",
+            "expires": "2027-06-01T10:19:38.000Z",
             "domain": "pitergsm.ru",
             "path": "/",
             "hostOnly": false,
-            "creation": "2026-04-27T09:17:08.248Z",
-            "lastAccessed": "2026-04-27T09:17:57.881Z"
+            "creation": "2026-04-27T10:19:58.290Z",
+            "lastAccessed": "2026-04-27T10:20:13.155Z"
           },
           {
             "key": "tmr_lvid",
-            "value": "3098797ac40eccf37f53b752d28bc569",
-            "expires": "2027-03-26T09:17:52.000Z",
+            "value": "097948554d9e0cb6b9ab7872aade2083",
+            "expires": "2027-03-26T10:19:38.000Z",
             "domain": "pitergsm.ru",
             "path": "/",
             "hostOnly": false,
-            "creation": "2026-04-27T09:17:08.248Z",
-            "lastAccessed": "2026-04-27T09:17:57.881Z"
+            "creation": "2026-04-27T10:19:58.290Z",
+            "lastAccessed": "2026-04-27T10:20:13.155Z"
           },
           {
             "key": "tmr_lvidTS",
-            "value": "1777281408475",
-            "expires": "2027-03-26T09:17:52.000Z",
+            "value": "1777285178209",
+            "expires": "2027-03-26T10:19:38.000Z",
             "domain": "pitergsm.ru",
             "path": "/",
             "hostOnly": false,
-            "creation": "2026-04-27T09:17:08.248Z",
-            "lastAccessed": "2026-04-27T09:17:57.881Z"
-          },
-          {
-            "key": "_ym_uid",
-            "value": "1777281409162466986",
-            "expires": "2027-04-27T09:17:52.000Z",
-            "domain": "pitergsm.ru",
-            "path": "/",
-            "secure": true,
-            "hostOnly": false,
-            "creation": "2026-04-27T09:17:08.248Z",
-            "lastAccessed": "2026-04-27T09:17:57.881Z"
-          },
-          {
-            "key": "_ym_d",
-            "value": "1777281472",
-            "expires": "2027-04-27T09:17:52.000Z",
-            "domain": "pitergsm.ru",
-            "path": "/",
-            "secure": true,
-            "hostOnly": false,
-            "creation": "2026-04-27T09:17:08.248Z",
-            "lastAccessed": "2026-04-27T09:17:57.881Z"
-          },
-          {
-            "key": "_ymab_param",
-            "value": "n5I81hZbRzr7_y7gZVQN2wNdH3uf-bz_mScj2ynYHwKC5q15Xq8h0r7V6p7F9IClT3JFdoo6Ewe9XU761TlBImw7pmo",
-            "expires": "2027-04-27T09:17:52.000Z",
-            "domain": "pitergsm.ru",
-            "path": "/",
-            "secure": true,
-            "hostOnly": true,
-            "creation": "2026-04-27T09:17:08.248Z",
-            "lastAccessed": "2026-04-27T09:17:57.881Z"
-          },
-          {
-            "key": "_userGUID",
-            "value": "0:mogzgnm4:g_OpRBu562CJ3QB4fEu21gHpbqEG_hkG",
-            "expires": "2027-06-01T09:17:52.000Z",
-            "domain": "pitergsm.ru",
-            "path": "/",
-            "hostOnly": true,
-            "creation": "2026-04-27T09:17:08.248Z",
-            "lastAccessed": "2026-04-27T09:17:57.881Z"
+            "creation": "2026-04-27T10:19:58.290Z",
+            "lastAccessed": "2026-04-27T10:20:13.155Z"
           },
           {
             "key": "_ym_isad",
             "value": "2",
-            "expires": "2026-04-28T05:16:48.000Z",
+            "expires": "2026-04-28T06:19:38.000Z",
             "domain": "pitergsm.ru",
             "path": "/",
             "hostOnly": false,
-            "creation": "2026-04-27T09:17:08.248Z",
-            "lastAccessed": "2026-04-27T09:17:57.881Z"
+            "creation": "2026-04-27T10:19:58.290Z",
+            "lastAccessed": "2026-04-27T10:20:13.155Z"
           },
           {
-            "key": "_ym_visorc",
-            "value": "b",
-            "expires": "2026-04-27T09:47:52.000Z",
+            "key": "_userGUID",
+            "value": "0:moh1pgjy:OmBN~_DcF6UMNOfUf58YqzsJhxLhy1UL",
+            "expires": "2027-06-01T10:19:38.000Z",
             "domain": "pitergsm.ru",
             "path": "/",
             "hostOnly": false,
-            "creation": "2026-04-27T09:17:08.249Z",
-            "lastAccessed": "2026-04-27T09:17:57.881Z"
+            "creation": "2026-04-27T10:19:58.290Z",
+            "lastAccessed": "2026-04-27T10:20:13.155Z"
           },
           {
-            "key": "__ddg8_",
-            "value": "LIHFUiykJ1P5RrUE",
-            "expires": "2026-04-27T09:37:53.000Z",
-            "domain": "pitergsm.ru",
-            "path": "/",
-            "hostOnly": false,
-            "creation": "2026-04-27T09:17:08.249Z",
-            "lastAccessed": "2026-04-27T09:17:57.881Z"
-          },
-          {
-            "key": "__ddg10_",
-            "value": "1777281472",
-            "expires": "2026-04-27T09:37:53.000Z",
-            "domain": "pitergsm.ru",
-            "path": "/",
-            "hostOnly": false,
-            "creation": "2026-04-27T09:17:08.249Z",
-            "lastAccessed": "2026-04-27T09:17:57.881Z"
-          },
-          {
-            "key": "__ddg9_",
-            "value": "31.28.10.139",
-            "expires": "2026-04-27T09:37:53.000Z",
-            "domain": "pitergsm.ru",
-            "path": "/",
-            "hostOnly": false,
-            "creation": "2026-04-27T09:17:08.249Z",
-            "lastAccessed": "2026-04-27T09:17:57.881Z"
-          },
-          {
-            "key": "domain_sid",
-            "value": "1Fl1utHaIlDVG-aGunO9R%3A1777281409765",
-            "expires": "2026-05-04T09:16:49.000Z",
-            "domain": "pitergsm.ru",
-            "path": "/",
-            "hostOnly": true,
-            "creation": "2026-04-27T09:17:08.249Z",
-            "lastAccessed": "2026-04-27T09:17:57.881Z"
-          },
-          {
-            "key": "tmr_detect",
-            "value": "0%7C1777281474834",
-            "expires": "2026-04-28T09:17:54.000Z",
-            "domain": "pitergsm.ru",
-            "path": "/",
-            "hostOnly": true,
-            "creation": "2026-04-27T09:17:08.249Z",
-            "lastAccessed": "2026-04-27T09:17:57.882Z"
-          },
-          {
-            "key": "Fuuid",
-            "value": "f15dacb4-3480-427b-b819-9cda1a227e5a,1777281412",
-            "expires": "2027-06-01T09:16:52.000Z",
+            "key": "_ymab_param",
+            "value": "jUhkU8lAhZ7KXTtJsX6Nced4kgIlOVPI0VD8qE-JuL5hUvC9eBXcdDmIFXcvrNH24ywIhIUG60PTN0b-zy_sza-HrXs",
+            "expires": "2027-04-27T10:19:38.000Z",
             "domain": "pitergsm.ru",
             "path": "/",
             "secure": true,
             "hostOnly": true,
-            "creation": "2026-04-27T09:17:08.249Z",
-            "lastAccessed": "2026-04-27T09:17:57.881Z"
+            "creation": "2026-04-27T10:19:58.290Z",
+            "lastAccessed": "2026-04-27T10:20:13.155Z"
           },
           {
-            "key": "dSesn",
-            "value": "a083bec4-8a22-83c6-87dc-ac1ee3cecb9c",
-            "expires": "2026-04-27T09:47:13.000Z",
+            "key": "_ym_visorc",
+            "value": "b",
+            "expires": "2026-04-27T10:49:39.000Z",
             "domain": "pitergsm.ru",
             "path": "/",
             "hostOnly": false,
-            "creation": "2026-04-27T09:17:33.282Z",
-            "lastAccessed": "2026-04-27T09:17:57.881Z"
+            "creation": "2026-04-27T10:19:58.290Z",
+            "lastAccessed": "2026-04-27T10:20:13.155Z"
           },
           {
-            "key": "_dvs",
-            "value": "0:mogzh721:0fmcVXzx72T5fN_yuQmdUhiDQ5mhWhq9",
-            "expires": "2026-04-27T09:47:52.000Z",
+            "key": "theme",
+            "value": "null",
+            "expires": "2026-05-27T10:19:43.000Z",
             "domain": "pitergsm.ru",
             "path": "/",
             "hostOnly": true,
-            "creation": "2026-04-27T09:17:33.283Z",
-            "lastAccessed": "2026-04-27T09:17:57.881Z"
+            "creation": "2026-04-27T10:19:58.290Z",
+            "lastAccessed": "2026-04-27T10:20:13.155Z"
           },
           {
-            "key": "digi_uc",
-            "value": "|v:177728:13680:31650:74832",
-            "expires": "2027-04-27T09:17:52.000Z",
+            "key": "BITRIX_CONVERSION_CONTEXT_s1",
+            "value": "%7B%22ID%22%3A14%2C%22EXPIRE%22%3A1777323540%2C%22UNIQUE%22%3A%5B%22conversion_visit_day%22%5D%7D",
+            "expires": "2027-04-27T10:19:43.000Z",
             "domain": "pitergsm.ru",
             "path": "/",
             "hostOnly": false,
-            "creation": "2026-04-27T09:17:33.283Z",
-            "lastAccessed": "2026-04-27T09:17:57.881Z"
+            "creation": "2026-04-27T10:19:58.290Z",
+            "lastAccessed": "2026-04-27T10:20:13.155Z"
           },
           {
-            "key": "Dsign",
-            "value": "y",
-            "expires": "2026-04-27T09:17:55.000Z",
+            "key": "tmr_detect",
+            "value": "0%7C1777285181270",
+            "expires": "2026-04-28T10:19:41.000Z",
             "domain": "pitergsm.ru",
             "path": "/",
             "hostOnly": true,
-            "creation": "2026-04-27T09:17:57.618Z",
-            "lastAccessed": "2026-04-27T09:17:57.881Z"
+            "creation": "2026-04-27T10:19:58.290Z",
+            "lastAccessed": "2026-04-27T10:20:13.155Z"
+          },
+          {
+            "key": "_ym_uid",
+            "value": "1777285178149264961",
+            "expires": "2027-04-27T10:19:43.000Z",
+            "domain": "pitergsm.ru",
+            "path": "/",
+            "secure": true,
+            "hostOnly": false,
+            "creation": "2026-04-27T10:19:58.290Z",
+            "lastAccessed": "2026-04-27T10:20:13.155Z"
+          },
+          {
+            "key": "_ym_d",
+            "value": "1777285183",
+            "expires": "2027-04-27T10:19:43.000Z",
+            "domain": "pitergsm.ru",
+            "path": "/",
+            "secure": true,
+            "hostOnly": false,
+            "creation": "2026-04-27T10:19:58.290Z",
+            "lastAccessed": "2026-04-27T10:20:13.155Z"
+          },
+          {
+            "key": "domain_sid",
+            "value": "ioEnROSpk2NfogYWa-YaI%3A1777285183531",
+            "expires": "2026-05-04T10:19:43.000Z",
+            "domain": "pitergsm.ru",
+            "path": "/",
+            "hostOnly": true,
+            "creation": "2026-04-27T10:19:58.290Z",
+            "lastAccessed": "2026-04-27T10:20:13.155Z"
+          },
+          {
+            "key": "Fuuid",
+            "value": "173d4624-6772-4b2e-86ab-494a35134819,1777285183",
+            "expires": "2027-06-01T10:19:43.000Z",
+            "domain": "pitergsm.ru",
+            "path": "/",
+            "secure": true,
+            "hostOnly": true,
+            "creation": "2026-04-27T10:19:58.290Z",
+            "lastAccessed": "2026-04-27T10:20:13.155Z"
+          },
+          {
+            "key": "__ddg8_",
+            "value": "VHC6gFT9wX29oq6I",
+            "expires": "2026-04-27T11:08:20.000Z",
+            "domain": "pitergsm.ru",
+            "path": "/",
+            "hostOnly": false,
+            "creation": "2026-04-27T10:19:58.290Z",
+            "lastAccessed": "2026-04-27T10:20:13.155Z"
+          },
+          {
+            "key": "__ddg10_",
+            "value": "1777285184",
+            "expires": "2026-04-27T11:08:20.000Z",
+            "domain": "pitergsm.ru",
+            "path": "/",
+            "hostOnly": false,
+            "creation": "2026-04-27T10:19:58.290Z",
+            "lastAccessed": "2026-04-27T10:20:13.155Z"
+          },
+          {
+            "key": "__ddg9_",
+            "value": "31.28.10.139",
+            "expires": "2026-04-27T11:08:20.000Z",
+            "domain": "pitergsm.ru",
+            "path": "/",
+            "hostOnly": false,
+            "creation": "2026-04-27T10:19:58.290Z",
+            "lastAccessed": "2026-04-27T10:20:13.155Z"
           }
         ]
       },
       "userData": {},
       "maxErrorScore": 3,
       "errorScoreDecrement": 0.5,
-      "expiresAt": "2026-04-27T10:06:33.786Z",
-      "createdAt": "2026-04-27T09:16:33.786Z",
-      "usageCount": 10,
+      "expiresAt": "2026-04-27T11:09:22.651Z",
+      "createdAt": "2026-04-27T10:19:22.651Z",
+      "usageCount": 1,
       "maxUsageCount": 50,
       "errorScore": 0
     },
     {
-      "id": "session_51bWJ8NHL5",
+      "id": "session_DDP0gdnm5F",
       "cookieJar": {
         "version": "tough-cookie@6.0.1",
         "storeType": "MemoryCookieStore",
@@ -313,14 +273,14 @@
       "userData": {},
       "maxErrorScore": 3,
       "errorScoreDecrement": 0.5,
-      "expiresAt": "2026-04-27T10:07:08.654Z",
-      "createdAt": "2026-04-27T09:17:08.654Z",
+      "expiresAt": "2026-04-27T11:09:58.663Z",
+      "createdAt": "2026-04-27T10:19:58.663Z",
       "usageCount": 0,
       "maxUsageCount": 50,
       "errorScore": 0
     },
     {
-      "id": "session_1a93C4Su2K",
+      "id": "session_daIrYhAi4v",
       "cookieJar": {
         "version": "tough-cookie@6.0.1",
         "storeType": "MemoryCookieStore",
@@ -333,14 +293,14 @@
       "userData": {},
       "maxErrorScore": 3,
       "errorScoreDecrement": 0.5,
-      "expiresAt": "2026-04-27T10:07:08.658Z",
-      "createdAt": "2026-04-27T09:17:08.658Z",
+      "expiresAt": "2026-04-27T11:09:58.674Z",
+      "createdAt": "2026-04-27T10:19:58.674Z",
       "usageCount": 0,
       "maxUsageCount": 50,
       "errorScore": 0
     },
     {
-      "id": "session_z5OhNsMF7t",
+      "id": "session_rc02NsXeJx",
       "cookieJar": {
         "version": "tough-cookie@6.0.1",
         "storeType": "MemoryCookieStore",
@@ -353,14 +313,14 @@
       "userData": {},
       "maxErrorScore": 3,
       "errorScoreDecrement": 0.5,
-      "expiresAt": "2026-04-27T10:07:08.662Z",
-      "createdAt": "2026-04-27T09:17:08.662Z",
+      "expiresAt": "2026-04-27T11:09:58.683Z",
+      "createdAt": "2026-04-27T10:19:58.683Z",
       "usageCount": 0,
       "maxUsageCount": 50,
       "errorScore": 0
     },
     {
-      "id": "session_vJEVwosUMB",
+      "id": "session_GdXKJc8igt",
       "cookieJar": {
         "version": "tough-cookie@6.0.1",
         "storeType": "MemoryCookieStore",
@@ -373,108 +333,8 @@
       "userData": {},
       "maxErrorScore": 3,
       "errorScoreDecrement": 0.5,
-      "expiresAt": "2026-04-27T10:07:13.987Z",
-      "createdAt": "2026-04-27T09:17:13.987Z",
-      "usageCount": 0,
-      "maxUsageCount": 50,
-      "errorScore": 0
-    },
-    {
-      "id": "session_SU8Sf4zktH",
-      "cookieJar": {
-        "version": "tough-cookie@6.0.1",
-        "storeType": "MemoryCookieStore",
-        "rejectPublicSuffixes": true,
-        "enableLooseMode": false,
-        "allowSpecialUseDomain": true,
-        "prefixSecurity": "silent",
-        "cookies": []
-      },
-      "userData": {},
-      "maxErrorScore": 3,
-      "errorScoreDecrement": 0.5,
-      "expiresAt": "2026-04-27T10:07:33.458Z",
-      "createdAt": "2026-04-27T09:17:33.458Z",
-      "usageCount": 0,
-      "maxUsageCount": 50,
-      "errorScore": 0
-    },
-    {
-      "id": "session_HF7XSwJRpu",
-      "cookieJar": {
-        "version": "tough-cookie@6.0.1",
-        "storeType": "MemoryCookieStore",
-        "rejectPublicSuffixes": true,
-        "enableLooseMode": false,
-        "allowSpecialUseDomain": true,
-        "prefixSecurity": "silent",
-        "cookies": []
-      },
-      "userData": {},
-      "maxErrorScore": 3,
-      "errorScoreDecrement": 0.5,
-      "expiresAt": "2026-04-27T10:07:33.463Z",
-      "createdAt": "2026-04-27T09:17:33.463Z",
-      "usageCount": 0,
-      "maxUsageCount": 50,
-      "errorScore": 0
-    },
-    {
-      "id": "session_EnOfBiZcvK",
-      "cookieJar": {
-        "version": "tough-cookie@6.0.1",
-        "storeType": "MemoryCookieStore",
-        "rejectPublicSuffixes": true,
-        "enableLooseMode": false,
-        "allowSpecialUseDomain": true,
-        "prefixSecurity": "silent",
-        "cookies": []
-      },
-      "userData": {},
-      "maxErrorScore": 3,
-      "errorScoreDecrement": 0.5,
-      "expiresAt": "2026-04-27T10:07:34.044Z",
-      "createdAt": "2026-04-27T09:17:34.044Z",
-      "usageCount": 0,
-      "maxUsageCount": 50,
-      "errorScore": 0
-    },
-    {
-      "id": "session_L9w2l8XWUL",
-      "cookieJar": {
-        "version": "tough-cookie@6.0.1",
-        "storeType": "MemoryCookieStore",
-        "rejectPublicSuffixes": true,
-        "enableLooseMode": false,
-        "allowSpecialUseDomain": true,
-        "prefixSecurity": "silent",
-        "cookies": []
-      },
-      "userData": {},
-      "maxErrorScore": 3,
-      "errorScoreDecrement": 0.5,
-      "expiresAt": "2026-04-27T10:07:34.051Z",
-      "createdAt": "2026-04-27T09:17:34.051Z",
-      "usageCount": 0,
-      "maxUsageCount": 50,
-      "errorScore": 0
-    },
-    {
-      "id": "session_ldOm0fw05v",
-      "cookieJar": {
-        "version": "tough-cookie@6.0.1",
-        "storeType": "MemoryCookieStore",
-        "rejectPublicSuffixes": true,
-        "enableLooseMode": false,
-        "allowSpecialUseDomain": true,
-        "prefixSecurity": "silent",
-        "cookies": []
-      },
-      "userData": {},
-      "maxErrorScore": 3,
-      "errorScoreDecrement": 0.5,
-      "expiresAt": "2026-04-27T10:07:34.228Z",
-      "createdAt": "2026-04-27T09:17:34.228Z",
+      "expiresAt": "2026-04-27T11:10:03.040Z",
+      "createdAt": "2026-04-27T10:20:03.040Z",
       "usageCount": 0,
       "maxUsageCount": 50,
       "errorScore": 0

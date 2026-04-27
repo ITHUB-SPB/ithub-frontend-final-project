@@ -1,8 +1,8 @@
 {
 	"id": "dgOEdw1sCLqfe9Q",
-	"json": "{\"id\":\"dgOEdw1sCLqfe9Q\",\"url\":\"https://pitergsm.ru/catalog/watch/fitness-bracelets/fitnes-braslet-samsung-galaxy-fit3-r390-serebristyy/\",\"loadedUrl\":\"https://pitergsm.ru/catalog/watch/fitness-bracelets/31648/\",\"uniqueKey\":\"https://pitergsm.ru/catalog/watch/fitness-bracelets/fitnes-braslet-samsung-galaxy-fit3-r390-serebristyy\",\"method\":\"GET\",\"noRetry\":false,\"retryCount\":0,\"errorMessages\":[],\"headers\":{},\"userData\":{\"__crawlee\":{\"crawlDepth\":1,\"enqueueStrategy\":\"same-hostname\",\"state\":4}},\"handledAt\":\"2026-04-27T09:17:57.920Z\"}",
+	"json": "{\"id\":\"dgOEdw1sCLqfe9Q\",\"url\":\"https://pitergsm.ru/catalog/watch/fitness-bracelets/fitnes-braslet-samsung-galaxy-fit3-r390-serebristyy/\",\"uniqueKey\":\"https://pitergsm.ru/catalog/watch/fitness-bracelets/fitnes-braslet-samsung-galaxy-fit3-r390-serebristyy\",\"method\":\"GET\",\"noRetry\":false,\"retryCount\":0,\"errorMessages\":[],\"headers\":{},\"userData\":{\"__crawlee\":{\"crawlDepth\":1,\"enqueueStrategy\":\"same-hostname\"}}}",
 	"method": "GET",
-	"orderNo": null,
+	"orderNo": 1777285378475,
 	"retryCount": 0,
 	"uniqueKey": "https://pitergsm.ru/catalog/watch/fitness-bracelets/fitnes-braslet-samsung-galaxy-fit3-r390-serebristyy",
 	"url": "https://pitergsm.ru/catalog/watch/fitness-bracelets/fitnes-braslet-samsung-galaxy-fit3-r390-serebristyy/"
