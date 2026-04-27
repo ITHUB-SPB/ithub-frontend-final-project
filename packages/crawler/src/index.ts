@@ -34,15 +34,14 @@ const crawler = new PlaywrightCrawler({
     async requestHandler({ request, page, enqueueLinks, log, pushData }) {
         const title = await page.title();
 
-        await page.waitForSelector('mvid-product-card')
-
-        if (!page.url().includes("https://www.mvideo.ru/products/")) {
-            await enqueueLinks({
-                // globs: ['https://www.mvideo.ru/products/smart-chasy-*'],
-                selector: 'mvid-product-card'
-            });
+        if (!page.url().includes("https://pitergsm.ru/catalog/watch/")) {
             return
         }
+
+        await enqueueLinks({
+            // globs: ['https://www.mvideo.ru/products/smart-chasy-*'],
+            selector: 'a.prodcard__name'
+        });
 
         log.info(`Title of ${request.loadedUrl} is '${title}'`);
 
@@ -53,4 +52,4 @@ const crawler = new PlaywrightCrawler({
     headless: false,
 });
 
-await crawler.run(['https://www.mvideo.ru/gadzhety-64/smart-chasy-400']);
+await crawler.run(['https://pitergsm.ru/catalog/watch/']);

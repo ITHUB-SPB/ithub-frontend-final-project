@@ -1,0 +1,9 @@
+{
+	"id": "eWBtz024adVXBJY",
+	"json": "{\"id\":\"eWBtz024adVXBJY\",\"url\":\"https://pitergsm.ru/catalog/watch/detskie/13678/\",\"loadedUrl\":\"https://pitergsm.ru/catalog/watch/detskie/13678/\",\"uniqueKey\":\"https://pitergsm.ru/catalog/watch/detskie/13678\",\"method\":\"GET\",\"noRetry\":false,\"retryCount\":0,\"errorMessages\":[],\"headers\":{},\"userData\":{\"__crawlee\":{\"crawlDepth\":1,\"enqueueStrategy\":\"same-hostname\",\"state\":4}},\"handledAt\":\"2026-04-27T09:17:58.272Z\"}",
+	"method": "GET",
+	"orderNo": null,
+	"retryCount": 0,
+	"uniqueKey": "https://pitergsm.ru/catalog/watch/detskie/13678",
+	"url": "https://pitergsm.ru/catalog/watch/detskie/13678/"
+}
