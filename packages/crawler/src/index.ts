@@ -1,9 +1,36 @@
 import { PlaywrightCrawler } from 'crawlee';
+import { BrowserName, DeviceCategory, OperatingSystemsName } from '@crawlee/browser-pool';
+import { launchOptions } from 'camoufox-js';
+import { firefox } from 'playwright';
 
-// PlaywrightCrawler crawls the web using a headless
-// browser controlled by the Playwright library.
+
 const crawler = new PlaywrightCrawler({
-    // Use the requestHandler to process each of the crawled pages.
+    postNavigationHooks: [
+        async ({ handleCloudflareChallenge }) => {
+            await handleCloudflareChallenge();
+        },
+    ],
+    browserPoolOptions: {
+        useFingerprints: true, // this is the default
+        fingerprintOptions: {
+            fingerprintGeneratorOptions: {
+                browsers: [
+                    {
+                        name: BrowserName.firefox,
+                        minVersion: 96,
+                    },
+                ],
+                devices: [DeviceCategory.desktop],
+                operatingSystems: [OperatingSystemsName.windows],
+            },
+        },
+    },
+    launchContext: {
+        launcher: firefox,
+        launchOptions: await launchOptions({
+            headless: true,
+        }),
+    },
     async requestHandler({ request, page, enqueueLinks, log, pushData }) {
         const title = await page.title();
         log.info(`Title of ${request.loadedUrl} is '${title}'`);

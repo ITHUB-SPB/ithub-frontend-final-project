@@ -9,6 +9,8 @@
     "build": "tsc"
   },
   "dependencies": {
+    "@crawlee/browser-pool": "^3.16.0",
+    "camoufox-js": "^0.10.2",
     "crawlee": "^3.16.0",
     "playwright": "^1.59.1",
     "tsx": "^4.21.0"
