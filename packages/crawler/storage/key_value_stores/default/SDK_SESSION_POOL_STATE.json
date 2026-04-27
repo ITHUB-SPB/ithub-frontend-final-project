@@ -1,0 +1,757 @@
+{
+  "usableSessionsCount": 2,
+  "retiredSessionsCount": 0,
+  "sessions": [
+    {
+      "id": "session_7sKp6Mq36I",
+      "cookieJar": {
+        "version": "tough-cookie@6.0.1",
+        "storeType": "MemoryCookieStore",
+        "rejectPublicSuffixes": true,
+        "enableLooseMode": false,
+        "allowSpecialUseDomain": true,
+        "prefixSecurity": "silent",
+        "cookies": []
+      },
+      "userData": {},
+      "maxErrorScore": 3,
+      "errorScoreDecrement": 0.5,
+      "expiresAt": "2026-04-27T09:57:23.433Z",
+      "createdAt": "2026-04-27T09:07:23.433Z",
+      "usageCount": 0,
+      "maxUsageCount": 50,
+      "errorScore": 0
+    },
+    {
+      "id": "session_HeoHFxBfx3",
+      "cookieJar": {
+        "version": "tough-cookie@6.0.1",
+        "storeType": "MemoryCookieStore",
+        "rejectPublicSuffixes": true,
+        "enableLooseMode": false,
+        "allowSpecialUseDomain": true,
+        "prefixSecurity": "silent",
+        "cookies": [
+          {
+            "key": "MVID_REGION_ID",
+            "value": "1",
+            "expires": "2027-06-01T09:07:36.000Z",
+            "domain": "www.mvideo.ru",
+            "path": "/",
+            "hostOnly": false,
+            "creation": "2026-04-27T09:07:38.934Z",
+            "lastAccessed": "2026-04-27T09:07:38.934Z"
+          },
+          {
+            "key": "MVID_CITY_ID",
+            "value": "CityCZ_975",
+            "expires": "2027-06-01T09:07:36.000Z",
+            "domain": "www.mvideo.ru",
+            "path": "/",
+            "hostOnly": false,
+            "creation": "2026-04-27T09:07:38.936Z",
+            "lastAccessed": "2026-04-27T09:07:38.936Z"
+          },
+          {
+            "key": "MVID_TIMEZONE_OFFSET",
+            "value": "3",
+            "expires": "2027-06-01T09:07:36.000Z",
+            "domain": "www.mvideo.ru",
+            "path": "/",
+            "hostOnly": false,
+            "creation": "2026-04-27T09:07:38.936Z",
+            "lastAccessed": "2026-04-27T09:07:38.936Z"
+          },
+          {
+            "key": "MVID_KLADR_ID",
+            "value": "7700000000000",
+            "expires": "2027-06-01T09:07:36.000Z",
+            "domain": "www.mvideo.ru",
+            "path": "/",
+            "hostOnly": false,
+            "creation": "2026-04-27T09:07:38.936Z",
+            "lastAccessed": "2026-04-27T09:07:38.936Z"
+          },
+          {
+            "key": "MVID_REGION_SHOP",
+            "value": "S002",
+            "expires": "2027-06-01T09:07:36.000Z",
+            "domain": "www.mvideo.ru",
+            "path": "/",
+            "hostOnly": false,
+            "creation": "2026-04-27T09:07:38.936Z",
+            "lastAccessed": "2026-04-27T09:07:38.936Z"
+          },
+          {
+            "key": "MVID_GEOLOCATION_NEEDED",
+            "value": "true",
+            "expires": "2027-06-01T09:07:36.000Z",
+            "domain": "www.mvideo.ru",
+            "path": "/",
+            "hostOnly": false,
+            "creation": "2026-04-27T09:07:38.937Z",
+            "lastAccessed": "2026-04-27T09:07:38.937Z"
+          },
+          {
+            "key": "MVID_PRICE_CLUSTER",
+            "value": "13",
+            "expires": "2027-06-01T09:07:36.000Z",
+            "domain": "www.mvideo.ru",
+            "path": "/",
+            "hostOnly": false,
+            "creation": "2026-04-27T09:07:38.937Z",
+            "lastAccessed": "2026-04-27T09:07:38.937Z"
+          },
+          {
+            "key": "MVID_NEW_LK_OTP_TIMER",
+            "value": "true",
+            "expires": "2027-06-01T09:07:36.000Z",
+            "domain": "mvideo.ru",
+            "path": "/",
+            "hostOnly": false,
+            "creation": "2026-04-27T09:07:38.937Z",
+            "lastAccessed": "2026-04-27T09:07:38.937Z"
+          },
+          {
+            "key": "SENTRY_TRANSACTIONS_RATE",
+            "value": "1",
+            "expires": "2027-06-01T09:07:36.000Z",
+            "domain": "mvideo.ru",
+            "path": "/",
+            "hostOnly": false,
+            "creation": "2026-04-27T09:07:38.945Z",
+            "lastAccessed": "2026-04-27T09:07:38.945Z"
+          },
+          {
+            "key": "SENTRY_REPLAYS_SESSIONS_RATE",
+            "value": "0.2",
+            "expires": "2027-06-01T09:07:36.000Z",
+            "domain": "mvideo.ru",
+            "path": "/",
+            "hostOnly": false,
+            "creation": "2026-04-27T09:07:38.947Z",
+            "lastAccessed": "2026-04-27T09:07:38.947Z"
+          },
+          {
+            "key": "SENTRY_REPLAYS_ERRORS_RATE",
+            "value": "0.2",
+            "expires": "2027-06-01T09:07:36.000Z",
+            "domain": "mvideo.ru",
+            "path": "/",
+            "hostOnly": false,
+            "creation": "2026-04-27T09:07:38.947Z",
+            "lastAccessed": "2026-04-27T09:07:38.947Z"
+          },
+          {
+            "key": "SENTRY_ERRORS_RATE",
+            "value": "0.2",
+            "expires": "2027-06-01T09:07:36.000Z",
+            "domain": "mvideo.ru",
+            "path": "/",
+            "hostOnly": false,
+            "creation": "2026-04-27T09:07:38.947Z",
+            "lastAccessed": "2026-04-27T09:07:38.947Z"
+          },
+          {
+            "key": "MVID_FILTER_CODES",
+            "value": "true",
+            "expires": "2027-06-01T09:07:36.000Z",
+            "domain": "mvideo.ru",
+            "path": "/",
+            "hostOnly": false,
+            "creation": "2026-04-27T09:07:38.947Z",
+            "lastAccessed": "2026-04-27T09:07:38.947Z"
+          },
+          {
+            "key": "MVID_SUGGEST_DIGINETICA",
+            "value": "true",
+            "expires": "2027-06-01T09:07:36.000Z",
+            "domain": "mvideo.ru",
+            "path": "/",
+            "hostOnly": false,
+            "creation": "2026-04-27T09:07:38.947Z",
+            "lastAccessed": "2026-04-27T09:07:38.947Z"
+          },
+          {
+            "key": "MVID_FLOCKTORY_ON",
+            "value": "true",
+            "expires": "2027-06-01T09:07:36.000Z",
+            "domain": "mvideo.ru",
+            "path": "/",
+            "hostOnly": false,
+            "creation": "2026-04-27T09:07:38.947Z",
+            "lastAccessed": "2026-04-27T09:07:38.947Z"
+          },
+          {
+            "key": "MVID_ENABLED_CACHE_PRODUCTSETS",
+            "value": "true",
+            "expires": "2027-06-01T09:07:36.000Z",
+            "domain": "mvideo.ru",
+            "path": "/",
+            "hostOnly": false,
+            "creation": "2026-04-27T09:07:38.948Z",
+            "lastAccessed": "2026-04-27T09:07:38.948Z"
+          },
+          {
+            "key": "MVID_IS_NEW_BR_WIDGET",
+            "value": "true",
+            "expires": "2027-06-01T09:07:36.000Z",
+            "domain": "mvideo.ru",
+            "path": "/",
+            "hostOnly": false,
+            "creation": "2026-04-27T09:07:38.948Z",
+            "lastAccessed": "2026-04-27T09:07:38.948Z"
+          },
+          {
+            "key": "MVID_SERVICES",
+            "value": "111",
+            "expires": "2027-06-01T09:07:36.000Z",
+            "domain": "mvideo.ru",
+            "path": "/",
+            "hostOnly": false,
+            "creation": "2026-04-27T09:07:38.948Z",
+            "lastAccessed": "2026-04-27T09:07:38.948Z"
+          },
+          {
+            "key": "MVID_NEW_LK_CHECK_CAPTCHA",
+            "value": "true",
+            "expires": "2026-12-08T07:00:59.000Z",
+            "domain": "mvideo.ru",
+            "path": "/",
+            "hostOnly": false,
+            "creation": "2026-04-27T09:07:38.948Z",
+            "lastAccessed": "2026-04-27T09:07:38.948Z"
+          },
+          {
+            "key": "MVID_GTM_ENABLED",
+            "value": "011",
+            "expires": "2026-12-01T07:00:59.000Z",
+            "domain": "mvideo.ru",
+            "path": "/",
+            "hostOnly": false,
+            "creation": "2026-04-27T09:07:38.948Z",
+            "lastAccessed": "2026-04-27T09:07:38.948Z"
+          },
+          {
+            "key": "MVID_CRITICAL_GTM_INIT_DELAY",
+            "value": "1500",
+            "expires": "2026-10-01T07:00:59.000Z",
+            "domain": "mvideo.ru",
+            "path": "/",
+            "hostOnly": false,
+            "creation": "2026-04-27T09:07:38.948Z",
+            "lastAccessed": "2026-04-27T09:07:38.948Z"
+          },
+          {
+            "key": "MVID_CREDIT_SERVICES",
+            "value": "true",
+            "expires": "2027-06-01T09:07:36.000Z",
+            "domain": "mvideo.ru",
+            "path": "/",
+            "hostOnly": false,
+            "creation": "2026-04-27T09:07:38.948Z",
+            "lastAccessed": "2026-04-27T09:07:38.948Z"
+          },
+          {
+            "key": "MVID_TYP_CHAT",
+            "value": "true",
+            "expires": "2027-06-01T09:07:36.000Z",
+            "domain": "mvideo.ru",
+            "path": "/",
+            "hostOnly": false,
+            "creation": "2026-04-27T09:07:38.948Z",
+            "lastAccessed": "2026-04-27T09:07:38.948Z"
+          },
+          {
+            "key": "MVID_SP",
+            "value": "true",
+            "expires": "2027-06-01T09:07:36.000Z",
+            "domain": "mvideo.ru",
+            "path": "/",
+            "hostOnly": false,
+            "creation": "2026-04-27T09:07:38.948Z",
+            "lastAccessed": "2026-04-27T09:07:38.948Z"
+          },
+          {
+            "key": "MVID_CASCADE_CMN",
+            "value": "true",
+            "expires": "2027-06-01T09:07:36.000Z",
+            "domain": "mvideo.ru",
+            "path": "/",
+            "hostOnly": false,
+            "creation": "2026-04-27T09:07:38.948Z",
+            "lastAccessed": "2026-04-27T09:07:38.948Z"
+          },
+          {
+            "key": "MVID_AB_UPSALE",
+            "value": "true",
+            "expires": "2026-05-26T07:00:59.000Z",
+            "domain": "mvideo.ru",
+            "path": "/",
+            "hostOnly": false,
+            "creation": "2026-04-27T09:07:38.948Z",
+            "lastAccessed": "2026-04-27T09:07:38.948Z"
+          },
+          {
+            "key": "MVID_AB_PERSONAL_RECOMMENDS",
+            "value": "true",
+            "expires": "2026-08-12T07:00:59.000Z",
+            "domain": "mvideo.ru",
+            "path": "/",
+            "hostOnly": false,
+            "creation": "2026-04-27T09:07:38.948Z",
+            "lastAccessed": "2026-04-27T09:07:38.948Z"
+          },
+          {
+            "key": "MVID_TYP_ACCESSORIES_ORDER_SET",
+            "value": "true",
+            "expires": "2027-06-01T09:07:36.000Z",
+            "domain": "mvideo.ru",
+            "path": "/",
+            "hostOnly": false,
+            "creation": "2026-04-27T09:07:38.948Z",
+            "lastAccessed": "2026-04-27T09:07:38.948Z"
+          },
+          {
+            "key": "MVID_DISPLAY_PERS_DISCOUNT",
+            "value": "true",
+            "expires": "2026-06-16T08:00:59.000Z",
+            "domain": "mvideo.ru",
+            "path": "/",
+            "hostOnly": false,
+            "creation": "2026-04-27T09:07:38.948Z",
+            "lastAccessed": "2026-04-27T09:07:38.948Z"
+          },
+          {
+            "key": "MVID_DIGINETICA_ENABLED",
+            "value": "true",
+            "expires": "2026-07-27T08:00:59.000Z",
+            "domain": "mvideo.ru",
+            "path": "/",
+            "hostOnly": false,
+            "creation": "2026-04-27T09:07:38.948Z",
+            "lastAccessed": "2026-04-27T09:07:38.948Z"
+          },
+          {
+            "key": "MVID_ACCESSORIES_ORDER_SET_VERSION",
+            "value": "1",
+            "expires": "2026-05-26T07:00:59.000Z",
+            "domain": "mvideo.ru",
+            "path": "/",
+            "hostOnly": false,
+            "creation": "2026-04-27T09:07:38.948Z",
+            "lastAccessed": "2026-04-27T09:07:38.948Z"
+          },
+          {
+            "key": "MVID_BYPASS_FC",
+            "value": "true",
+            "expires": "2027-06-01T09:07:36.000Z",
+            "domain": "mvideo.ru",
+            "path": "/",
+            "hostOnly": false,
+            "creation": "2026-04-27T09:07:38.948Z",
+            "lastAccessed": "2026-04-27T09:07:38.948Z"
+          },
+          {
+            "key": "MVID_IMG_RESIZE",
+            "value": "true",
+            "expires": "2026-12-22T08:00:59.000Z",
+            "domain": "mvideo.ru",
+            "path": "/",
+            "hostOnly": false,
+            "creation": "2026-04-27T09:07:38.948Z",
+            "lastAccessed": "2026-04-27T09:07:38.948Z"
+          },
+          {
+            "key": "MVID_WEB_QR",
+            "value": "true",
+            "expires": "2026-05-26T07:00:59.000Z",
+            "domain": "mvideo.ru",
+            "path": "/",
+            "hostOnly": false,
+            "creation": "2026-04-27T09:07:38.948Z",
+            "lastAccessed": "2026-04-27T09:07:38.948Z"
+          },
+          {
+            "key": "MVID_SRP_DIGINETICA_ENABLED",
+            "value": "true",
+            "expires": "2026-07-27T08:00:59.000Z",
+            "domain": "mvideo.ru",
+            "path": "/",
+            "hostOnly": false,
+            "creation": "2026-04-27T09:07:38.948Z",
+            "lastAccessed": "2026-04-27T09:07:38.948Z"
+          },
+          {
+            "key": "MVID_SORM_INTEGRATION",
+            "value": "true",
+            "expires": "2026-05-26T07:00:59.000Z",
+            "domain": "mvideo.ru",
+            "path": "/",
+            "hostOnly": false,
+            "creation": "2026-04-27T09:07:38.948Z",
+            "lastAccessed": "2026-04-27T09:07:38.948Z"
+          },
+          {
+            "key": "MVID_APLAUT_REVIEWS",
+            "value": "true",
+            "expires": "2026-06-24T08:00:59.000Z",
+            "domain": "mvideo.ru",
+            "path": "/",
+            "hostOnly": false,
+            "creation": "2026-04-27T09:07:38.948Z",
+            "lastAccessed": "2026-04-27T09:07:38.948Z"
+          },
+          {
+            "key": "MVID_BR_WRITE_OFF",
+            "value": "30",
+            "expires": "2027-06-01T09:07:36.000Z",
+            "domain": "mvideo.ru",
+            "path": "/",
+            "hostOnly": false,
+            "creation": "2026-04-27T09:07:38.948Z",
+            "lastAccessed": "2026-04-27T09:07:38.948Z"
+          },
+          {
+            "key": "MVID_CREDIT_INSTALLMENT_PDP",
+            "value": "true_2",
+            "expires": "2026-12-15T07:00:59.000Z",
+            "domain": "mvideo.ru",
+            "path": "/",
+            "hostOnly": false,
+            "creation": "2026-04-27T09:07:38.948Z",
+            "lastAccessed": "2026-04-27T09:07:38.948Z"
+          },
+          {
+            "key": "MVID_ANALYTIC_SERVICE_EMPTY_GA_ID",
+            "value": "true",
+            "expires": "2026-08-26T08:00:59.000Z",
+            "domain": "mvideo.ru",
+            "path": "/",
+            "hostOnly": false,
+            "creation": "2026-04-27T09:07:38.948Z",
+            "lastAccessed": "2026-04-27T09:07:38.948Z"
+          },
+          {
+            "key": "MVID_OPTIMIZED_PLP_LOADING",
+            "value": "true",
+            "expires": "2027-06-01T09:07:36.000Z",
+            "domain": "mvideo.ru",
+            "path": "/",
+            "hostOnly": false,
+            "creation": "2026-04-27T09:07:38.948Z",
+            "lastAccessed": "2026-04-27T09:07:38.948Z"
+          },
+          {
+            "key": "MVID_SINGLE_CHECKOUT_MAP_SHOP_INFO",
+            "value": "true",
+            "expires": "2026-05-20T09:00:59.000Z",
+            "domain": "mvideo.ru",
+            "path": "/",
+            "hostOnly": false,
+            "creation": "2026-04-27T09:07:38.948Z",
+            "lastAccessed": "2026-04-27T09:07:38.948Z"
+          },
+          {
+            "key": "MVID_ADD_CATALOG_BUTTON",
+            "value": "true",
+            "expires": "2027-06-01T09:07:36.000Z",
+            "domain": "mvideo.ru",
+            "path": "/",
+            "hostOnly": false,
+            "creation": "2026-04-27T09:07:38.948Z",
+            "lastAccessed": "2026-04-27T09:07:38.948Z"
+          },
+          {
+            "key": "MVID_CACHE_CHECKURL",
+            "value": "true",
+            "expires": "2026-12-22T09:00:59.000Z",
+            "domain": "mvideo.ru",
+            "path": "/",
+            "hostOnly": false,
+            "creation": "2026-04-27T09:07:38.948Z",
+            "lastAccessed": "2026-04-27T09:07:38.948Z"
+          },
+          {
+            "key": "MVID_PRODUCT_DETAILS_CACHE",
+            "value": "true",
+            "expires": "2027-06-01T09:07:36.000Z",
+            "domain": "mvideo.ru",
+            "path": "/",
+            "hostOnly": false,
+            "creation": "2026-04-27T09:07:38.948Z",
+            "lastAccessed": "2026-04-27T09:07:38.948Z"
+          },
+          {
+            "key": "MVID_IDENTITY_NEW",
+            "value": "true",
+            "expires": "2026-05-26T07:00:59.000Z",
+            "domain": "mvideo.ru",
+            "path": "/",
+            "hostOnly": false,
+            "creation": "2026-04-27T09:07:38.948Z",
+            "lastAccessed": "2026-04-27T09:07:38.948Z"
+          },
+          {
+            "key": "MVID_USE_SECURE",
+            "value": "true",
+            "expires": "2027-06-01T09:07:36.000Z",
+            "domain": "mvideo.ru",
+            "path": "/",
+            "hostOnly": false,
+            "creation": "2026-04-27T09:07:38.948Z",
+            "lastAccessed": "2026-04-27T09:07:38.948Z"
+          },
+          {
+            "key": "MVID_NEW_LISTING",
+            "value": "true",
+            "expires": "2027-06-01T09:07:36.000Z",
+            "domain": "mvideo.ru",
+            "path": "/",
+            "hostOnly": false,
+            "creation": "2026-04-27T09:07:38.948Z",
+            "lastAccessed": "2026-04-27T09:07:38.948Z"
+          },
+          {
+            "key": "MVID_INCREASED_MENU_SIZE",
+            "value": "true",
+            "expires": "2026-05-21T08:00:59.000Z",
+            "domain": "mvideo.ru",
+            "path": "/",
+            "hostOnly": false,
+            "creation": "2026-04-27T09:07:38.948Z",
+            "lastAccessed": "2026-04-27T09:07:38.948Z"
+          },
+          {
+            "key": "MVID_SELLER_SHOP",
+            "value": "true",
+            "expires": "2026-05-19T08:00:59.000Z",
+            "domain": "mvideo.ru",
+            "path": "/",
+            "hostOnly": false,
+            "creation": "2026-04-27T09:07:38.948Z",
+            "lastAccessed": "2026-04-27T09:07:38.948Z"
+          },
+          {
+            "key": "MVID_MCOMBO_RECURRENT",
+            "value": "true",
+            "expires": "2027-06-01T09:07:36.000Z",
+            "domain": "mvideo.ru",
+            "path": "/",
+            "hostOnly": false,
+            "creation": "2026-04-27T09:07:38.948Z",
+            "lastAccessed": "2026-04-27T09:07:38.948Z"
+          },
+          {
+            "key": "MVID_GROUP_BY_DATE",
+            "value": "true",
+            "expires": "2026-08-10T07:00:59.000Z",
+            "domain": "mvideo.ru",
+            "path": "/",
+            "hostOnly": false,
+            "creation": "2026-04-27T09:07:38.948Z",
+            "lastAccessed": "2026-04-27T09:07:38.948Z"
+          },
+          {
+            "key": "MVID_DISPLAY_STENCILS",
+            "value": "true",
+            "expires": "2026-10-06T08:00:59.000Z",
+            "domain": "mvideo.ru",
+            "path": "/",
+            "hostOnly": false,
+            "creation": "2026-04-27T09:07:38.948Z",
+            "lastAccessed": "2026-04-27T09:07:38.948Z"
+          },
+          {
+            "key": "MVID_HUMAN_SSR",
+            "value": "true",
+            "expires": "2027-06-01T09:07:36.000Z",
+            "domain": "mvideo.ru",
+            "path": "/",
+            "hostOnly": false,
+            "creation": "2026-04-27T09:07:38.948Z",
+            "lastAccessed": "2026-04-27T09:07:38.948Z"
+          },
+          {
+            "key": "MVID_P2M",
+            "value": "true",
+            "expires": "2026-09-30T07:00:59.000Z",
+            "domain": "mvideo.ru",
+            "path": "/",
+            "hostOnly": false,
+            "creation": "2026-04-27T09:07:38.949Z",
+            "lastAccessed": "2026-04-27T09:07:38.949Z"
+          },
+          {
+            "key": "MVID_NOT_DISPLAY_PROMOCONF",
+            "value": "true",
+            "expires": "2026-05-26T07:00:59.000Z",
+            "domain": "mvideo.ru",
+            "path": "/",
+            "hostOnly": false,
+            "creation": "2026-04-27T09:07:38.949Z",
+            "lastAccessed": "2026-04-27T09:07:38.949Z"
+          },
+          {
+            "key": "MVID_VK_AUTH",
+            "value": "true",
+            "expires": "2027-06-01T09:07:36.000Z",
+            "domain": "mvideo.ru",
+            "path": "/",
+            "hostOnly": false,
+            "creation": "2026-04-27T09:07:38.949Z",
+            "lastAccessed": "2026-04-27T09:07:38.949Z"
+          },
+          {
+            "key": "MVID_YANDEX_AUTH",
+            "value": "true",
+            "expires": "2026-05-19T07:00:59.000Z",
+            "domain": "mvideo.ru",
+            "path": "/",
+            "hostOnly": false,
+            "creation": "2026-04-27T09:07:38.949Z",
+            "lastAccessed": "2026-04-27T09:07:38.949Z"
+          },
+          {
+            "key": "MVID_MASS_PROMOCODE",
+            "value": "true",
+            "expires": "2026-05-18T07:00:59.000Z",
+            "domain": "mvideo.ru",
+            "path": "/",
+            "hostOnly": false,
+            "creation": "2026-04-27T09:07:38.949Z",
+            "lastAccessed": "2026-04-27T09:07:38.949Z"
+          },
+          {
+            "key": "MVID_NEW_PLP",
+            "value": "true",
+            "expires": "2026-09-07T08:00:59.000Z",
+            "domain": "mvideo.ru",
+            "path": "/",
+            "hostOnly": false,
+            "creation": "2026-04-27T09:07:38.949Z",
+            "lastAccessed": "2026-04-27T09:07:38.949Z"
+          },
+          {
+            "key": "MVID_NEW_SELLER_ENDPOINT",
+            "value": "true",
+            "expires": "2026-05-26T08:00:59.000Z",
+            "domain": "mvideo.ru",
+            "path": "/",
+            "hostOnly": false,
+            "creation": "2026-04-27T09:07:38.949Z",
+            "lastAccessed": "2026-04-27T09:07:38.949Z"
+          },
+          {
+            "key": "MVID_AB_MSEARCH_ENABLED",
+            "value": "true",
+            "expires": "2026-09-29T08:00:59.000Z",
+            "domain": "mvideo.ru",
+            "path": "/",
+            "hostOnly": false,
+            "creation": "2026-04-27T09:07:38.949Z",
+            "lastAccessed": "2026-04-27T09:07:38.949Z"
+          },
+          {
+            "key": "MVID_ADVERT_SHELF_DAILY",
+            "value": "true",
+            "expires": "2026-06-09T08:00:59.000Z",
+            "domain": "mvideo.ru",
+            "path": "/",
+            "hostOnly": false,
+            "creation": "2026-04-27T09:07:38.949Z",
+            "lastAccessed": "2026-04-27T09:07:38.949Z"
+          },
+          {
+            "key": "MVID_ABTEST_RECOMMENDATION",
+            "value": "DATAOFFICE2",
+            "expires": "2026-10-28T08:00:59.000Z",
+            "domain": "mvideo.ru",
+            "path": "/",
+            "hostOnly": false,
+            "creation": "2026-04-27T09:07:38.949Z",
+            "lastAccessed": "2026-04-27T09:07:38.949Z"
+          },
+          {
+            "key": "MVID_CREDIT_BUTTON_CART_D",
+            "value": "true_1",
+            "expires": "2026-11-18T07:00:59.000Z",
+            "domain": "mvideo.ru",
+            "path": "/",
+            "hostOnly": false,
+            "creation": "2026-04-27T09:07:38.949Z",
+            "lastAccessed": "2026-04-27T09:07:38.949Z"
+          },
+          {
+            "key": "MVID_CREDIT_BUTTON_CART_M",
+            "value": "true_2",
+            "expires": "2026-10-26T07:00:59.000Z",
+            "domain": "mvideo.ru",
+            "path": "/",
+            "hostOnly": false,
+            "creation": "2026-04-27T09:07:38.949Z",
+            "lastAccessed": "2026-04-27T09:07:38.949Z"
+          },
+          {
+            "key": "MVID_SENTRY_ENABLED",
+            "value": "false",
+            "expires": "2026-09-30T07:00:59.000Z",
+            "domain": "mvideo.ru",
+            "path": "/",
+            "hostOnly": false,
+            "creation": "2026-04-27T09:07:38.949Z",
+            "lastAccessed": "2026-04-27T09:07:38.949Z"
+          },
+          {
+            "key": "MVID_DISABLE_BONUS_RUBLES_SMS_VERIFY",
+            "value": "true",
+            "expires": "2026-05-07T07:00:59.000Z",
+            "domain": "mvideo.ru",
+            "path": "/",
+            "hostOnly": false,
+            "creation": "2026-04-27T09:07:38.949Z",
+            "lastAccessed": "2026-04-27T09:07:38.949Z"
+          },
+          {
+            "key": "MVID_ACCRUED_BR_FROM_CACHE",
+            "value": "true",
+            "expires": "2026-06-16T08:00:59.000Z",
+            "domain": "mvideo.ru",
+            "path": "/",
+            "hostOnly": false,
+            "creation": "2026-04-27T09:07:38.949Z",
+            "lastAccessed": "2026-04-27T09:07:38.949Z"
+          },
+          {
+            "key": "MVID_VIEW_SWITCHER_LIST",
+            "value": "false",
+            "expires": "2027-06-01T09:07:36.000Z",
+            "domain": "mvideo.ru",
+            "path": "/",
+            "hostOnly": false,
+            "creation": "2026-04-27T09:07:38.949Z",
+            "lastAccessed": "2026-04-27T09:07:38.949Z"
+          },
+          {
+            "key": "MVID_ENVCLOUD",
+            "value": "prod1",
+            "expires": "2026-04-27T09:57:38.927Z",
+            "domain": "www.mvideo.ru",
+            "path": "/",
+            "hostOnly": true,
+            "creation": "2026-04-27T09:07:38.949Z",
+            "lastAccessed": "2026-04-27T09:07:38.949Z"
+          }
+        ]
+      },
+      "userData": {},
+      "maxErrorScore": 3,
+      "errorScoreDecrement": 0.5,
+      "expiresAt": "2026-04-27T09:57:23.438Z",
+      "createdAt": "2026-04-27T09:07:23.438Z",
+      "usageCount": 1,
+      "maxUsageCount": 50,
+      "errorScore": 0
+    }
+  ]
+}

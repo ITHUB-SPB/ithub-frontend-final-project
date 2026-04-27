@@ -11,7 +11,7 @@ const crawler = new PlaywrightCrawler({
         },
     ],
     browserPoolOptions: {
-        useFingerprints: true, // this is the default
+        useFingerprints: true,
         fingerprintOptions: {
             fingerprintGeneratorOptions: {
                 browsers: [
@@ -33,22 +33,24 @@ const crawler = new PlaywrightCrawler({
     },
     async requestHandler({ request, page, enqueueLinks, log, pushData }) {
         const title = await page.title();
+
+        await page.waitForSelector('mvid-product-card')
+
+        if (!page.url().includes("https://www.mvideo.ru/products/")) {
+            await enqueueLinks({
+                // globs: ['https://www.mvideo.ru/products/smart-chasy-*'],
+                selector: 'mvid-product-card'
+            });
+            return
+        }
+
         log.info(`Title of ${request.loadedUrl} is '${title}'`);
 
-        // Save results as JSON to ./storage/datasets/default
-        await pushData({ title, url: request.loadedUrl });
+        // await pushData({ title, url: request.loadedUrl });
 
-        // Extract links from the current page
-        // and add them to the crawling queue.
-        await enqueueLinks();
-
-        // await enqueueLinks({ globs: ['https://www.mvideo.ru/products/*'] });
     },
-    // Comment this option to scrape the full website.
-    maxRequestsPerCrawl: 20,
-    // Uncomment this option to see the browser window.
+    maxRequestsPerCrawl: 10,
     headless: false,
 });
 
-// Add first URL to the queue and start the crawl.
-await crawler.run(['https://www.mvideo.ru/search?q=apple']);
+await crawler.run(['https://www.mvideo.ru/gadzhety-64/smart-chasy-400']);

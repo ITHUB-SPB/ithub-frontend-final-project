@@ -8,8 +8,7 @@
     "convex:init": "pnpm -F store convex:init",
     "convex:import": "pnpm -F store convex:import",
     "convex:backup": "pnpm -F store convex:backup",
-    "crawler:dev": "pnpm -F @repo/crawler dev",
-    "postinstall": "camoufox fetch"
+    "crawler:dev": "pnpm -F @repo/crawler dev"
   },
   "keywords": [],
   "author": "",

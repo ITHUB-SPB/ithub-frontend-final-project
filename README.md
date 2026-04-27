@@ -64,3 +64,19 @@ docker compose exec backend ./generate_admin_key.sh
 ```
 
 6. (при отсутствии) Создайте файл `apps/store/.env.local` и внесите в него ключ
+
+#### Настройка @repo/crawler
+
+1. Установите библиотеки
+
+```powershell
+cd packages\crawler
+
+pnpm dlx camoufox fetch
+```
+
+2. Установите биндинги
+
+```powershell
+pnpm approve-builds // Выберите better-sqlite3
+```
