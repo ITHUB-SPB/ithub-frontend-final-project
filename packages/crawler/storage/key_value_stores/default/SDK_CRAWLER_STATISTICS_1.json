@@ -1,36 +1,39 @@
 {
-  "requestsFinished": 10,
+  "requestsFinished": 0,
   "requestsFailed": 0,
   "requestsRetries": 0,
   "requestsFailedPerMinute": 0,
-  "requestsFinishedPerMinute": 6,
-  "requestMinDurationMillis": 6062,
-  "requestMaxDurationMillis": 23099,
+  "requestsFinishedPerMinute": 0,
+  "requestMinDurationMillis": null,
+  "requestMaxDurationMillis": 0,
   "requestTotalFailedDurationMillis": 0,
-  "requestTotalFinishedDurationMillis": 154271,
-  "crawlerStartedAt": "2026-04-27T10:44:02.316Z",
-  "crawlerFinishedAt": "2026-04-27T10:45:50.708Z",
-  "statsPersistedAt": "2026-04-27T10:45:50.708Z",
-  "crawlerRuntimeMillis": 108612,
-  "crawlerLastStartTimestamp": 1777286642096,
-  "requestRetryHistogram": [
-    10
-  ],
+  "requestTotalFinishedDurationMillis": 0,
+  "crawlerStartedAt": "2026-04-28T10:57:00.680Z",
+  "crawlerFinishedAt": "2026-04-28T10:58:43.974Z",
+  "statsPersistedAt": "2026-04-28T10:58:43.974Z",
+  "crawlerRuntimeMillis": 103503,
+  "crawlerLastStartTimestamp": 1777373820471,
+  "requestRetryHistogram": [],
   "statsId": 1,
   "requestAvgFailedDurationMillis": null,
-  "requestAvgFinishedDurationMillis": 15427,
-  "requestTotalDurationMillis": 154271,
-  "requestsTotal": 10,
+  "requestAvgFinishedDurationMillis": null,
+  "requestTotalDurationMillis": 0,
+  "requestsTotal": 0,
   "requestsWithStatusCode": {
-    "200": 15
+    "200": 4
   },
   "errors": {},
   "retryErrors": {
-    "C:\\Users\\a.trofimov\\Documents\\ithub-frontend-final-project\\packages\\crawler\\src\\index.ts:51:69": {
+    "C:\\Users\\a.trofimov\\Documents\\ithub-frontend-final-project\\packages\\crawler\\src\\index.ts:74:69": {
       "missing error code": {
         "TimeoutError": {
           "locator.innerText: Timeout 30000ms exceeded.": {
-            "count": 5
+            "count": 2
+          }
+        },
+        "Error": {
+          "locator.innerText: Target page, context or browser has been closed": {
+            "count": 2
           }
         }
       }
