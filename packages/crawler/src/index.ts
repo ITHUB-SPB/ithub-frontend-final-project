@@ -1,11 +1,11 @@
 import { writeFileSync } from 'node:fs';
 import { PlaywrightCrawler, FileDownload, type PlaywrightCrawlingContext } from 'crawlee';
+import { parseCharacteristic } from './helpers.js';
 import { crawlerDefault } from './config.js';
 
 // import stealthPlugin from 'puppeteer-extra-plugin-stealth';
 // import { firefox } from 'playwright-extra';
 // firefox.use(stealthPlugin());
-
 
 const downloadCrawler = new FileDownload({
     async requestHandler({ body, request, contentType, getKeyValueStore }) {
@@ -34,34 +34,19 @@ const parsePhonesPage = async (page: PlaywrightCrawlingContext["page"]) => {
     await page.locator('[data-target="#tab-specs"]').first().click()
     await page.waitForSelector('#tab-specs')
 
-    const cpu = await page
-        .locator('.specs__item', { hasText: /Процессор/ })
-        .first()
-        .locator('.specs__val')
-        .first()
-        .textContent()
-
-    const screenSize = await page
-        .locator('.specs__item', { hasText: /Диагональ/ })
-        .first()
-        .locator('.specs__val')
-        .first()
-        .textContent()
-
     return {
         category: 'headphones',
         description: '',
-        screenSize,
-        cpu,
-        cpuCores: '',
-        mainCamera: '',
-        frontCamera: '',
-        batteryCapacity: '',
-        screenResolution: '',
-        screenRefreshRate: '',
-        pixelDensity: '',
-        screenType: '',
-        weight: ''
+        screenSize: await parseCharacteristic(page, /Диагональ/),
+        cpu: await parseCharacteristic(page, /Процессор/),
+        cpuCores: await parseCharacteristic(page, /Количество ядер/),
+        mainCamera: await parseCharacteristic(page, /Камера фронтальной/),
+        frontCamera: await parseCharacteristic(page, /Фронтальная камера/),
+        batteryCapacity: await parseCharacteristic(page, /Емкость аккумулятора/),
+        screenResolution: await parseCharacteristic(page, /Разрешение экрана/),
+        pixelDensity: await parseCharacteristic(page, /Плотность пикселей/),
+        screenType: await parseCharacteristic(page, /Технология экрана/),
+        weight: await parseCharacteristic(page, /Вес, г/),
     }
 }
 

@@ -34,6 +34,6 @@ export const crawlerDefault: PlaywrightCrawlerOptions = {
     failedRequestHandler({ request, log }) {
         log.error(`Request ${request.url} failed too many times.`);
     },
-    maxRequestsPerCrawl: 3,
+    maxRequestsPerCrawl: 5,
     headless: false,
 };

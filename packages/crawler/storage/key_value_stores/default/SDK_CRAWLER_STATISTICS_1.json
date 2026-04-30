@@ -1,29 +1,39 @@
 {
-  "requestsFinished": 3,
+  "requestsFinished": 8,
   "requestsFailed": 0,
   "requestsRetries": 0,
   "requestsFailedPerMinute": 0,
-  "requestsFinishedPerMinute": 6,
-  "requestMinDurationMillis": 7531,
-  "requestMaxDurationMillis": 23064,
+  "requestsFinishedPerMinute": 5,
+  "requestMinDurationMillis": 8563,
+  "requestMaxDurationMillis": 34996,
   "requestTotalFailedDurationMillis": 0,
-  "requestTotalFinishedDurationMillis": 51236,
-  "crawlerStartedAt": "2026-04-30T08:10:06.275Z",
-  "crawlerFinishedAt": "2026-04-30T08:10:36.169Z",
-  "statsPersistedAt": "2026-04-30T08:10:36.169Z",
-  "crawlerRuntimeMillis": 30105,
-  "crawlerLastStartTimestamp": 1777536606064,
+  "requestTotalFinishedDurationMillis": 162256,
+  "crawlerStartedAt": "2026-04-30T08:37:47.458Z",
+  "crawlerFinishedAt": "2026-04-30T08:39:21.337Z",
+  "statsPersistedAt": "2026-04-30T08:39:21.337Z",
+  "crawlerRuntimeMillis": 94096,
+  "crawlerLastStartTimestamp": 1777538267241,
   "requestRetryHistogram": [
-    3
+    8
   ],
   "statsId": 1,
   "requestAvgFailedDurationMillis": null,
-  "requestAvgFinishedDurationMillis": 17079,
-  "requestTotalDurationMillis": 51236,
-  "requestsTotal": 3,
+  "requestAvgFinishedDurationMillis": 20282,
+  "requestTotalDurationMillis": 162256,
+  "requestsTotal": 8,
   "requestsWithStatusCode": {
-    "200": 3
+    "200": 9
   },
   "errors": {},
-  "retryErrors": {}
+  "retryErrors": {
+    "C:\\Users\\a.trofimov\\Documents\\ithub-frontend-final-project\\packages\\crawler\\src\\index.ts:69:73": {
+      "missing error code": {
+        "TimeoutError": {
+          "locator.innerText: Timeout 30000ms exceeded.": {
+            "count": 1
+          }
+        }
+      }
+    }
+  }
 }
