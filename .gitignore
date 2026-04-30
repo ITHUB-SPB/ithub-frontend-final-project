@@ -44,3 +44,4 @@ storybook-static
 
 # Crawlee
 request_queues
+key_value_stores

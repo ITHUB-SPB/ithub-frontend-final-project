@@ -28,12 +28,12 @@ export const crawlerDefault: PlaywrightCrawlerOptions = {
     launchContext: {
         launcher: firefox,
         launchOptions: await launchOptions({
-            headless: true,
+            headless: false,
         }),
     },
     failedRequestHandler({ request, log }) {
         log.error(`Request ${request.url} failed too many times.`);
     },
-    // maxRequestsPerCrawl: 0,
-    headless: true,
+    maxRequestsPerCrawl: 3,
+    headless: false,
 };

@@ -1,3 +1,4 @@
+import { writeFileSync } from 'node:fs';
 import { PlaywrightCrawler, FileDownload, type PlaywrightCrawlingContext } from 'crawlee';
 import { crawlerDefault } from './config.js';
 
@@ -8,9 +9,11 @@ import { crawlerDefault } from './config.js';
 
 const downloadCrawler = new FileDownload({
     async requestHandler({ body, request, contentType, getKeyValueStore }) {
-        const url = new URL(request.url);
-        const kvs = await getKeyValueStore();
-        await kvs.setValue(url.pathname.replace(/\//g, '_'), body, { contentType: contentType.type });
+        const filename = request.userData.filename
+            .replace(/[^a-z0-9_\.]/gi, '')
+
+        const directory = `storage/images/${request.userData.category}/`
+        writeFileSync(directory + filename + '.png', body);
     },
 });
 
@@ -30,27 +33,24 @@ const parseWatchesPage = async (page: PlaywrightCrawlingContext["page"]) => {
 const parsePhonesPage = async (page: PlaywrightCrawlingContext["page"]) => {
     await page.locator('[data-target="#tab-specs"]').first().click()
     await page.waitForSelector('#tab-specs')
-    const description = await page.locator('.textoverflow__text').first().innerHTML()
 
     const cpu = await page
-        .locator('.pspecs__name', { hasText: /Процессор/ })
+        .locator('.specs__item', { hasText: /Процессор/ })
         .first()
-        .locator('..')
-        .locator('.pspecs__val')
+        .locator('.specs__val')
         .first()
         .textContent()
 
     const screenSize = await page
-        .locator('.pspecs__name', { hasText: /Диагональ/ })
+        .locator('.specs__item', { hasText: /Диагональ/ })
         .first()
-        .locator('..')
-        .locator('.pspecs__val')
+        .locator('.specs__val')
         .first()
         .textContent()
 
     return {
         category: 'headphones',
-        description,
+        description: '',
         screenSize,
         cpu,
         cpuCores: '',
@@ -81,9 +81,6 @@ const crawler = new PlaywrightCrawler({
         ) {
             const label = page.url().slice('https://pitergsm.ru/catalog/'.length).split('/')[0]
 
-            log.info(label)
-            log.info(parsers[label])
-
             const title = await page.locator('.section__title').first().innerText()
             const raw_price = await page.locator('.product__price').first().innerText()
 
@@ -95,7 +92,13 @@ const crawler = new PlaywrightCrawler({
             const image = await page.locator('.prodslider__pic-img').first().getAttribute('src')
 
             await downloadCrawler.addRequests([
-                'https://pitergsm.ru' + image
+                {
+                    url: 'https://pitergsm.ru' + image,
+                    userData: {
+                        filename: title,
+                        category: label
+                    }
+                }
             ])
         } else {
             await enqueueLinks({
