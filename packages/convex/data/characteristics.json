@@ -1,0 +1,54 @@
+[
+    {
+        "title": "compatibility",
+        "measure": null
+    },
+    {
+        "title": "batteryCapacity",
+        "measure": "mAh"
+    },
+    {
+        "title": "screenResolution",
+        "measure": "px"
+    },
+    {
+        "title": "bluetooth",
+        "measure": null
+    },
+    {
+        "title": "navigation",
+        "measure": null
+    },
+    {
+        "title": "screenSize",
+        "measure": "in"
+    },
+    {
+        "title": "cpu",
+        "measure": null
+    },
+    {
+        "title": "cpuCores",
+        "measure": null
+    },
+    {
+        "title": "mainCamera",
+        "measure": "MP"
+    },
+    {
+        "title": "frontCamera",
+        "measure": "MP"
+    },
+    {
+        "title": "pixelDensity",
+        "measure": "ppi"
+    },
+    {
+        "title": "screenType",
+        "measure": null
+    },
+    {
+        "title": "weight",
+        "measure": "g"
+    }
+]

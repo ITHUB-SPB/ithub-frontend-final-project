@@ -8,9 +8,10 @@ export default defineSchema({
         title: v.string(),
         measure: v.nullable(v.string())
     }),
-    categories_characteristics: defineTable({
-        category: v.id("categories"),
-        characteristic: v.id("characteristics")
+    products_characteristics: defineTable({
+        product: v.id("products"),
+        characteristic: v.id("characteristics"),
+        value: v.nullable(v.string())
     }),
     products: defineTable({
         brand: v.id("brands"),

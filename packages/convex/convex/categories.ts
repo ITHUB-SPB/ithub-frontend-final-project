@@ -4,7 +4,7 @@ import { query, mutation } from './_generated/server.js'
 export const get = query({
     args: {},
     handler: async (ctx) => {
-        return await ctx.db.query('brands').collect()
+        return await ctx.db.query('categories').collect()
     }
 })
 
@@ -13,7 +13,7 @@ export const getByTitle = query({
         title: v.string()
     },
     handler: async (ctx, args) => {
-        return await ctx.db.query('brands').filter(q => q.eq(q.field('title'), args.title)).first()
+        return await ctx.db.query('categories').filter(q => q.eq(q.field('title'), args.title)).first()
     }
 })
 
@@ -22,6 +22,6 @@ export const create = mutation({
         title: v.string()
     },
     handler: async (ctx, args) => {
-        return await ctx.db.insert('brands', { title: args.title })
+        return await ctx.db.insert('categories', { title: args.title })
     }
 })
