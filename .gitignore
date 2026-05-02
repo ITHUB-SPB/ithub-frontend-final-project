@@ -12,7 +12,6 @@ node_modules
 dist
 dist-ssr
 coverage
-*.local
 
 # Editor directories and files
 .vscode/*
@@ -45,3 +44,5 @@ storybook-static
 # Crawlee
 request_queues
 key_value_stores
+
+.env.local
