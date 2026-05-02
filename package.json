@@ -5,6 +5,7 @@
   "scripts": {
     "storybook": "pnpm -F @repo/ui storybook",
     "store:dev": "pnpm -F store dev",
+    "convex:seed": "pnpm -F @repo/convex seed",
     "convex:dev": "pnpm -F @repo/convex dev",
     "convex:import": "pnpm -F @repo/convex import",
     "convex:backup": "pnpm -F @repo/convex backup",
