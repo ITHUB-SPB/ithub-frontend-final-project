@@ -2,7 +2,7 @@
 <script lang="ts" setup>
 import Featured from '~/components/Featured.vue';
 import { ProductCard } from '@repo/ui';
-import { api } from '../../convex/_generated/api'
+import { api } from '@repo/convex/api'
 
 const { data: products, error } = await useConvexQuery(
   api.products.get, 

@@ -8,5 +8,12 @@ export default defineNuxtConfig({
   convex: {
     url: process.env.CONVEX_SELF_HOSTED_URL,
     siteUrl: process.env.CONVEX_SELF_HOSTED_SITE_URL
+  },
+  vite: {
+    optimizeDeps: {
+      include: [
+        '@repo/convex/api',
+      ]
+    }
   }
 } as NuxtConfig)
