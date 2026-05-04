@@ -1,4 +1,3 @@
-
 <script lang="ts" setup>
 import Featured from '~/components/Featured.vue';
 import { ProductCard } from '@repo/ui';

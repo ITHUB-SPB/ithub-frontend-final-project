@@ -11,3 +11,9 @@ body {
     min-height: 100dvh;
     font-family: 'Abel', sans-serif;
 }
+
+#__nuxt {
+    min-height: 100dvh;
+    display: flex;
+    flex-direction: column;
+}
