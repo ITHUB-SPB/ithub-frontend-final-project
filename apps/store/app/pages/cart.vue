@@ -1,13 +1,15 @@
-
 <script lang="ts" setup>
 import { api } from '@repo/convex/api'
+import { useCart } from '~/stores/cart'
 
 const { data: brands, error } = await useConvexQuery(
-  api.brands.get, 
+  api.brands.get,
   {}
 )
 
-const { 
+const cartStore = useCart()
+
+const {
   execute, pending, reset, error: mutationError
 } = useConvexMutation(api.brands.create)
 

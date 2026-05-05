@@ -45,5 +45,36 @@ export const useCart = defineStore('cart', {
             const { tax, shipping } = state.orderDetails
             return this.subTotal + tax + shipping
         }
+    },
+
+    actions: {
+        addProduct(item: CartItem) {
+            const ix = this.items.findIndex(({ sku }) => sku === item.sku)
+
+            if (ix !== -1) {
+                this.items[ix]!.quantity += 1
+            } else {
+                this.items.push(item)
+            }
+        },
+
+        changeQuantity(sku: string, newValue: number) {
+            const ix = this.items.findIndex((item) => sku === item.sku)
+
+            if ((ix === -1) || (newValue < 0)) {
+                return
+            }
+
+            if (newValue === 0) {
+                this.items.splice(ix, 1)
+                return
+            }
+
+            this.items[ix]!.quantity = newValue
+        },
+
+        clear() {
+            this.items = []
+        }
     }
 }) 
