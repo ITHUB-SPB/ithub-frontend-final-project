@@ -1,12 +1,27 @@
 <script lang="ts" setup>
 import Featured from '~/components/Featured.vue';
 import { ProductCard } from '@repo/ui';
-import { api } from '@repo/convex/api'
+import { api } from '@repo/convex/api';
+import type { DataModel } from '@repo/convex/dataModel'
+import { useCart } from '~/stores/cart';
+
+type Product = DataModel["products"]["document"]
 
 const { data: products, error } = await useConvexQuery(
   api.products.get, 
   {}
 )
+
+const cart = useCart()
+
+const buyNow = (product: Product) => {
+  cart.addProduct({
+    sku: product._id,
+    price: product.current_price,
+    title: product.title,
+    quantity: 1
+  })
+}
 
 </script>
 
@@ -26,7 +41,9 @@ const { data: products, error } = await useConvexQuery(
         v-for="product in products" 
         :key="product._id" 
         :title="product.title" 
-        :current_price="product.current_price" 
+        :current_price="product.current_price"
+        :in_cart="cart.hasProduct(product._id)"
+        @buy-now="() => buyNow(product)"
       />
     </section>
   </div>

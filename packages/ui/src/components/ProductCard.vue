@@ -6,26 +6,30 @@ import productImage from '../assets/images/iphone14.png'
 type StandartProps = {
     title: string
     image?: string,
+    in_cart: boolean,
     current_price: number,
     wide: false,
-    handleClick?: () => void
 }
 
 type WideProps = {
     title: string,
     image?: string,
+    in_cart?: boolean,
     current_price?: number,
     sku: string,
     wide: true,
-    handleClick?: () => void
 }
 
 const props = defineProps<StandartProps | WideProps>()
+const emit = defineEmits(['buyNow', 'favorite'])
+
 </script>
 
 <template>
     <article class="product-card" :class="{ 'card-wide': props.wide }">
-        <Icon v-if="!props.wide" variant="favorites" class="product-icon" />
+        <button v-if="!props.wide" @click="emit('favorite')">
+            <Icon variant="favorites" class="product-icon" />
+        </button>
 
         <img class="product-image" :class="{ 'image-wide': props.wide }" :src="props.image ?? productImage"
             alt="iphone 14" />
@@ -33,9 +37,10 @@ const props = defineProps<StandartProps | WideProps>()
         <h3 class="product-title" :class="{ 'title-wide': props.wide }">{{ props.title }} </h3>
 
         <span v-if="!props.wide" class="product-price">${{ props.current_price }}</span>
-        <span v-else="props.wide" class="product-sku">${{ props.sku }}</span>
+        <span v-else="props.wide" class="product-sku">{{ props.sku }}</span>
 
-        <Button v-if="!props.wide" small label="Buy Now" @click="handleClick ?? {}" />
+        <Button v-if="props.in_cart" small label="Go to Cart" />
+        <Button v-else-if="!props.wide" small label="Buy Now" @click="emit('buyNow')" />
     </article>
 </template>
 

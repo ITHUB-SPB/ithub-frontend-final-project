@@ -24,10 +24,6 @@ const props = withDefaults(
      * icon inside button
      */
     icon?: "twitter" | "close" | "toEdit";
-    /**
-     * onClick handler
-     */
-    onClick: (event: EventInit) => void;
   }>(),
   { small: false, variant: 'fill', color: "white" }
 );
@@ -42,7 +38,7 @@ const classes = computed(() => ({
 </script>
 
 <template>
-  <button type="button" :class="classes" @click="props.onClick">
+  <button type="button" :class="classes">
     {{ props.label }}
     <template v-if="props.icon">
       <Icon :variant="props.icon" />

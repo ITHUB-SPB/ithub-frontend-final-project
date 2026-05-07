@@ -31,10 +31,11 @@ export const useCart = defineStore('cart', {
     }),
 
     getters: {
+        hasProduct(state) {
+            return (sku: string) => Boolean(state.items.find(item => item.sku === sku))
+        },
         productTotal() {
-            return (price: number, quantity: number): number => {
-                return price * quantity
-            }
+            return (price: number, quantity: number): number => price * quantity
         },
         subTotal(state): number {
             return state.items.reduce((acc, { price, quantity }) => {
@@ -49,6 +50,8 @@ export const useCart = defineStore('cart', {
 
     actions: {
         addProduct(item: CartItem) {
+            console.log(item)
+
             const ix = this.items.findIndex(({ sku }) => sku === item.sku)
 
             if (ix !== -1) {
@@ -56,6 +59,8 @@ export const useCart = defineStore('cart', {
             } else {
                 this.items.push(item)
             }
+
+            console.log(this.items)
         },
 
         changeQuantity(sku: string, newValue: number) {
