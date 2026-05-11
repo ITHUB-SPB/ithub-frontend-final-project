@@ -21,4 +21,25 @@ export default defineSchema({
         title: v.string(),
         description: v.nullable(v.string())
     }),
+    carts: defineTable({
+        customer: v.id("customers"),
+        product: v.id("products"),
+        quantity: v.number()
+    }),
+    customers: defineTable({
+        email: v.string(),
+        phone: v.string(),
+        password: v.string(),
+        full_name: v.nullable(v.string()),
+        address: v.nullable(v.string()),
+    }),
+    orders: defineTable({
+        customer: v.id("customers"),
+        product: v.id("products"),
+        quantity: v.number(),
+        discount: v.nullable(v.number()),
+        bonusCard: v.nullable(v.number()),
+        tax: v.number(),
+        shipping: v.number()
+    })
 });

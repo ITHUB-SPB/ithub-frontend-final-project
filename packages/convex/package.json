@@ -11,7 +11,7 @@
         "dev": "convex dev",
         "seed": "convex run seed:seedData",
         "backup": "convex export --path ./backup.zip",
-        "restore": "convex import ./backup.zip --replace"
+        "restore": "convex import ./backup.zip --replace-all"
     },
     "dependencies": {
         "better-sqlite3": "12.2.0",

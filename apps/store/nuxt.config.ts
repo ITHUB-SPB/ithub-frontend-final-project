@@ -4,7 +4,7 @@ import { type NuxtConfig } from "nuxt/schema"
 export default defineNuxtConfig({
   compatibilityDate: '2025-07-15',
   devtools: { enabled: true },
-  modules: ['better-convex-nuxt', '@pinia/nuxt'],
+  modules: ['better-convex-nuxt', '@pinia/nuxt', 'nuxt-auth-utils'],
   pinia: {
     storesDirs: ['./app/stores/**']
   },

@@ -7,7 +7,7 @@
     "store:dev": "pnpm -F store dev",
     "convex:seed": "pnpm -F @repo/convex seed",
     "convex:dev": "pnpm -F @repo/convex dev",
-    "convex:import": "pnpm -F @repo/convex import",
+    "convex:restore": "pnpm -F @repo/convex restore",
     "convex:backup": "pnpm -F @repo/convex backup",
     "crawler:dev": "pnpm -F @repo/crawler dev",
     "crawler:install": "pnpm -F @repo/crawler install"
