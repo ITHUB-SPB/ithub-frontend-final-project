@@ -19,7 +19,7 @@ type CartStore = {
     orderDetails: OrderDetails
 }
 
-export const useCart = defineStore('cart', {
+export const useCartLocal = defineStore('cart', {
     state: (): CartStore => ({
         items: [],
         orderDetails: {
@@ -81,5 +81,7 @@ export const useCart = defineStore('cart', {
         clear() {
             this.items = []
         }
-    }
-}) 
+    },
+    persist: true
+})
+

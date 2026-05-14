@@ -4,13 +4,13 @@ import { type NuxtConfig } from "nuxt/schema"
 export default defineNuxtConfig({
   compatibilityDate: '2025-07-15',
   devtools: { enabled: true },
-  modules: ['better-convex-nuxt', '@pinia/nuxt', 'nuxt-auth-utils'],
+  modules: ['better-convex-nuxt', '@pinia/nuxt', 'pinia-plugin-persistedstate/nuxt', 'nuxt-auth-utils'],
   pinia: {
     storesDirs: ['./app/stores/**']
   },
   convex: {
     url: process.env.CONVEX_SELF_HOSTED_URL,
-    siteUrl: process.env.CONVEX_SELF_HOSTED_SITE_URL
+    siteUrl: process.env.CONVEX_SELF_HOSTED_SITE_URL,
   },
   vite: {
     optimizeDeps: {
@@ -18,5 +18,5 @@ export default defineNuxtConfig({
         '@repo/convex/api',
       ]
     }
-  }
+  },
 } as NuxtConfig)

@@ -1,10 +1,14 @@
 <script setup lang="ts">
 import "~/assets/css/global.css"
 import { Header, Footer } from '@repo/ui'
-import { useCart } from "./stores/cart";
 
-const cart = useCart()
+import { useCartLocal } from "./stores/cartLocal";
+import { useCartConvex } from "./stores/cartConvex";
+
 const { loggedIn, clear } = useUserSession()
+
+const cart = loggedIn ? useCartConvex() : useCartLocal()
+
 const { fullPath } = useRoute()
 
 const handleLogout = async () => {

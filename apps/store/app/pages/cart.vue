@@ -1,10 +1,15 @@
 <script lang="ts" setup>
 import { api } from '@repo/convex/api'
 import { ProductCard } from '@repo/ui'
-import { useCart } from '~/stores/cart'
+
+import { useCartLocal } from '~/stores/cartLocal';
+import { useCartConvex } from '~/stores/cartConvex';
+
 import airpodsMaxImage from '~/assets/images/products/airpods_max.png'
 
-const cart = useCart()
+const { user, loggedIn } = useUserSession()
+
+const cart = loggedIn ? useCartConvex() : useCartLocal()
 
 // TODO уточнять список интересующих продуктов
 const { data: products, error } = await useConvexQuery(

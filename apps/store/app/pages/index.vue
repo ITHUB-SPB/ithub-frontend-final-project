@@ -1,18 +1,22 @@
 <script lang="ts" setup>
-import Featured from '~/components/Featured.vue';
 import { ProductCard } from '@repo/ui';
 import { api } from '@repo/convex/api';
 import type { DataModel } from '@repo/convex/dataModel'
-import { useCart } from '~/stores/cart';
+
+import Featured from '~/components/Featured.vue';
+import { useCartLocal } from '~/stores/cartLocal';
+import { useCartConvex } from '~/stores/cartConvex';
 
 type Product = DataModel["products"]["document"]
+
+const { user, loggedIn } = useUserSession()
 
 const { data: products, error } = await useConvexQuery(
   api.products.get,
   {}
 )
 
-const cart = useCart()
+const cart = loggedIn ? useCartConvex() : useCartLocal()
 
 const buyNow = (product: Product) => {
   cart.addProduct({
@@ -20,7 +24,7 @@ const buyNow = (product: Product) => {
     price: product.current_price,
     title: product.title,
     quantity: 1
-  })
+  }, user._id)
 }
 
 </script>
