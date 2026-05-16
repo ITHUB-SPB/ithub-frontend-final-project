@@ -9,27 +9,26 @@ import { useCartConvex } from '~/stores/cartConvex';
 
 type Product = DataModel["products"]["document"]
 
-const { user, loggedIn } = useUserSession()
+const { loggedIn, session } = useUserSession()
 
+const user = session.value?.user as string
+
+const cart = loggedIn ? useCartConvex() : useCartLocal()
+
+console.log(cart)
 
 const { data: products, error } = await useConvexQuery(
   api.products.get,
   {}
 )
 
-const cart = loggedIn ? useCartConvex() : useCartLocal()
-
-if ('fetch' in cart) {
-  await cart.fetch()
-}
-
-const buyNow = (product: Product) => {
-  cart.addProduct({
+const buyNow = async (product: Product) => {
+  await cart.addProduct({
     sku: product._id,
     price: product.current_price,
     title: product.title,
     quantity: 1
-  }, user?.id)
+  }, user || "anonymous")
 }
 
 </script>
@@ -47,8 +46,8 @@ const buyNow = (product: Product) => {
     <div v-if="!error">
       <section class="products-grid">
         <ProductCard class="product-item" v-for="product in products" :key="product._id" :title="product.title"
-          :current_price="product.current_price" :in_cart="cart.hasProduct(product._id)"
-          @buy-now="() => buyNow(product)" />
+          :current_price="product.current_price" :sku="product._id" :in_cart="cart.hasProduct(product._id)"
+          :wide="false" @buy-now="buyNow(product)" />
       </section>
     </div>
   </main>

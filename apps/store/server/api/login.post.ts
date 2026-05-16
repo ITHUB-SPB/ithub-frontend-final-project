@@ -9,7 +9,7 @@ const loginSchema = z.object({
 export default defineEventHandler(async (event) => {
     const {
         email,
-        password
+        password,
     } = await readValidatedBody(
         event,
         loginSchema.parse
@@ -25,8 +25,6 @@ export default defineEventHandler(async (event) => {
     }
 
     await setUserSession(event, {
-        user: {
-            email
-        }
+        user: email
     })
 })

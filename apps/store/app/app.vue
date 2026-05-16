@@ -5,13 +5,19 @@ import { Header, Footer } from '@repo/ui'
 import { useCartLocal } from "./stores/cartLocal";
 import { useCartConvex } from "./stores/cartConvex";
 
-const { loggedIn, clear } = useUserSession()
+const { loggedIn, clear, session } = useUserSession()
+
+const user = session.value?.user as string;
 
 const cart = loggedIn ? useCartConvex() : useCartLocal()
 
-if ('fetch' in cart) {
-    await cart.fetch()
+if ('fetch' in cart && user) {
+    await cart.fetch(user)
 }
+
+const cartQuantity = computed(() => {
+    return cart.items.length ?? 0
+})
 
 const { fullPath } = useRoute()
 
@@ -22,8 +28,8 @@ const handleLogout = async () => {
 </script>
 
 <template>
-    <Header :cart-quantity="cart.items?.length" :logged-in="loggedIn" @cart-click="navigateTo('/cart')"
-        @favorites-click="navigateTo('/favorites')" @index-click="navigateTo('/')" @logout-click="handleLogout"
+    <Header :cart-quantity="cartQuantity" :logged-in="loggedIn" @cart-click="navigateTo('/cart')"
+        @favorites-click="navigateTo('/favorites')" @index-click="navigateTo('/')" @logout-click="handleLogout()"
         @login-click="navigateTo('/login')" />
     <NuxtPage />
     <Footer />

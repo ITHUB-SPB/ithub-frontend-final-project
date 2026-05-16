@@ -3,7 +3,7 @@ import { api } from "@repo/convex/api";
 import type { DataModel } from "@repo/convex/dataModel";
 
 type Sku = DataModel["products"]["document"]["_id"]
-type CustomerId = DataModel["customers"]["document"]["_id"]
+type CustomerEmail = DataModel["customers"]["document"]["email"]
 
 type CartItem = {
     sku: Sku,
@@ -24,7 +24,7 @@ type CartStore = {
     orderDetails: OrderDetails
 }
 
-export const useCartConvex = defineStore('cart', {
+export const useCartConvex = defineStore('cart-convex', {
     state: (): CartStore => {
         return {
             items: [],
@@ -53,41 +53,33 @@ export const useCartConvex = defineStore('cart', {
     },
 
     actions: {
-        async fetch() {
+        async fetch(customerEmail: CustomerEmail) {
             const convex = useConvex()
 
-            const { user } = useConvexAuth()
-    
-            if (!user) {
-                throw new Error('Not authenticated')
-            }
-    
-            console.log(user)
-    
-            this.items = await convex.query(api.carts.getByCustomer, { customer: user.id })
+            this.items = await convex.query(api.carts.getByCustomer, { customerEmail })
         },
 
-        async _mutateProduct(item: CartItem, customerId: CustomerId) {
+        async _mutateProduct(item: CartItem, customerEmail: CustomerEmail) {
             const convex = useConvex()
 
             await convex.mutation(api.carts.updateProduct, {
                 product: item.sku,
                 quantity: item.quantity,
-                customer: customerId
+                customerEmail
             })
         },
 
-        async addProduct(newItem: CartItem, customerId: CustomerId) {
-            await this._mutateProduct(newItem, customerId)
+        async addProduct(newItem: CartItem, customerEmail: CustomerEmail) {
+            await this._mutateProduct(newItem, customerEmail)
         },
 
-        async changeQuantity(updatedItem: CartItem, customerId: CustomerId) {
-            await this._mutateProduct(updatedItem, customerId)
+        async changeQuantity(updatedItem: CartItem, customerEmail: CustomerEmail) {
+            await this._mutateProduct(updatedItem, customerEmail)
         },
 
-        async clear(customerId: CustomerId) {
+        async clear(customerEmail: CustomerEmail) {
             const convex = useConvex()
-            await convex.mutation(api.carts.clearByCustomer, { customer: customerId })
+            await convex.mutation(api.carts.clearByCustomer, { customerEmail })
         }
     }
 })

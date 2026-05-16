@@ -6,11 +6,18 @@ type Product = DataModel["products"]["document"]
 
 export const getByCustomer = query({
     args: {
-        customer: v.id("customers")
+        customerEmail: v.string()
     },
     handler: async (ctx, args) => {
+        const customer = await ctx.db.query('customers')
+            .filter(q => q.eq(q.field('email'), args.customerEmail)).first()
+
+        if (!customer) {
+            return []
+        }
+
         const customerCarts = await ctx.db.query('carts')
-            .filter(q => q.eq(q.field('customer'), args.customer)).collect()
+            .filter(q => q.eq(q.field('customer'), customer._id)).collect()
 
         const result = []
 
@@ -32,11 +39,18 @@ export const getByCustomer = query({
 
 export const clearByCustomer = mutation({
     args: {
-        customer: v.id("customers")
+        customerEmail: v.string()
     },
     handler: async (ctx, args) => {
+        const customer = await ctx.db.query('customers')
+            .filter(q => q.eq(q.field('email'), args.customerEmail)).first()
+
+        if (!customer) {
+            return
+        }
+
         const customerCarts = await ctx.db.query('carts')
-            .filter(q => q.eq(q.field('customer'), args.customer)).collect()
+            .filter(q => q.eq(q.field('customer'), customer._id)).collect()
 
         for (const { _id } of customerCarts) {
             await ctx.db.delete('carts', _id)
@@ -46,19 +60,26 @@ export const clearByCustomer = mutation({
 
 export const updateProduct = mutation({
     args: {
-        customer: v.id("customers"),
+        customerEmail: v.string(),
         product: v.id("products"),
         quantity: v.number(),
     },
     handler: async (ctx, args) => {
+        const customer = await ctx.db.query('customers')
+            .filter(q => q.eq(q.field('email'), args.customerEmail)).first()
+
+        if (!customer) {
+            return
+        }
+
         const cart = await ctx.db.query('carts')
-            .filter(q => q.eq(q.field('customer'), args.customer))
+            .filter(q => q.eq(q.field('customer'), customer._id))
             .filter(q => q.eq(q.field('product'), args.product))
             .first()
 
         if (!cart) {
             return await ctx.db.insert('carts', {
-                customer: args.customer,
+                customer: customer._id,
                 product: args.product,
                 quantity: args.quantity
             })

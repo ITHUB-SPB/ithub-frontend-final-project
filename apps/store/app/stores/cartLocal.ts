@@ -19,7 +19,7 @@ type CartStore = {
     orderDetails: OrderDetails
 }
 
-export const useCartLocal = defineStore('cart', {
+export const useCartLocal = defineStore('cart-local', {
     state: (): CartStore => ({
         items: [],
         orderDetails: {
