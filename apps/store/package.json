@@ -14,7 +14,7 @@
     "@repo/convex": "workspace:*",
     "@repo/ui": "workspace:*",
     "better-convex-nuxt": "^0.3.4",
-    "nuxt": "^4.4.2",
+    "nuxt": "^4.4.5",
     "nuxt-auth-utils": "^0.5.29",
     "pinia": "^3.0.4",
     "pinia-plugin-persistedstate": "^4.7.1",

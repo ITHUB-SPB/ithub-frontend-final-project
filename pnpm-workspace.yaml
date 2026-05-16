@@ -9,4 +9,10 @@ allowBuilds:
   impit: false
 
 overrides:
+  '@nuxt/devtools': 'npm:@nuxt/devtools-nightly@latest'
+  '@convex-dev/better-auth': '^0.12.2'
   unimport: '6.0.2'
+  vite-plugin-inspect: '^12.0.0-beta.2'
+  vite-plugin-vue-tracer: '^1.4.0'
+  better-auth: '^1.6.11'
+  convex-helpers: '^0.1.118'

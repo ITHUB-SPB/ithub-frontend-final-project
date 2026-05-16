@@ -15,7 +15,7 @@
     },
     "dependencies": {
         "better-sqlite3": "12.2.0",
-        "convex": "^1.38.0",
+        "convex": "^1.39.1",
         "tsx": "^4.21.0"
     },
     "devDependencies": {
