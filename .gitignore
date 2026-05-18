@@ -48,5 +48,4 @@ key_value_stores
 .env.local
 
 # Convex
-_generated
 .convex
