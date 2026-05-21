@@ -1,6 +1,7 @@
 import { defineStore } from "pinia";
-import { api } from "@repo/convex/api";
-import type { DataModel } from "@repo/convex/dataModel";
+
+const { $client } = useNuxtApp()
+
 
 type Sku = DataModel["products"]["document"]["_id"]
 type CustomerEmail = DataModel["customers"]["document"]["email"]
@@ -54,7 +55,7 @@ export const useCartConvex = defineStore('cart-convex', {
 
     actions: {
         async fetch(customerEmail: CustomerEmail) {
-            const convex = useConvex()
+            $client.planet.list({})
 
             this.items = await convex.query(api.carts.getByCustomer, { customerEmail })
         },

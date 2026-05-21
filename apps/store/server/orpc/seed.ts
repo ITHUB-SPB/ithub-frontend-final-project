@@ -1,10 +1,5 @@
-"use node";
-
 import path from 'node:path'
 import { readdir, readFile } from 'node:fs/promises';
-
-import { api } from './_generated/api.js';
-import { action } from './_generated/server.js';
 
 
 const loadCharacteristics = async () => {
@@ -40,7 +35,7 @@ const loadProducts = async () => {
 }
 
 
-export const seedData = action(async (ctx) => {
+export const seedData = internalMutation(async (ctx) => {
   const characteristicsData = await loadCharacteristics()
 
   for (const { title, measure } of characteristicsData) {
