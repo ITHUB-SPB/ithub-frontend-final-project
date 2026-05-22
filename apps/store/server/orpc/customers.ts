@@ -1,6 +1,5 @@
-import { v } from "convex/values";
-import { query } from './_generated/server.js'
-import { mutation } from "./_generated/server.js";
+import { base } from "./base"
+
 
 export const getByEmail = query({
     args: {

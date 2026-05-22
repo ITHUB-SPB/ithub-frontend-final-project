@@ -1,5 +1,5 @@
-import { v } from "convex/values";
-import { query, mutation } from './_generated/server.js'
+import { base } from "./base"
+
 
 export const get = query({
     args: {},

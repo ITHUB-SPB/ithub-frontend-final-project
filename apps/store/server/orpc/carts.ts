@@ -1,29 +1,35 @@
-import { v } from "convex/values";
-import { query, mutation } from './_generated/server.js'
-import type { DataModel } from "./_generated/dataModel.js";
+import z from "zod"
+import { ORPCError } from "@orpc/server"
 
-type Product = DataModel["products"]["document"]
+import { base } from "./base"
+import { cartsSchema } from "../schema"
+import { db } from "../database/connection"
 
-export const getByCustomer = query({
-    args: {
-        customerEmail: v.string()
-    },
-    handler: async (ctx, args) => {
-        const customer = await ctx.db.query('customers')
-            .filter(q => q.eq(q.field('email'), args.customerEmail)).first()
 
-        if (!customer) {
-            return []
+export const list = base
+    .input(
+        z.object({
+            limit: z.number().int().min(1).max(100).default(20),
+            offset: z.number().int().min(0).default(0),
+            customerEmail: z.optional(z.email())
+        }),
+    )
+    .handler(async ({ input }) => {
+        let query = db.selectFrom('carts').innerJoin('customers', 'customers.id', 'carts.customerId').selectAll()
+
+        if (input.customerEmail) {
+            query = query.where('customers.email', '==', input.customerEmail)
         }
 
-        const customerCarts = await ctx.db.query('carts')
-            .filter(q => q.eq(q.field('customer'), customer._id)).collect()
+        const carts = await query.limit(input.limit).offset(input.offset).execute()
 
         const result = []
 
-        for (const { product, quantity } of customerCarts) {
-            const { title, current_price: price, _id: sku } = await ctx.db.query('products')
-                .filter(q => q.eq(q.field('_id'), product)).first() as Product;
+        for (const { productId, quantity } of carts) {
+            const { title, currentPrice: price, id: sku } = await db.selectFrom('products')
+                .selectAll()
+                .where('products.id', '==', productId)
+                .executeTakeFirstOrThrow()
 
             result.push({
                 quantity,
@@ -34,63 +40,67 @@ export const getByCustomer = query({
         }
 
         return result
-    }
-})
+    })
 
-export const clearByCustomer = mutation({
-    args: {
-        customerEmail: v.string()
-    },
-    handler: async (ctx, args) => {
-        const customer = await ctx.db.query('customers')
-            .filter(q => q.eq(q.field('email'), args.customerEmail)).first()
 
-        if (!customer) {
-            return
+export const clear = base
+    .input(
+        z.object({
+            customerEmail: z.email()
+        }),
+    )
+    .handler(async ({ input }) => {
+        const customer = await db
+            .selectFrom('customers')
+            .selectAll()
+            .where('customers.email', '==', input.customerEmail)
+            .executeTakeFirstOrThrow()
+
+        const customerCarts = await db.selectFrom('carts')
+            .selectAll()
+            .where('carts.customerId', '==', customer.id)
+            .execute()
+
+        for (const { id } of customerCarts) {
+            await db.deleteFrom('carts').where('carts.id', '==', id).execute()
         }
+    })
 
-        const customerCarts = await ctx.db.query('carts')
-            .filter(q => q.eq(q.field('customer'), customer._id)).collect()
 
-        for (const { _id } of customerCarts) {
-            await ctx.db.delete('carts', _id)
-        }
-    }
-})
+export const update = base
+    .input(
+        z.object({
+            customerEmail: z.email(),
+            productId: z.number().int().positive(),
+            quantity: z.number().int().nonnegative(),
+        }),
+    )
+    .handler(async ({ input }) => {
+        const customer = await db
+            .selectFrom('customers')
+            .selectAll()
+            .where('customers.email', '==', input.customerEmail)
+            .executeTakeFirstOrThrow()
 
-export const updateProduct = mutation({
-    args: {
-        customerEmail: v.string(),
-        product: v.id("products"),
-        quantity: v.number(),
-    },
-    handler: async (ctx, args) => {
-        const customer = await ctx.db.query('customers')
-            .filter(q => q.eq(q.field('email'), args.customerEmail)).first()
-
-        if (!customer) {
-            return
-        }
-
-        const cart = await ctx.db.query('carts')
-            .filter(q => q.eq(q.field('customer'), customer._id))
-            .filter(q => q.eq(q.field('product'), args.product))
-            .first()
+        const cart = await db.selectFrom('carts')
+            .selectAll()
+            .where('carts.customerId', '==', customer.id)
+            .where('carts.productId', '==', input.productId)
+            .executeTakeFirst()
 
         if (!cart) {
-            return await ctx.db.insert('carts', {
-                customer: customer._id,
-                product: args.product,
-                quantity: args.quantity
-            })
+            return await db.insertInto('carts').values({
+                customerId: customer.id,
+                productId: input.productId,
+                quantity: input.quantity
+            }).execute()
         }
 
-        if (args.quantity === 0) {
-            return await ctx.db.delete('carts', cart._id)
+        if (input.quantity === 0) {
+            return await db.deleteFrom('carts').where('carts.id', '==', cart.id).execute()
         }
 
-        return await ctx.db.patch('carts', cart._id, {
-            quantity: args.quantity
-        })
-    }
-})
+        return await db.updateTable('carts').set({
+            quantity: input.quantity
+        }).where('carts.id', '==', input.quantity).executeTakeFirst()
+    })

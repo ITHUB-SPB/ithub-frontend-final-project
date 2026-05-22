@@ -10,9 +10,7 @@ export default defineNuxtConfig({
   },
   vite: {
     optimizeDeps: {
-      include: [
-        '@repo/convex/api',
-      ]
+      include: []
     },
   },
 } as NuxtConfig)
