@@ -2,8 +2,8 @@
 export type IconVariant =
     | "twitter" | "facebook" | "instagram" | "tiktok" | "close" | "toEdit" | "burger" | "cameras" | "computers"
     | "gaming" | "headphones" | "phones" | "smartWatches" | "delivery"
-    | "guaranteed" | "stock" | "battery" | "location" | "shipping" | "favorites"
-    | "cart" | "search" | "computersLarge" | "gamingLarge" | "headphonesLarge" | "arrow"
+    | "guaranteed" | "stock" | "location" | "shipping" | "favorites"
+    | "cart" | "search" | "computersLarge" | "gamingLarge" | "headphonesLarge" | "arrow" | "battery" | "screenSize" | "cpu" | "core" | "mainCamera" | "frontCamera"
 
 const props = defineProps<{
     variant: IconVariant
@@ -16,13 +16,18 @@ import tiktok from '../assets/icons/16px/Tiktok.svg'
 
 import close from '../assets/icons/24px/Close.svg'
 import toEdit from '../assets/icons/24px/To edit.svg'
-import battery from '../assets/icons/24px/Battery.svg'
 import location from '../assets/icons/24px/Location.svg'
 import shipping from '../assets/icons/24px/Shipping.svg'
 import computers from '../assets/icons/24px/Computers.svg'
 import gaming from '../assets/icons/24px/Gaming.svg'
 import headphones from '../assets/icons/24px/Headphones.svg'
 import arrow from '../assets/icons/24px/Arrow.svg'
+import battery from '../assets/icons/24px/Battery.svg'
+import screenSize from '../assets/icons/24px/Screensize.svg'
+import cpu from '../assets/icons/24px/cpu.svg'
+import core from '../assets/icons/24px/Core.svg'
+import mainCamera from '../assets/icons/24px/MainCamera.svg'
+import frontCamera from '../assets/icons/24px/FrontCamera.svg'
 
 import favorites from '../assets/icons/32px/Favorites.svg'
 import cart from '../assets/icons/32px/Cart.svg'
@@ -60,7 +65,6 @@ const sources = {
     delivery,
     guaranteed,
     stock,
-    battery,
     location,
     shipping,
     favorites,
@@ -69,6 +73,12 @@ const sources = {
     computersLarge,
     gamingLarge,
     headphonesLarge,
+    battery,
+    screenSize,
+    cpu,
+    core,
+    mainCamera,
+    frontCamera
 }
 </script>
 
