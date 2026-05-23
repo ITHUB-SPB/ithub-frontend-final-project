@@ -11,11 +11,9 @@ const props = defineProps<{
      * Index of active page
      */
     activePage: number;
-    /**
-     * Function to update active page
-     */
-    updateActivePage: (pageNumber: number) => void;
 }>()
+
+const emit = defineEmits(['pageChange'])
 
 const pages = computed(() => Array.from({
     length: props.pageQuantity
@@ -24,20 +22,23 @@ const pages = computed(() => Array.from({
 </script>
 
 <template>
-<nav>
-    <button class="arrow" v-show="props.activePage > 1" @click="updateActivePage(Math.max(1, props.activePage - 1))">
-        <Icon variant="arrow" />
-    </button>
-    
-    <template v-for="pageNumber in pages">
-        <button @click="updateActivePage(pageNumber)" v-if="props.activePage === pageNumber" class="button button--active">{{ pageNumber }}</button>
-        <button @click="updateActivePage(pageNumber)" v-else class="button">{{ pageNumber }}</button>
-    </template>
+    <nav>
+        <button class="arrow" v-show="props.activePage > 1" @click="emit('pageChange', Math.max(1, props.activePage -
+            1))">
+            <Icon variant="arrow" />
+        </button>
 
-    <button class="arrow" v-show="props.activePage < props.pageQuantity" @click="updateActivePage(Math.min(props.pageQuantity, props.activePage + 1))">
-        <Icon variant="arrow" />
-    </button>
-</nav>
+        <template v-for="pageNumber in pages">
+            <button @click="emit('pageChange', pageNumber)" v-if="props.activePage === pageNumber"
+                class="button button--active">{{ pageNumber }}</button>
+            <button @click="emit('pageChange', pageNumber)" v-else class="button">{{ pageNumber }}</button>
+        </template>
+
+        <button class="arrow" v-show="props.activePage < props.pageQuantity"
+            @click="emit('pageChange', Math.min(props.pageQuantity, props.activePage + 1))">
+            <Icon variant="arrow" />
+        </button>
+    </nav>
 </template>
 
 <style scoped>
@@ -58,7 +59,7 @@ nav {
     font-weight: 500;
     letter-spacing: 0.03;
     border-radius: 5px;
-    background-color: rgb(246,246,246);
+    background-color: rgb(246, 246, 246);
     color: black;
     border: 0;
     cursor: pointer;
@@ -80,5 +81,4 @@ nav {
 .arrow:first-of-type {
     transform: rotate(180deg);
 }
-
 </style>
