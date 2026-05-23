@@ -4,6 +4,8 @@ import image2Src from '~/assets/images/products/airpods_max.png'
 import image3Src from '~/assets/images/products/apple_watch.png'
 import image4Src from '~/assets/images/products/apple_watch.png'
 
+import { DetailCard } from '@repo/ui'
+
 function handleSlider(ix: number) {
     selectedImageIx.value = ix
 }
@@ -120,6 +122,7 @@ const additionalCharacteristics = {
 </script>
 
 <template>
+
     <main class="page">
         <section class="slider">
             <img class="product-image product-image--main" :src="images[selectedImageIx]" />
@@ -136,14 +139,10 @@ const additionalCharacteristics = {
             <span class="price price--current">{{ product.current_price }}</span>
             <span class="price price--raw">{{ product.raw_price }}</span>
         </section>
+
         <section class="characteristics">
-            <section v-for="item in mainCharacteristics[product.category]" class="characteristic">
-                <p class="characteristic-description">{{ item.description }}</p>
-                <p class="characteristic-value">
-                    {{ product.characteristics[item.title].value }}
-                    {{ product.characteristics[item.title].measure }}
-                </p>
-            </section>
+            <DetailCard v-for="item in mainCharacteristics[product.category]" :variant="item.title"
+                :value="product.characteristics[item.title].value" class="characteristic" />
         </section>
 
         <details class="details">
@@ -155,6 +154,13 @@ const additionalCharacteristics = {
                 smartphone is the display. Nothing surprising, because advanced...
             </p>
             <!-- перебрать дополнительные характеристики по аналогии с основными выше -->
+            <section v-for="item in additionalCharacteristics[product.category]" class="additional-characteristic">
+                <p class="additional-characteristic-description">{{ item.description }}</p>
+                <p class="additional-characteristic-value">
+                    {{ product.characteristics[item.title].value }}
+                    {{ product.characteristics[item.title].measure }}
+                </p>
+            </section>
         </details>
     </main>
 </template>
@@ -162,6 +168,7 @@ const additionalCharacteristics = {
 <style scoped>
 .page {
     flex: 1;
+    padding: 16px;
 }
 
 .slider {
@@ -170,6 +177,20 @@ const additionalCharacteristics = {
     width: 100%;
     align-items: center;
     gap: 30px;
+}
+
+.characteristics {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 8px;
+}
+
+@media (min-width: 600px) {
+    .characteristics {
+        display: grid;
+        grid-template-columns: repeat(3, 1fr);
+        gap: 16px;
+    }
 }
 
 .product-image {
