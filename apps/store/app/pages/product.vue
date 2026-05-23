@@ -19,8 +19,8 @@ const selectedImageIx = ref(0)
 const product = {
     brand: 'Apple',
     category: 'phones',
-    current_price: 1399,
-    raw_price: 1499,
+    currentPrice: 1399,
+    rawPrice: 1499,
     title: 'Apple iPhone 14 Pro Max',
     description: "Just as a book is judged by its cover, the first thing you notice when you pick up a modern smartphone is the display. Nothing surprising, because advanced technologies allow you to practically level the display frames and cutouts for the front camera and speaker, leaving no room for bold design solutions. And how good that in such realities Apple everything is fine with displays. Both critics and mass consumers always praise the quality of the picture provided by the products of the Californian brand. And last year's 6.7-inch Retina panels, which had ProMotion, caused real admiration for many.",
     characteristics: {
@@ -136,8 +136,8 @@ const additionalCharacteristics = {
 
         <h2 class="product-title">{{ product.title }}</h2>
         <section class="prices">
-            <span class="price price--current">{{ product.current_price }}</span>
-            <span class="price price--raw">{{ product.raw_price }}</span>
+            <span class="price price--current">{{ product.currentPrice }}</span>
+            <span class="price price--raw">{{ product.rawPrice }}</span>
         </section>
 
         <section class="characteristics">

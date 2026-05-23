@@ -26,15 +26,15 @@ export const list = base
         const result = []
 
         for (const { productId, quantity } of carts) {
-            const { title, currentPrice: price, id: sku } = await db.selectFrom('products')
+            const { title, currentPrice, id } = await db.selectFrom('products')
                 .selectAll()
                 .where('products.id', '==', productId)
                 .executeTakeFirstOrThrow()
 
             result.push({
                 quantity,
-                price,
-                sku,
+                currentPrice,
+                id,
                 title
             })
         }

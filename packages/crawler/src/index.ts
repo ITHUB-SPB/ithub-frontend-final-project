@@ -76,12 +76,12 @@ const crawler = new PlaywrightCrawler({
             const label = page.url().slice('https://pitergsm.ru/catalog/'.length).split('/')[0]
 
             const title = await page.locator('.section__title').first().innerText()
-            const raw_price = await page.locator('.product__price').first().innerText()
+            const rawPrice = await page.locator('.product__price').first().innerText()
 
             const specsBrand = await page.locator('.specs__name', { hasText: "Бренд" }).first().innerText()
             const additionalData = await parsers[label](page)
 
-            await pushData({ title, raw_price, ...additionalData }, label);
+            await pushData({ title, rawPrice, ...additionalData }, label);
 
             const image = await page.locator('.prodslider__pic-img').first().getAttribute('src')
 

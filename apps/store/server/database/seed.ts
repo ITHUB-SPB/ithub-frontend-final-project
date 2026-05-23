@@ -16,8 +16,6 @@ const loadProducts = async () => {
   const phonesFiles = await readdir(path.join(dataDir, 'phones'))
   const watchesFiles = await readdir(path.join(dataDir, 'watch'))
 
-  console.log(phonesFiles, watchesFiles)
-
   const phonesData = []
   const watchesData = []
 
@@ -53,7 +51,7 @@ export const seedData = async () => {
 
   for (const product of [...phonesData, ...watchesData]) {
     const {
-      raw_price,
+      rawPrice,
       title,
       description,
       category: categoryTitle,
@@ -89,8 +87,8 @@ export const seedData = async () => {
     await db.insertInto('products').values({
       brandId,
       categoryId,
-      currentPrice: raw_price,
-      rawPrice: raw_price,
+      currentPrice: rawPrice,
+      rawPrice,
       title,
       description
     }).execute()

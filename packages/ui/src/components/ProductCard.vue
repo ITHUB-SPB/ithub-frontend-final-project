@@ -4,19 +4,20 @@ import Button from './Button.vue';
 import productImage from '../assets/images/iphone14.png'
 
 type StandartProps = {
+    id: number,
     title: string
     image?: string,
-    in_cart: boolean,
-    current_price: number,
+    inCart: boolean,
+    currentPrice: number,
     wide: false,
 }
 
 type WideProps = {
+    id: number,
     title: string,
     image?: string,
-    in_cart?: boolean,
-    current_price?: number,
-    sku: string,
+    inCart?: boolean,
+    currentPrice?: number,
     wide: true,
 }
 
@@ -36,10 +37,10 @@ const emit = defineEmits(['buyNow', 'favorite'])
 
         <h3 class="product-title" :class="{ 'title-wide': props.wide }">{{ props.title }} </h3>
 
-        <span v-if="!props.wide" class="product-price">${{ props.current_price }}</span>
-        <span v-else="props.wide" class="product-sku">{{ props.sku }}</span>
+        <span v-if="!props.wide" class="product-price">{{ props.currentPrice }}</span>
+        <span v-else="props.wide" class="product-sku">{{ props.id }}</span>
 
-        <Button v-if="props.in_cart" small variant="stroke" color="black" label="Go to Cart" />
+        <Button v-if="props.inCart" small variant="stroke" color="black" label="Go to Cart" />
         <Button v-else-if="!props.wide" small label="Buy Now" @click="emit('buyNow')" />
     </article>
 </template>

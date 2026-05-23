@@ -31,7 +31,7 @@ const products = await $client.products.list({})
 
     <section class="products-grid">
       <ProductCard class="product-item" v-for="product in cart.items" :title="product.title"
-        :current_price="product.price" :sku="product.sku" :key="product.sku" :image="airpodsMaxImage" wide />
+        :currentPrice="product.currentPrice" :id="product.id" :key="product.id" :image="airpodsMaxImage" wide />
     </section>
 
   </main>

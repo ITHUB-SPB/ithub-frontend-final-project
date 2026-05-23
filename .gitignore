@@ -46,3 +46,4 @@ request_queues
 key_value_stores
 
 .env.local
+*.sqlite3

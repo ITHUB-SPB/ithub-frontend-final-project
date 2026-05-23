@@ -1,11 +1,11 @@
 <script lang="ts" setup>
 import z from 'zod';
-import { ProductCard } from '@repo/ui';
-import { productsSchema } from '~~/server/schema';
 
+import { ProductCard } from '@repo/ui';
 import Featured from '~/components/Featured.vue';
 import { useCartLocal } from '~/stores/cartLocal';
 import { useCart } from '~/stores/cart';
+import { productsSchema } from '~~/server/schema';
 
 const { $client } = useNuxtApp()
 
@@ -17,14 +17,13 @@ const user = session.value?.user as string
 
 const cart = loggedIn ? useCart() : useCartLocal()
 
-console.log(cart)
-
 const products = await $client.products.list({})
 
 const buyNow = async (product: Product) => {
+  console.log(product)
   await cart.addProduct({
     id: product.id,
-    price: product.currentPrice,
+    currentPrice: product.currentPrice,
     title: product.title,
     quantity: 1
   }, user || "anonymous")
@@ -38,17 +37,11 @@ const buyNow = async (product: Product) => {
     <BrowseByCategory />
     <Featured />
 
-    <p v-if="error">
-      {{ error?.message }}
-    </p>
-
-    <div v-if="!error">
-      <section class="products-grid">
-        <ProductCard class="product-item" v-for="product in products" :key="product._id" :title="product.title"
-          :current_price="product.current_price" :sku="product._id" :in_cart="cart.hasProduct(product._id)"
-          :wide="false" @buy-now="buyNow(product)" />
-      </section>
-    </div>
+    <section class="products-grid">
+      <ProductCard class="product-item" v-for="product in products" :key="product.id" :title="product.title"
+        :currentPrice="product.currentPrice" :id="product.id" :inCart="cart.hasProduct(product.id)" :wide="false"
+        @buy-now="buyNow(product)" />
+    </section>
   </main>
 </template>
 

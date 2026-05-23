@@ -3,7 +3,7 @@ import { defineStore } from "pinia";
 type CartItem = {
     id: number,
     title: string,
-    price: number,
+    currentPrice: number,
     quantity: number
 }
 
@@ -37,7 +37,7 @@ export const useCart = defineStore('cart', {
             return (id: number) => Boolean(state.items.find(item => item.id === id))
         },
         subTotal(state): number {
-            return state.items.reduce((acc, { price, quantity }) => {
+            return state.items.reduce((acc, { currentPrice, quantity }) => {
                 return acc + price * quantity
             }, 0)
         },

@@ -3,7 +3,7 @@
 
     const props = defineProps<{
         quantity: number
-        price: number
+        currentPrice: number
         onDelete: () => void
     }>()
 
@@ -13,7 +13,7 @@
     const decrement = () => count.value--
 
     const priceUpdate = computed(() => {
-        return props.price * count.value
+        return props.currentPrice * count.value
     })
 </script>
 
@@ -24,7 +24,7 @@
             <input type="number" class="cart-quantity" v-model="count">
             <button class="cart-increment" @click="increment" >+</button>
         </div>
-        <span class="cart-price">${{ priceUpdate }}</span>
+        <span class="cart-price">{{ priceUpdate }}</span>
         <button @click="props.onDelete" class="cart-delete">x</button>
     </section>
 </template>

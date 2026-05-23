@@ -1,9 +1,9 @@
 import { defineStore } from "pinia";
 
 type CartItem = {
-    sku: string,
+    id: number,
     title: string,
-    price: number,
+    currentPrice: number,
     quantity: number
 }
 
@@ -32,12 +32,12 @@ export const useCartLocal = defineStore('cart-local', {
 
     getters: {
         hasProduct(state) {
-            return (sku: string) => Boolean(state.items.find(item => item.sku === sku))
+            return (id: number) => Boolean(state.items.find(item => item.id === id))
         },
 
         subTotal(state): number {
-            return state.items.reduce((acc, { price, quantity }) => {
-                return acc + price * quantity
+            return state.items.reduce((acc, { currentPrice, quantity }) => {
+                return acc + currentPrice * quantity
             }, 0)
         },
         total(state): number {
@@ -48,7 +48,7 @@ export const useCartLocal = defineStore('cart-local', {
 
     actions: {
         addProduct(newItem: CartItem) {
-            const ix = this.items.findIndex(({ sku }) => sku === newItem.sku)
+            const ix = this.items.findIndex(({ id }) => id === newItem.id)
 
             if (ix !== -1) {
                 this.items[ix]!.quantity += 1
@@ -58,7 +58,7 @@ export const useCartLocal = defineStore('cart-local', {
         },
 
         changeQuantity(updatedItem: CartItem) {
-            const ix = this.items.findIndex(({ sku }) => sku === updatedItem.sku)
+            const ix = this.items.findIndex(({ id }) => id === updatedItem.id)
 
             if ((ix === -1) || (updatedItem.quantity < 0)) {
                 return

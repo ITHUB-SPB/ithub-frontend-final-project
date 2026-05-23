@@ -15,14 +15,13 @@ definePageMeta({
 
 const products = [
   {
+    id: 1,
     title: 'AirPods Max Silver',
-    sku: '#53459358345',
     image: airpodsImage
   },
   {
-    _id: 'saadoiq398',
+    id: 2,
     title: 'Apple Watch Series 9 GPS 41mm Starlight Aluminium',
-    sku: '#53459358345',
     image: appleWatchImage
   }
 ]
@@ -39,8 +38,8 @@ const error = null
     </p>
     <div v-if="!error">
       <section class="products-grid">
-        <ProductCard class="product-item" v-for="product in products" :key="product._id" :title="product.title"
-          :current_price="product.current_price" :sku="product.sku" :image="product.image" wide />
+        <ProductCard class="product-item" v-for="product in products" :key="product.id" :title="product.title"
+          :id="product.id" :image="product.image" wide />
       </section>
     </div>
   </main>

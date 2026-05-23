@@ -7,9 +7,9 @@ const meta = {
   component: ProductCard,
   tags: ['autodocs'],
   args: {
+    id: 341,
     wide: false,
-    current_price: 490,
-    sku: '#25139526913984',
+    currentPrice: 490,
     title: 'AirPods Max Silver'
   }
 } satisfies Meta<typeof ProductCard>;
@@ -22,7 +22,7 @@ export const Desktop: Story = {
     viewport: {
       value: 'desktop'
     }
-  }
+  },
 };
 
 export const Mobile: Story = {
