@@ -169,6 +169,7 @@ const additionalCharacteristics = {
 <style scoped>
 .page {
     flex: 1;
+    padding: 16px;
 }
 
 .slider {
@@ -177,6 +178,20 @@ const additionalCharacteristics = {
     width: 100%;
     align-items: center;
     gap: 30px;
+}
+
+.characteristics {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 8px;
+}
+
+@media (min-width: 600px) {
+    .characteristics {
+        display: grid;
+        grid-template-columns: repeat(3, 1fr);
+        gap: 16px;
+    }
 }
 
 .product-image {

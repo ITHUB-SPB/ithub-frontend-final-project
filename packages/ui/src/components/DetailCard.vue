@@ -28,15 +28,13 @@ const title: { [key: string]: string } = {
 </script>
 
 <template>
-    <div class="detail">
-        <article class="detail-card">
-            <Icon :variant="icons[props.variant] ?? 'cart'" class="detail-icon" />
-            <div>
-                <h5 class="detail-title">{{ title[props.variant] }}</h5>
-                <p class="detail-value">{{ props.value }}</p>
-            </div>
-        </article>
-    </div>
+    <article class="detail-card">
+        <Icon :variant="icons[props.variant] ?? 'cart'" class="detail-icon" />
+        <div>
+            <h5 class="detail-title">{{ title[props.variant] }}</h5>
+            <p class="detail-value">{{ props.value }}</p>
+        </div>
+    </article>
 </template>
 
 <style scoped>
@@ -47,19 +45,12 @@ const title: { [key: string]: string } = {
     font-size: 14px;
 }
 
-.detail {
-    display: grid;
-    grid-template-columns: repeat(2, 1fr);
-    gap: 8px;
-    margin-bottom: 8px;
-    max-width: 80%;
-}
 
 .detail-card {
     background-color: rgb(246, 246, 246);
     border-radius: 7px;
     min-width: 135px;
-    max-width: 166px;
+    max-width: 200px;
     width: 100%;
     display: flex;
     /* flex-direction: column; */
@@ -85,13 +76,4 @@ const title: { [key: string]: string } = {
     padding: 20px 10px 20px 16px;
 }
 
-
-@media (min-width: 600px) {
-    .detail {
-        display: grid;
-        grid-template-columns: repeat(3, 1fr);
-        gap: 16px;
-        margin-bottom: 16px;
-    }
-}
 </style>
