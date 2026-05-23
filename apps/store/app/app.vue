@@ -3,13 +3,13 @@ import "~/assets/css/global.css"
 import { Header, Footer } from '@repo/ui'
 
 import { useCartLocal } from "./stores/cartLocal";
-import { useCartConvex } from "./stores/cartConvex";
+import { useCart } from "./stores/cart";
 
 const { loggedIn, clear, session } = useUserSession()
 
 const user = session.value?.user as string;
 
-const cart = loggedIn ? useCartConvex() : useCartLocal()
+const cart = loggedIn ? useCart() : useCartLocal()
 
 if ('fetch' in cart && user) {
     await cart.fetch(user)

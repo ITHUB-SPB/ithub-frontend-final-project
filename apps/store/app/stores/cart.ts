@@ -1,13 +1,7 @@
 import { defineStore } from "pinia";
 
-const { $client } = useNuxtApp()
-
-
-type Sku = DataModel["products"]["document"]["_id"]
-type CustomerEmail = DataModel["customers"]["document"]["email"]
-
 type CartItem = {
-    sku: Sku,
+    id: number,
     title: string,
     price: number,
     quantity: number
@@ -25,7 +19,7 @@ type CartStore = {
     orderDetails: OrderDetails
 }
 
-export const useCartConvex = defineStore('cart-convex', {
+export const useCart = defineStore('cart', {
     state: (): CartStore => {
         return {
             items: [],
@@ -40,7 +34,7 @@ export const useCartConvex = defineStore('cart-convex', {
 
     getters: {
         hasProduct(state) {
-            return (sku: string) => Boolean(state.items.find(item => item.sku === sku))
+            return (id: number) => Boolean(state.items.find(item => item.id === id))
         },
         subTotal(state): number {
             return state.items.reduce((acc, { price, quantity }) => {
@@ -54,35 +48,36 @@ export const useCartConvex = defineStore('cart-convex', {
     },
 
     actions: {
-        async fetch(customerEmail: CustomerEmail) {
-            $client.planet.list({})
+        async fetch(customerEmail: string) {
+            const { $client } = useNuxtApp()
 
-            this.items = await convex.query(api.carts.getByCustomer, { customerEmail })
+            this.items = await $client.carts.list({ customerEmail })
         },
 
-        async _mutateProduct(item: CartItem, customerEmail: CustomerEmail) {
-            const convex = useConvex()
+        async _mutateProduct(item: CartItem, customerEmail: string) {
+            const { $client } = useNuxtApp()
 
-            await convex.mutation(api.carts.updateProduct, {
-                product: item.sku,
+            await $client.carts.update({
+                productId: item.id,
                 quantity: item.quantity,
                 customerEmail
             })
         },
 
-        async addProduct(newItem: CartItem, customerEmail: CustomerEmail) {
+        async addProduct(newItem: CartItem, customerEmail: string) {
             await this._mutateProduct(newItem, customerEmail)
             await this.fetch(customerEmail)
         },
 
-        async changeQuantity(updatedItem: CartItem, customerEmail: CustomerEmail) {
+        async changeQuantity(updatedItem: CartItem, customerEmail: string) {
             await this._mutateProduct(updatedItem, customerEmail)
             await this.fetch(customerEmail)
         },
 
-        async clear(customerEmail: CustomerEmail) {
-            const convex = useConvex()
-            await convex.mutation(api.carts.clearByCustomer, { customerEmail })
+        async clear(customerEmail: string) {
+            const { $client } = useNuxtApp()
+
+            await $client.carts.clear({ customerEmail })
             await this.fetch(customerEmail)
         }
     }

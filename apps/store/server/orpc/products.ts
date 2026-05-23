@@ -1,23 +1,23 @@
+import z from "zod"
+import { ORPCError } from "@orpc/server"
+
 import { base } from "./base"
+import { productsSchema } from "../schema"
+import { db } from "../database/connection"
 
+export const list = base
+    .input(
+        z.object({
+            limit: z.number().int().min(1).max(100).default(20),
+            offset: z.number().int().min(0).default(0),
+        }),
+    )
+    .handler(async ({ input }) => {
+        return await db.selectFrom('products').selectAll().limit(input.limit).offset(input.offset).execute()
+    })
 
-export const get = query({
-    args: {},
-    handler: async (ctx) => {
-        return await ctx.db.query('products').collect()
-    }
-})
-
-export const create = mutation({
-    args: {
-        brand: v.id("brands"),
-        category: v.id("categories"),
-        current_price: v.number(),
-        raw_price: v.number(),
-        title: v.string(),
-        description: v.nullable(v.string())
-    },
-    handler: async (ctx, args) => {
-        return await ctx.db.insert("products", { ...args })
-    }
-})
+export const create = base
+    .input(productsSchema.omit({ id: true }))
+    .handler(async ({ input, context }) => {
+        return await db.insertInto('products').values({ ...input }).execute()
+    })

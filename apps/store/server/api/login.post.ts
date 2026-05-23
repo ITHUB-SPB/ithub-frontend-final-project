@@ -1,5 +1,4 @@
 import { z } from "zod";
-import { api } from "@repo/convex/api";
 
 const loginSchema = z.object({
     email: z.email(),
@@ -15,16 +14,16 @@ export default defineEventHandler(async (event) => {
         loginSchema.parse
     )
 
-    const customer = await serverConvexQuery(event, api.customers.getByEmail, { email })
+    // const customer = await serverConvexQuery(event, api.customers.getByEmail, { email })
 
-    if (customer === null || customer.password !== password) {
-        throw createError({
-            status: 401,
-            message: 'Данные некорректны'
-        })
-    }
+    // if (customer === null || customer.password !== password) {
+    //     throw createError({
+    //         status: 401,
+    //         message: 'Данные некорректны'
+    //     })
+    // }
 
-    await setUserSession(event, {
-        user: email
-    })
+    // await setUserSession(event, {
+    //     user: email
+    // })
 })

@@ -5,6 +5,7 @@
   "scripts": {
     "storybook": "pnpm -F @repo/ui storybook",
     "store:dev": "pnpm -F store dev",
+    "db:init": "pnpm -F store db:init",
     "db:seed": "pnpm -F store db:seed",
     "crawler:dev": "pnpm -F @repo/crawler dev",
     "crawler:install": "pnpm -F @repo/crawler install"

@@ -1,31 +1,30 @@
 <script lang="ts" setup>
+import z from 'zod';
 import { ProductCard } from '@repo/ui';
-import { api } from '@repo/convex/api';
-import type { DataModel } from '@repo/convex/dataModel'
+import { productsSchema } from '~~/server/schema';
 
 import Featured from '~/components/Featured.vue';
 import { useCartLocal } from '~/stores/cartLocal';
-import { useCartConvex } from '~/stores/cartConvex';
+import { useCart } from '~/stores/cart';
 
-type Product = DataModel["products"]["document"]
+const { $client } = useNuxtApp()
+
+type Product = z.infer<typeof productsSchema>
 
 const { loggedIn, session } = useUserSession()
 
 const user = session.value?.user as string
 
-const cart = loggedIn ? useCartConvex() : useCartLocal()
+const cart = loggedIn ? useCart() : useCartLocal()
 
 console.log(cart)
 
-const { data: products, error } = await useConvexQuery(
-  api.products.get,
-  {}
-)
+const products = await $client.products.list({})
 
 const buyNow = async (product: Product) => {
   await cart.addProduct({
-    sku: product._id,
-    price: product.current_price,
+    id: product.id,
+    price: product.currentPrice,
     title: product.title,
     quantity: 1
   }, user || "anonymous")

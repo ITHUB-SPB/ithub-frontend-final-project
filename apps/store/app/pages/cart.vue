@@ -1,21 +1,19 @@
 <script lang="ts" setup>
-import { api } from '@repo/convex/api'
 import { ProductCard } from '@repo/ui'
 
 import { useCartLocal } from '~/stores/cartLocal';
-import { useCartConvex } from '~/stores/cartConvex';
+import { useCart } from '~/stores/cart';
 
 import airpodsMaxImage from '~/assets/images/products/airpods_max.png'
 
+const { $client } = useNuxtApp()
+
 const { user, loggedIn } = useUserSession()
 
-const cart = loggedIn ? useCartConvex() : useCartLocal()
+const cart = loggedIn ? useCart() : useCartLocal()
 
 // TODO уточнять список интересующих продуктов
-const { data: products, error } = await useConvexQuery(
-  api.products.get,
-  {}
-)
+const products = await $client.products.list({})
 
 // const {
 //   execute, pending, reset, error: mutationError
@@ -26,7 +24,7 @@ const { data: products, error } = await useConvexQuery(
 <template>
   <main class="page">
     <h2 class="page-title">Shopping Cart</h2>
-    
+
     <!-- <p v-if="error || mutationError">
       {{ error?.message || mutationError?.message }}
     </p> -->

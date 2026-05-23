@@ -1,19 +1,15 @@
 import { base } from "./base"
+import { characteristicsSchema } from "../schema"
+import { db } from "../database/connection"
 
 
-export const get = query({
-    args: {},
-    handler: async (ctx) => {
-        return await ctx.db.query('characteristics').collect()
-    }
-})
+export const list = base
+    .handler(async ({ input }) => {
+        return await db.selectFrom('characteristics').selectAll().execute()
+    })
 
-export const create = mutation({
-    args: {
-        title: v.string(),
-        measure: v.nullable(v.string())
-    },
-    handler: async (ctx, args) => {
-        return await ctx.db.insert('characteristics', { ...args })
-    }
-})
+export const create = base
+    .input(characteristicsSchema.omit({ id: true }))
+    .handler(async ({ input, context }) => {
+        return await db.insertInto('characteristics').values({ ...input }).execute()
+    })

@@ -1,6 +1,6 @@
 <script lang="ts" setup>
 import { ProductCard } from '@repo/ui';
-import { api } from '@repo/convex/api'
+
 import airpodsImage from '~/assets/images/products/airpods_max.png'
 import appleWatchImage from '~/assets/images/products/apple_watch.png'
 

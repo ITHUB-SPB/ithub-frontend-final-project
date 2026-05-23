@@ -5,6 +5,8 @@
   "scripts": {
     "build": "nuxt build",
     "dev": "nuxt dev --dotenv .env.local",
+    "db:init": "tsx server/database/init.ts",
+    "db:seed": "tsx server/database/seed.ts",
     "generate": "nuxt generate",
     "preview": "nuxt preview",
     "postinstall": "nuxt prepare"
@@ -20,6 +22,7 @@
     "nuxt-auth-utils": "^0.5.29",
     "pinia": "^3.0.4",
     "pinia-plugin-persistedstate": "^4.7.1",
+    "tsx": "^4.21.0",
     "vue": "^3.5.32",
     "vue-router": "^5.0.4",
     "zod": "^4.4.3"
