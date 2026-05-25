@@ -88,14 +88,35 @@ export const seedData = async () => {
 
     const category = await db.selectFrom('categories').selectAll().where('categories.value', '==', categoryValue).executeTakeFirstOrThrow()
 
-    await db.insertInto('products').values({
+    const { id: productId } = await db.insertInto('products').values({
       brandId,
       categoryId: category.id,
       currentPrice: rawPrice,
       rawPrice,
       title,
       description
-    }).execute()
+    }).returning('products.id').executeTakeFirstOrThrow()
+
+    for (const charTitle in characteristics) {
+      const characteristic = await db
+        .selectFrom('characteristics')
+        .select(['id'])
+        .where('characteristics.title', '==', charTitle)
+        .executeTakeFirst()
+
+      if (!characteristic?.id) {
+        continue
+      }
+
+      await db
+        .insertInto('productsCharacteristics')
+        .values({
+          productId,
+          characteristicId: characteristic.id,
+          value: String(characteristics[charTitle])
+        })
+        .execute()
+    }
   }
 };
 

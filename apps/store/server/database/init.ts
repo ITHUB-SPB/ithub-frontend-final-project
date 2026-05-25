@@ -30,25 +30,37 @@ async function createTables() {
         .createTable('products')
         .ifNotExists()
         .addColumn('id', 'integer', col => col.primaryKey().autoIncrement())
-
         .addColumn('brandId', 'integer')
         .addForeignKeyConstraint(
             'product_brandId_foreign', ['brandId'], 'brands', ['id'],
             (constraint) => constraint.onDelete('cascade')
         )
-
         .addColumn('categoryId', 'integer')
         .addForeignKeyConstraint(
             'product_categoryId_foreign', ['categoryId'], 'categories', ['id'],
             (constraint) => constraint.onDelete('cascade')
         )
-
         .addColumn('currentPrice', 'float8', col => col.notNull())
         .addColumn('rawPrice', 'float8', col => col.notNull())
-
         .addColumn('title', 'varchar', col => col.notNull())
         .addColumn('description', 'text')
+        .execute()
 
+    await db.schema
+        .createTable('productsCharacteristics')
+        .ifNotExists()
+        .addColumn('id', 'integer', col => col.primaryKey().autoIncrement())
+        .addColumn('productId', 'integer')
+        .addForeignKeyConstraint(
+            'table_productId_foreign', ['productId'], 'products', ['id'],
+            (constraint) => constraint.onDelete('cascade')
+        )
+        .addColumn('characteristicId', 'integer')
+        .addForeignKeyConstraint(
+            'table_characteristicId_foreign', ['characteristicId'], 'characteristics', ['id'],
+            (constraint) => constraint.onDelete('cascade')
+        )
+        .addColumn('value', 'varchar', col => col.notNull())
         .execute()
 }
 
