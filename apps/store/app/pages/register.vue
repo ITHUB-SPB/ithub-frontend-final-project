@@ -9,7 +9,7 @@ const handleLogin = async (event: SubmitEvent) => {
     const form = event.target as HTMLFormElement
     const formData = new FormData(form)
 
-    const email = formData.get('email')
+    const phone = formData.get('phone')
     const password = formData.get('password')
 
     try {
@@ -18,7 +18,7 @@ const handleLogin = async (event: SubmitEvent) => {
         await $fetch('/api/register', {
             method: "POST",
             body: {
-                email,
+                phone,
                 password
             }
         })
@@ -37,7 +37,7 @@ const handleLogin = async (event: SubmitEvent) => {
         <p v-if="errorRef">{{ errorRef?.message }}</p>
 
         <form class="form" method="post" @submit.prevent="handleLogin">
-            <Field label="Email" placeholder="user@example.com" name="email" type="email" />
+            <Field label="Phone" placeholder="79991112233" name="phone" type="tel" />
             <Field label="Password" placeholder="********" name="password" type="password" />
             <Button label="Sign Up" type="submit" />
             <NuxtLink href="/login">Login an account</NuxtLink>

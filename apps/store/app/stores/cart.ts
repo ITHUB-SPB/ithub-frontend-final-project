@@ -38,7 +38,7 @@ export const useCart = defineStore('cart', {
         },
         subTotal(state): number {
             return state.items.reduce((acc, { currentPrice, quantity }) => {
-                return acc + price * quantity
+                return acc + currentPrice * quantity
             }, 0)
         },
         total(state): number {
@@ -48,37 +48,35 @@ export const useCart = defineStore('cart', {
     },
 
     actions: {
-        async fetch(customerEmail: string) {
-            const { $client } = useNuxtApp()
-
-            this.items = await $client.carts.list({ customerEmail })
+        async fetch() {
+            this.items = await $fetch('/api/cart')
         },
 
-        async _mutateProduct(item: CartItem, customerEmail: string) {
-            const { $client } = useNuxtApp()
-
-            await $client.carts.update({
-                productId: item.id,
-                quantity: item.quantity,
-                customerEmail
+        async _mutateProduct(item: CartItem) {
+            await $fetch('/api/cart', {
+                method: 'patch',
+                body: {
+                    productId: item.id,
+                    quantity: item.quantity
+                }
             })
         },
 
-        async addProduct(newItem: CartItem, customerEmail: string) {
-            await this._mutateProduct(newItem, customerEmail)
-            await this.fetch(customerEmail)
+        async addProduct(newItem: CartItem) {
+            await this._mutateProduct(newItem)
+            await this.fetch()
         },
 
-        async changeQuantity(updatedItem: CartItem, customerEmail: string) {
-            await this._mutateProduct(updatedItem, customerEmail)
-            await this.fetch(customerEmail)
+        async changeQuantity(updatedItem: CartItem) {
+            await this._mutateProduct(updatedItem)
+            await this.fetch()
         },
 
-        async clear(customerEmail: string) {
-            const { $client } = useNuxtApp()
-
-            await $client.carts.clear({ customerEmail })
-            await this.fetch(customerEmail)
+        async clear() {
+            await $fetch('/api/cart', {
+                method: 'DELETE',
+            })
+            await this.fetch()
         }
     }
 })

@@ -62,6 +62,15 @@ async function createTables() {
         )
         .addColumn('value', 'varchar', col => col.notNull())
         .execute()
+
+    await db.schema
+        .createTable('customers')
+        .ifNotExists()
+        .addColumn('id', 'integer', col => col.primaryKey().autoIncrement())
+        .addColumn('phone', 'varchar', col => col.notNull())
+        .addColumn('password', 'varchar', col => col.notNull())
+        .addColumn('fullName', 'varchar')
+        .addColumn('address', 'varchar')
 }
 
 await createTables()
