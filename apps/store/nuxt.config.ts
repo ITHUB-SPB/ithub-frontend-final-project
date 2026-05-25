@@ -1,5 +1,5 @@
 import { type NuxtConfig } from "nuxt/schema"
-import { nodePolyfills } from 'vite-plugin-node-polyfills'
+// import { nodePolyfills } from 'vite-plugin-node-polyfills'
 
 // https://nuxt.com/docs/api/configuration/nuxt-config
 export default defineNuxtConfig({
@@ -9,12 +9,13 @@ export default defineNuxtConfig({
   pinia: {
     storesDirs: ['./app/stores/**']
   },
+  ssr: false,
   vite: {
     optimizeDeps: {
       include: []
     },
     plugins: [
-      nodePolyfills()
+      // nodePolyfills()
     ],
   },
 } as NuxtConfig)

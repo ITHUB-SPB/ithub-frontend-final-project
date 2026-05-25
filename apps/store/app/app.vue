@@ -9,11 +9,11 @@ const { loggedIn, clear, session } = useUserSession()
 
 const user = session.value?.user as string;
 
-const cart = loggedIn ? useCart() : useCartLocal()
+const cart = useCartLocal()
 
-if ('fetch' in cart && user) {
-    await cart.fetch(user)
-}
+// if ('fetch' in cart && user) {
+//     await cart.fetch(user)
+// }
 
 const cartQuantity = computed(() => {
     return cart.items.length ?? 0

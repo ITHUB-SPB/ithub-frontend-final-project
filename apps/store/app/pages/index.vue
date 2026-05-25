@@ -7,7 +7,7 @@ import { useCartLocal } from '~/stores/cartLocal';
 import { useCart } from '~/stores/cart';
 import { productsSchema } from '~~/server/schema';
 
-const { $client } = useNuxtApp()
+// const { $client } = useNuxtApp()
 
 type Product = z.infer<typeof productsSchema>
 
@@ -15,9 +15,17 @@ const { loggedIn, session } = useUserSession()
 
 const user = session.value?.user as string
 
-const cart = loggedIn ? useCart() : useCartLocal()
+const cart = useCartLocal()
 
-const products = await $client.products.list({})
+// const products = await useFetch($client.products.list({}))
+const { data: products } = await useFetch('/api/products', {
+  query: {
+    limit: 8,
+    offset: 0
+  }
+})
+
+console.log(products)
 
 const buyNow = async (product: Product) => {
   console.log(product)
@@ -37,7 +45,7 @@ const buyNow = async (product: Product) => {
     <BrowseByCategory />
     <Featured />
 
-    <section class="products-grid">
+    <section class="products-grid" v-if="products">
       <ProductCard class="product-item" v-for="product in products" :key="product.id" :title="product.title"
         :currentPrice="product.currentPrice" :id="product.id" :inCart="cart.hasProduct(product.id)" :wide="false"
         @buy-now="buyNow(product)" />
