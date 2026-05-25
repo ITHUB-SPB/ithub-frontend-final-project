@@ -7,7 +7,6 @@ const productsSchema = z.object({
     offset: z.string().transform(Number).pipe(z.number().int().min(0)),
 })
 
-
 export default defineEventHandler(async (event) => {
     const {
         limit,

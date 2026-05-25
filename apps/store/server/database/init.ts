@@ -13,6 +13,8 @@ async function createTables() {
         .ifNotExists()
         .addColumn('id', 'integer', col => col.primaryKey().autoIncrement())
         .addColumn('title', 'varchar', col => col.notNull())
+        .addColumn('value', 'varchar', col => col.notNull())
+        .addColumn('active', 'integer', col => col.defaultTo(0))
         .execute()
 
     await db.schema

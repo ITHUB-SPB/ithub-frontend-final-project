@@ -10,6 +10,13 @@ const loadCharacteristics = async () => {
   return JSON.parse(fileContent)
 }
 
+const loadCategories = async () => {
+  const dataDir = path.join(import.meta.filename, '..', '..', 'data')
+  const filePath = path.join(dataDir, 'categories.json')
+  const fileContent = await readFile(filePath, { encoding: 'utf-8' })
+  return JSON.parse(fileContent)
+}
+
 const loadProducts = async () => {
   const dataDir = path.join(import.meta.filename, '..', '..', 'data')
 
@@ -42,9 +49,18 @@ const loadProducts = async () => {
 
 export const seedData = async () => {
   const characteristicsData = await loadCharacteristics()
+  const categoriesData = await loadCategories()
 
   for (const { title, measure } of characteristicsData) {
     await db.insertInto('characteristics').values({ title, measure }).execute()
+  }
+
+  for (const { title, value, active } of categoriesData) {
+    await db.insertInto('categories').values({
+      title,
+      value,
+      active: active ? 1 : 0
+    }).execute()
   }
 
   const { phonesData, watchesData } = await loadProducts()
@@ -54,13 +70,12 @@ export const seedData = async () => {
       rawPrice,
       title,
       description,
-      category: categoryTitle,
+      category: categoryValue,
       brand: brandTitle,
       ...characteristics
     } = product
 
     let brandId: number;
-    let categoryId;
 
     const brand = await db.selectFrom('brands').selectAll().where('brands.title', '==', brandTitle).executeTakeFirst()
 
@@ -71,22 +86,11 @@ export const seedData = async () => {
       brandId = createdBrand!.id
     }
 
-
-    const category = await db.selectFrom('categories').selectAll().where('categories.title', '==', categoryTitle).executeTakeFirst()
-
-    if (category) {
-      categoryId = category.id
-    } else {
-      const createdCategory = await db.insertInto('categories')
-        .values({ title: categoryTitle })
-        .returning('categories.id')
-        .executeTakeFirst()
-      categoryId = createdCategory!.id
-    }
+    const category = await db.selectFrom('categories').selectAll().where('categories.value', '==', categoryValue).executeTakeFirstOrThrow()
 
     await db.insertInto('products').values({
       brandId,
-      categoryId,
+      categoryId: category.id,
       currentPrice: rawPrice,
       rawPrice,
       title,

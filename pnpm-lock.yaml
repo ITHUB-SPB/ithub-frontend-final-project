@@ -17,12 +17,6 @@ importers:
 
   apps/store:
     dependencies:
-      '@orpc/client':
-        specifier: ^1.14.3
-        version: 1.14.3
-      '@orpc/server':
-        specifier: ^1.14.3
-        version: 1.14.3(crossws@0.4.5(srvx@0.11.15))(ws@8.20.1)
       '@pinia/nuxt':
         specifier: ^0.11.3
         version: 0.11.3(magicast@0.5.2)(pinia@3.0.4(typescript@6.0.3)(vue@3.5.32(typescript@6.0.3)))
@@ -973,57 +967,6 @@ packages:
     peerDependenciesMeta:
       rolldown:
         optional: true
-
-  '@orpc/client@1.14.3':
-    resolution: {integrity: sha512-0HzeD/BgPctvFnd6ltjuQvx4/POXo0K01Tee/3whAm3ohXnlGqCfhzR2VMN8zBaGs1SYe6AFzjmGG928Ej3pAg==}
-
-  '@orpc/contract@1.14.3':
-    resolution: {integrity: sha512-docXs4ALK3TADAnscEywjqvV1Dy+4+B6ihfo33hayvJdxZdpVmxjHOf7pcAYaJFJ6+LgKYoskaVVKad6LLxFlg==}
-
-  '@orpc/interop@1.14.3':
-    resolution: {integrity: sha512-B8ANHAGVI8Mjw7Co0p+qBlkFG84i38WTKjR01HMkMXd6g9bHbgaqOfHcMpJMFaZzqvxBnXH4zPra2w6J8sQmhQ==}
-
-  '@orpc/server@1.14.3':
-    resolution: {integrity: sha512-VQG1sgruPhWdzT/ChltJ5Ju9v1A8F+s8EQ1MMSI33z0AthZ3IuuMZdqMIOo5YSuHROoFxzMJgCShOWYR9qXhQA==}
-    peerDependencies:
-      crossws: '>=0.3.4'
-      ws: '>=8.18.1'
-    peerDependenciesMeta:
-      crossws:
-        optional: true
-      ws:
-        optional: true
-
-  '@orpc/shared@1.14.3':
-    resolution: {integrity: sha512-S7qmhZT4vchKEF6F6YduG5ub5lWnvQRVNq1/f5/kJkSnYMG5q6rWLcK7c3wYfDkeap05ZIiWTwksH+fv+yJOrw==}
-    peerDependencies:
-      '@opentelemetry/api': '>=1.9.0'
-    peerDependenciesMeta:
-      '@opentelemetry/api':
-        optional: true
-
-  '@orpc/standard-server-aws-lambda@1.14.3':
-    resolution: {integrity: sha512-/JpBBpLVcKTrALyhOB2zi5FfQi+X0uKNVkaZzGKd0iNLGLMYAQvfuWzdQRqWfnJb30yAPNVIjia+HFQgjyZBDA==}
-
-  '@orpc/standard-server-fastify@1.14.3':
-    resolution: {integrity: sha512-hDQCazvnlXR8+27qkm/uBwGd82l8UAz3LbBGmJyhDK96Cfuyx9QX5oECC21CeRZJylpbdvSuwwDlSpm6IQ0uRQ==}
-    peerDependencies:
-      fastify: '>=5.6.1'
-    peerDependenciesMeta:
-      fastify:
-        optional: true
-
-  '@orpc/standard-server-fetch@1.14.3':
-    resolution: {integrity: sha512-IHpBpyd+CTav7ycftKkQax6qrMGdpQfYKCuTLK+P3xsBl1A07UXvlpzPi/8MjyNGDCRAQkTaN7JIr/uqLL1B8A==}
-
-  '@orpc/standard-server-node@1.14.3':
-    resolution: {integrity: sha512-jDMfxmicxwJq+UT3X9Ls/ijR1Inwv07Dkz+YIFiZ2MKlp3sXVZlxhleLqH5nxlsrANmNMpIENqosSBnaCcbQjg==}
-
-  '@orpc/standard-server-peer@1.14.3':
-    resolution: {integrity: sha512-Pk2Sccy+rnMYEDZnbO23NE6gP7ltk8pmlKABE4xlD1l87I/vENip94tiTG0QqmAmKCZ20Gec9vHtuLxtUqMOjQ==}
-
-  '@orpc/standard-server@1.14.3':
-    resolution: {integrity: sha512-qO6xJy+S15Wx0elQeVojo3p5EgBLJDTEtElPcUF9o4ac8hrikYZJBeSg7qGgu/elCIrVbaFk/16Lu8P4qatPWg==}
 
   '@oxc-minify/binding-android-arm-eabi@0.112.0':
     resolution: {integrity: sha512-m7TGBR2hjsBJIN9UJ909KBoKsuogo6CuLsHKvUIBXdjI0JVHP8g4ZHeB+BJpGn5LJdeSGDfz9MWiuXrZDRzunw==}
@@ -2433,9 +2376,6 @@ packages:
   '@speed-highlight/core@1.2.15':
     resolution: {integrity: sha512-BMq1K3DsElxDWawkX6eLg9+CKJrTVGCBAWVuHXVUV2u0s2711qiChLSId6ikYPfxhdYocLNt3wWwSvDiTvFabw==}
 
-  '@standard-schema/spec@1.1.0':
-    resolution: {integrity: sha512-l2aFy5jALhniG5HgqrD6jXLi/rUWrKvqN/qJx6yoJsgKhblVd+iqqU4RCXavm/jPityDo5TCvKMnpjKnOriy0w==}
-
   '@storybook/builder-vite@10.4.0':
     resolution: {integrity: sha512-RCq8uzvTc0vhK2aN0y2Z48DJ9Q7oKXh8A5pdU3YAmkgMcX/+Vi3Ju1nmueLrGIO+tKwYGpYS/ccUtscNt92rCw==}
     peerDependencies:
@@ -3325,10 +3265,6 @@ packages:
 
   cookie-es@3.1.1:
     resolution: {integrity: sha512-UaXxwISYJPTr9hwQxMFYZ7kNhSXboMXP+Z3TRX6f1/NyaGPfuNUZOWP1pUEb75B2HjfklIYLVRfWiFZJyC6Npg==}
-
-  cookie@1.1.1:
-    resolution: {integrity: sha512-ei8Aos7ja0weRpFzJnEA9UHJ/7XQmqglbRwnf2ATjcB9Wq874VKH9kfjjirM6UhU2/E5fFYadylyhFldcqSidQ==}
-    engines: {node: '>=18'}
 
   copy-anything@4.0.5:
     resolution: {integrity: sha512-7Vv6asjS4gMOuILabD3l739tsaxFQmC+a7pLZm02zyvs8p977bL3zEgq3yDk5rn9B0PbYgIv++jmHcuUab4RhA==}
@@ -5066,9 +5002,6 @@ packages:
     resolution: {integrity: sha512-7x81NCL719oNbsq/3mh+hVrAWmFuEYUqrq/Iw3kUzH8ReypT9QQ0BLoJS7/G9k6N81XjW4qHWtjWwe/9eLy1EQ==}
     engines: {node: '>=12'}
 
-  openapi-types@12.1.3:
-    resolution: {integrity: sha512-N4YtSYJqghVu4iek2ZUvcN/0aqH1kRDuNqzcycDxhOUpg7GdvLa2F3DgS6yBNhInhv2r/6I0Flkn7CqL8+nIcw==}
-
   openid-client@6.8.4:
     resolution: {integrity: sha512-QSw0BA08piujetEwfZsHoTrDpMEha7GDZDicQqVwX4u0ChCjefvjDB++TZ8BTg76UpwhzIQgdvvfgfl3HpCSAw==}
 
@@ -5656,10 +5589,6 @@ packages:
   quick-lru@7.3.0:
     resolution: {integrity: sha512-k9lSsjl36EJdK7I06v7APZCbyGT2vMTsYSRX1Q2nbYmnkBqgUhRkAuzH08Ciotteu/PLJmIF2+tti7o3C/ts2g==}
     engines: {node: '>=18'}
-
-  radash@12.1.1:
-    resolution: {integrity: sha512-h36JMxKRqrAxVD8201FrCpyeNuUY9Y5zZwujr20fFO77tpUtGa6EZzfKw/3WaiBX95fq7+MpsuMLNdSnORAwSA==}
-    engines: {node: '>=14.18.0'}
 
   radix3@1.1.2:
     resolution: {integrity: sha512-b484I/7b8rDEdSDKckSSBA8knMpcdsXudlE/LNL639wFoHKwLbEkQFZHWEYwDC0wa0FKUcCY+GAF73Z7wxNVFA==}
@@ -8132,96 +8061,6 @@ snapshots:
       - vue-tsc
       - yaml
 
-  '@orpc/client@1.14.3':
-    dependencies:
-      '@orpc/shared': 1.14.3
-      '@orpc/standard-server': 1.14.3
-      '@orpc/standard-server-fetch': 1.14.3
-      '@orpc/standard-server-peer': 1.14.3
-    transitivePeerDependencies:
-      - '@opentelemetry/api'
-
-  '@orpc/contract@1.14.3':
-    dependencies:
-      '@orpc/client': 1.14.3
-      '@orpc/shared': 1.14.3
-      '@standard-schema/spec': 1.1.0
-      openapi-types: 12.1.3
-    transitivePeerDependencies:
-      - '@opentelemetry/api'
-
-  '@orpc/interop@1.14.3': {}
-
-  '@orpc/server@1.14.3(crossws@0.4.5(srvx@0.11.15))(ws@8.20.1)':
-    dependencies:
-      '@orpc/client': 1.14.3
-      '@orpc/contract': 1.14.3
-      '@orpc/interop': 1.14.3
-      '@orpc/shared': 1.14.3
-      '@orpc/standard-server': 1.14.3
-      '@orpc/standard-server-aws-lambda': 1.14.3
-      '@orpc/standard-server-fastify': 1.14.3
-      '@orpc/standard-server-fetch': 1.14.3
-      '@orpc/standard-server-node': 1.14.3
-      '@orpc/standard-server-peer': 1.14.3
-      cookie: 1.1.1
-    optionalDependencies:
-      crossws: 0.4.5(srvx@0.11.15)
-      ws: 8.20.1
-    transitivePeerDependencies:
-      - '@opentelemetry/api'
-      - fastify
-
-  '@orpc/shared@1.14.3':
-    dependencies:
-      radash: 12.1.1
-      type-fest: 5.5.0
-
-  '@orpc/standard-server-aws-lambda@1.14.3':
-    dependencies:
-      '@orpc/shared': 1.14.3
-      '@orpc/standard-server': 1.14.3
-      '@orpc/standard-server-fetch': 1.14.3
-      '@orpc/standard-server-node': 1.14.3
-    transitivePeerDependencies:
-      - '@opentelemetry/api'
-
-  '@orpc/standard-server-fastify@1.14.3':
-    dependencies:
-      '@orpc/shared': 1.14.3
-      '@orpc/standard-server': 1.14.3
-      '@orpc/standard-server-node': 1.14.3
-    transitivePeerDependencies:
-      - '@opentelemetry/api'
-
-  '@orpc/standard-server-fetch@1.14.3':
-    dependencies:
-      '@orpc/shared': 1.14.3
-      '@orpc/standard-server': 1.14.3
-    transitivePeerDependencies:
-      - '@opentelemetry/api'
-
-  '@orpc/standard-server-node@1.14.3':
-    dependencies:
-      '@orpc/shared': 1.14.3
-      '@orpc/standard-server': 1.14.3
-      '@orpc/standard-server-fetch': 1.14.3
-    transitivePeerDependencies:
-      - '@opentelemetry/api'
-
-  '@orpc/standard-server-peer@1.14.3':
-    dependencies:
-      '@orpc/shared': 1.14.3
-      '@orpc/standard-server': 1.14.3
-    transitivePeerDependencies:
-      - '@opentelemetry/api'
-
-  '@orpc/standard-server@1.14.3':
-    dependencies:
-      '@orpc/shared': 1.14.3
-    transitivePeerDependencies:
-      - '@opentelemetry/api'
-
   '@oxc-minify/binding-android-arm-eabi@0.112.0':
     optional: true
 
@@ -9065,8 +8904,6 @@ snapshots:
   '@sindresorhus/merge-streams@4.0.0': {}
 
   '@speed-highlight/core@1.2.15': {}
-
-  '@standard-schema/spec@1.1.0': {}
 
   '@storybook/builder-vite@10.4.0(esbuild@0.28.0)(rollup@4.60.4)(storybook@10.4.0(@emnapi/core@1.10.0)(@emnapi/runtime@1.10.0)(@testing-library/dom@10.4.1)(react-dom@19.2.5(react@19.2.5))(react@19.2.5))(vite@8.0.13)':
     dependencies:
@@ -10248,8 +10085,6 @@ snapshots:
   cookie-es@2.0.1: {}
 
   cookie-es@3.1.1: {}
-
-  cookie@1.1.1: {}
 
   copy-anything@4.0.5:
     dependencies:
@@ -12233,8 +12068,6 @@ snapshots:
       is-docker: 2.2.1
       is-wsl: 2.2.0
 
-  openapi-types@12.1.3: {}
-
   openid-client@6.8.4:
     dependencies:
       jose: 6.2.2
@@ -12994,8 +12827,6 @@ snapshots:
   quick-lru@5.1.1: {}
 
   quick-lru@7.3.0: {}
-
-  radash@12.1.1: {}
 
   radix3@1.1.2: {}
 

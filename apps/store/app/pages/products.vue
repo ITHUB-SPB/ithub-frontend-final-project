@@ -7,8 +7,6 @@ import { useCartLocal } from '~/stores/cartLocal';
 import { useCart } from '~/stores/cart';
 import { productsSchema } from '~~/server/schema';
 
-const { $client } = useNuxtApp()
-
 type Product = z.infer<typeof productsSchema>
 
 const { loggedIn, session } = useUserSession()
@@ -20,9 +18,12 @@ const cart = loggedIn ? useCart() : useCartLocal()
 const activePage = ref(1)
 const pageQuantity = ref(3)
 
-const products = await $client.products.list({
-  limit: 8,
-  offset: (activePage.value - 1) * 8
+const { data: products } = await useFetch('/api/products', {
+  method: 'get',
+  query: {
+    limit: 8,
+    offset: (activePage.value - 1) * 8
+  }
 })
 
 const buyNow = async (product: Product) => {
@@ -44,11 +45,7 @@ const buyNow = async (product: Product) => {
         :currentPrice="product.currentPrice" :id="product.id" :inCart="cart.hasProduct(product.id)" :wide="false"
         @buy-now="buyNow(product)" />
     </section>
-    <Pagination 
-      :active-page="activePage" 
-      :page-quantity="pageQuantity" 
-      @page-change="value => activePage = value"
-    />
+    <Pagination :active-page="activePage" :page-quantity="pageQuantity" @page-change="value => activePage = value" />
   </main>
 </template>
 

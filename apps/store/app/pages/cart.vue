@@ -6,14 +6,11 @@ import { useCart } from '~/stores/cart';
 
 import airpodsMaxImage from '~/assets/images/products/airpods_max.png'
 
-const { $client } = useNuxtApp()
-
 const { user, loggedIn } = useUserSession()
 
 const cart = loggedIn ? useCart() : useCartLocal()
 
 // TODO уточнять список интересующих продуктов
-const products = await $client.products.list({})
 
 // const {
 //   execute, pending, reset, error: mutationError

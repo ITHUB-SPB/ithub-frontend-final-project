@@ -1,5 +1,4 @@
 import z from "zod"
-import { ORPCError } from "@orpc/server"
 
 import { base } from "./base"
 import { productsSchema } from "../schema"

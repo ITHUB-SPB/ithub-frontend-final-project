@@ -9,7 +9,6 @@ export default defineNuxtConfig({
   pinia: {
     storesDirs: ['./app/stores/**']
   },
-  ssr: false,
   vite: {
     optimizeDeps: {
       include: []

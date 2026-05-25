@@ -7,8 +7,6 @@ import { useCartLocal } from '~/stores/cartLocal';
 import { useCart } from '~/stores/cart';
 import { productsSchema } from '~~/server/schema';
 
-// const { $client } = useNuxtApp()
-
 type Product = z.infer<typeof productsSchema>
 
 const { loggedIn, session } = useUserSession()
@@ -17,15 +15,12 @@ const user = session.value?.user as string
 
 const cart = useCartLocal()
 
-// const products = await useFetch($client.products.list({}))
 const { data: products } = await useFetch('/api/products', {
   query: {
     limit: 8,
     offset: 0
   }
 })
-
-console.log(products)
 
 const buyNow = async (product: Product) => {
   console.log(product)
