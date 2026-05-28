@@ -36,6 +36,7 @@ const rangeStyle = computed(() => {
         <div class="values">
             <Field 
                 :modelValue="minValue"
+                name="priceMin"
                 @update:modelValue="$event => (minValue = $event)"
                 label="From" 
                 type="number" 
@@ -44,6 +45,7 @@ const rangeStyle = computed(() => {
             />
             <Field 
                 :modelValue="maxValue"
+                name="priceMax"
                 @update:modelValue="$event => (maxValue = $event)"
                 justify="end" 
                 label="To" 

@@ -1,5 +1,5 @@
 <script lang="ts" setup>
-import { ProductCard, Pagination, Slider } from '@repo/ui';
+import { ProductCard, Pagination, Slider, Button } from '@repo/ui';
 
 import { useCartLocal } from '~/stores/cartLocal';
 import { useCart } from '~/stores/cart';
@@ -12,13 +12,33 @@ const cart = loggedIn ? useCart() : useCartLocal()
 const activePage = ref(1)
 const offset = computed(() => (activePage.value - 1) * 8)
 
+const priceFilter = ref<[
+  number | null,
+  number | null
+]>([null, null])
+
+const filters = computed(() => [
+  { field: 'price', value: priceFilter.value }
+])
+
 const { data } = await useFetch('/api/products', {
   method: 'get',
   query: {
     limit: 8,
-    offset
+    offset,
+    filters
   }
 })
+
+const applyFilters = (event: SubmitEvent) => {
+  const form = event.target as HTMLFormElement
+  const formData = new FormData(form)
+
+  priceFilter.value = [
+    Number(formData.get('priceMin')),
+    Number(formData.get('priceMax')),
+  ]
+}
 
 const buyNow = async (product: Product) => {
   console.log(product)
@@ -37,8 +57,11 @@ const buyNow = async (product: Product) => {
     <div v-if="!data">loading...</div>
 
     <section v-else class="products-grid">
-      <Slider class="products-slider" :min="Math.min(...data.items.map(item => item.currentPrice))"
-        :max="Math.max(...data.items.map(item => item.currentPrice))" />
+      <form class="products-filters" method="post" @submit.prevent="applyFilters">
+        <Slider class="products-slider" :min="Math.min(...data.items.map(item => item.currentPrice))"
+          :max="Math.max(...data.items.map(item => item.currentPrice))" />
+        <Button label="Apply" type="submit " />
+      </form>
 
       <ProductCard class="product-item" v-for="product in data.items" :key="product.id" :title="product.title"
         :currentPrice="product.currentPrice" :id="product.id" :inCart="cart.hasProduct(product.id)" :wide="false"
@@ -64,7 +87,7 @@ const buyNow = async (product: Product) => {
   padding: 56px 16px;
 }
 
-.products-slider,
+.products-filters,
 .products-pagination {
   grid-column-start: span 2;
 }
