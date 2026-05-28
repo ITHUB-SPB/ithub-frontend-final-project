@@ -6,8 +6,7 @@
   "scripts": {
     "dev": "tsx src/index.ts",
     "start": "node dist/index.js",
-    "build": "tsc",
-    "install": "pnpm dlx camoufox fetch"
+    "build": "tsc"
   },
   "dependencies": {
     "@crawlee/browser-pool": "^3.16.0",

@@ -1,28 +1,22 @@
 <script lang="ts" setup>
-import z from 'zod';
-
-import { ProductCard, Pagination } from '@repo/ui';
+import { ProductCard, Pagination, Slider } from '@repo/ui';
 
 import { useCartLocal } from '~/stores/cartLocal';
 import { useCart } from '~/stores/cart';
-import { productsSchema } from '~~/server/schema';
+import type { Product } from '~~/shared/types/products';
 
-type Product = z.infer<typeof productsSchema>
-
-const { loggedIn, session } = useUserSession()
-
-const user = session.value?.user as string
+const { loggedIn } = useUserSession()
 
 const cart = loggedIn ? useCart() : useCartLocal()
 
 const activePage = ref(1)
-const pageQuantity = ref(3)
+const offset = computed(() => (activePage.value - 1) * 8)
 
-const { data: products } = await useFetch('/api/products', {
+const { data } = await useFetch('/api/products', {
   method: 'get',
   query: {
     limit: 8,
-    offset: (activePage.value - 1) * 8
+    offset
   }
 })
 
@@ -33,19 +27,27 @@ const buyNow = async (product: Product) => {
     currentPrice: product.currentPrice,
     title: product.title,
     quantity: 1
-  }, user || "anonymous")
+  })
 }
 
 </script>
 
 <template>
   <main class="page">
-    <section class="products-grid">
-      <ProductCard class="product-item" v-for="product in products" :key="product.id" :title="product.title"
+    <div v-if="!data">loading...</div>
+
+    <section v-else class="products-grid">
+      <Slider class="products-slider" :min="Math.min(...data.items.map(item => item.currentPrice))"
+        :max="Math.max(...data.items.map(item => item.currentPrice))" />
+
+      <ProductCard class="product-item" v-for="product in data.items" :key="product.id" :title="product.title"
         :currentPrice="product.currentPrice" :id="product.id" :inCart="cart.hasProduct(product.id)" :wide="false"
         @buy-now="buyNow(product)" />
+
+      <Pagination class="products-pagination" :active-page="activePage" :page-quantity="Math.ceil(data.total / 8)"
+        @page-change="value => activePage = value" />
     </section>
-    <Pagination :active-page="activePage" :page-quantity="pageQuantity" @page-change="value => activePage = value" />
+
   </main>
 </template>
 
@@ -60,5 +62,10 @@ const buyNow = async (product: Product) => {
   grid-template-rows: repeat(4, max-content);
   gap: 16px;
   padding: 56px 16px;
+}
+
+.products-slider,
+.products-pagination {
+  grid-column-start: span 2;
 }
 </style>

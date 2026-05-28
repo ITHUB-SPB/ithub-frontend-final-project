@@ -16,5 +16,12 @@ export default defineEventHandler(async (event) => {
         productsSchema.parse
     )
 
-    return await db.selectFrom('products').selectAll().limit(limit).offset(offset).execute()
+    const total = (await db.selectFrom('products').selectAll().execute()).length
+
+    const items = await db.selectFrom('products').selectAll().limit(limit).offset(offset).execute()
+
+    return {
+        items,
+        total
+    }
 })
