@@ -1,16 +1,12 @@
 {
-	"extends": "@tsconfig/node24",
-	"compilerOptions": {
-		"module": "NodeNext",
-		"moduleResolution": "NodeNext",
-		"target": "ES2022",
-		"outDir": "dist",
-		"noUnusedLocals": false,
-		"lib": [
-			"DOM"
-		]
-	},
-	"include": [
-		"./src/**/*"
-	]
+  "extends": "@tsconfig/node24",
+  "compilerOptions": {
+    "module": "NodeNext",
+    "moduleResolution": "NodeNext",
+    "target": "ES2022",
+    "outDir": "dist",
+    "noUnusedLocals": false,
+    "lib": ["DOM"]
+  },
+  "include": ["./src/**/*"]
 }

@@ -1,39 +1,38 @@
-import type { PlaywrightCrawlerOptions } from 'crawlee';
-import { BrowserName, DeviceCategory, OperatingSystemsName } from '@crawlee/browser-pool';
-import { launchOptions } from 'camoufox-js';
-import { firefox } from 'playwright-extra';
-
+import type { PlaywrightCrawlerOptions } from "crawlee";
+import { BrowserName, DeviceCategory, OperatingSystemsName } from "@crawlee/browser-pool";
+import { launchOptions } from "camoufox-js";
+import { firefox } from "playwright-extra";
 
 export const crawlerDefault: PlaywrightCrawlerOptions = {
-    postNavigationHooks: [
-        async ({ handleCloudflareChallenge }) => {
-            await handleCloudflareChallenge();
-        },
-    ],
-    browserPoolOptions: {
-        useFingerprints: true,
-        fingerprintOptions: {
-            fingerprintGeneratorOptions: {
-                browsers: [
-                    {
-                        name: BrowserName.firefox,
-                        minVersion: 96,
-                    },
-                ],
-                devices: [DeviceCategory.desktop],
-                operatingSystems: [OperatingSystemsName.windows],
-            },
-        },
+  postNavigationHooks: [
+    async ({ handleCloudflareChallenge }) => {
+      await handleCloudflareChallenge();
     },
-    launchContext: {
-        launcher: firefox,
-        launchOptions: await launchOptions({
-            headless: true,
-        }),
+  ],
+  browserPoolOptions: {
+    useFingerprints: true,
+    fingerprintOptions: {
+      fingerprintGeneratorOptions: {
+        browsers: [
+          {
+            name: BrowserName.firefox,
+            minVersion: 96,
+          },
+        ],
+        devices: [DeviceCategory.desktop],
+        operatingSystems: [OperatingSystemsName.windows],
+      },
     },
-    failedRequestHandler({ request, log }) {
-        log.error(`Request ${request.url} failed too many times.`);
-    },
-    maxRequestsPerCrawl: 10,
-    headless: true,
+  },
+  launchContext: {
+    launcher: firefox,
+    launchOptions: await launchOptions({
+      headless: true,
+    }),
+  },
+  failedRequestHandler({ request, log }) {
+    log.error(`Request ${request.url} failed too many times.`);
+  },
+  maxRequestsPerCrawl: 10,
+  headless: true,
 };

@@ -1,34 +1,34 @@
-import { computed } from 'vue';
-import type { Meta, StoryObj } from '@storybook/vue3-vite';
+import { computed } from "vue";
+import type { Meta, StoryObj } from "@storybook/vue3-vite";
 
-import Logo from '../components/Logo.vue';
+import Logo from "../components/Logo.vue";
 
 const meta = {
-  title: 'Atoms/Logo',
+  title: "Atoms/Logo",
   component: Logo,
   // This component will have an automatically generated docsPage entry: https://storybook.js.org/docs/writing-docs/autodocs
-  tags: ['autodocs'],
+  tags: ["autodocs"],
   argTypes: {
-    color: { control: 'select', options: ['black', 'white'] },
+    color: { control: "select", options: ["black", "white"] },
   },
   decorators: [
     (story, { args }) => {
       return {
         components: { story },
-        setup() {          
+        setup() {
           const style = computed(() => ({
-            backgroundColor: args.color === 'black' ? 'white' : 'black',
-            width: 'max-content'
+            backgroundColor: args.color === "black" ? "white" : "black",
+            width: "max-content",
           }));
- 
+
           return { style };
         },
-        template: '<div :style="style"><story /></div>'
-      }
-    }
+        template: '<div :style="style"><story /></div>',
+      };
+    },
   ],
   args: {
-    color: 'black',
+    color: "black",
   },
 } satisfies Meta<typeof Logo>;
 
@@ -38,12 +38,12 @@ type Story = StoryObj<typeof meta>;
 
 export const Black: Story = {
   args: {
-    color: 'black'
+    color: "black",
   },
 };
 
 export const White: Story = {
   args: {
-    color: 'white'
+    color: "white",
   },
 };

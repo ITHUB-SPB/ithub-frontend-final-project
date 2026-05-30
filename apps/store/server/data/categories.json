@@ -1,32 +1,32 @@
 [
-    {
-        "title": "Phones",
-        "value": "phones",
-        "active": true
-    },
-    {
-        "title": "Smart Watches",
-        "value": "watch",
-        "active": true
-    },
-    {
-        "title": "Cameras",
-        "value": "cameras",
-        "active": false
-    },
-    {
-        "title": "Headphones",
-        "value": "headphones",
-        "active": false
-    },
-    {
-        "title": "Computers",
-        "value": "computers",
-        "active": false
-    },
-    {
-        "title": "Gaming",
-        "value": "gaming",
-        "active": false
-    }
+  {
+    "title": "Phones",
+    "value": "phones",
+    "active": true
+  },
+  {
+    "title": "Smart Watches",
+    "value": "watch",
+    "active": true
+  },
+  {
+    "title": "Cameras",
+    "value": "cameras",
+    "active": false
+  },
+  {
+    "title": "Headphones",
+    "value": "headphones",
+    "active": false
+  },
+  {
+    "title": "Computers",
+    "value": "computers",
+    "active": false
+  },
+  {
+    "title": "Gaming",
+    "value": "gaming",
+    "active": false
+  }
 ]

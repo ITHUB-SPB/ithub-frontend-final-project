@@ -1,36 +1,36 @@
 <script lang="ts" setup>
-import { ProductCard } from '@repo/ui'
+import { ProductCard } from "@repo/ui";
 
-import { useCartLocal } from '~/stores/cartLocal';
-import { useCart } from '~/stores/cart';
+import { useCartLocal } from "~/stores/cartLocal";
+import { useCart } from "~/stores/cart";
 
-import airpodsMaxImage from '~/assets/images/products/airpods_max.png'
+import airpodsMaxImage from "~/assets/images/products/airpods_max.png";
 
-const { user, loggedIn } = useUserSession()
+const { user, loggedIn } = useUserSession();
 
-const cart = loggedIn ? useCart() : useCartLocal()
-
-// TODO уточнять список интересующих продуктов
-
-// const {
-//   execute, pending, reset, error: mutationError
-// } = useConvexMutation(api.brands.create)
-
+const cart = loggedIn ? useCart() : useCartLocal();
 </script>
 
 <template>
   <main class="page">
     <h2 class="page-title">Shopping Cart</h2>
 
-    <!-- <p v-if="error || mutationError">
-      {{ error?.message || mutationError?.message }}
-    </p> -->
-
-    <section class="products-grid">
-      <ProductCard class="product-item" v-for="product in cart.items" :title="product.title"
-        :currentPrice="product.currentPrice" :id="product.id" :key="product.id" :image="airpodsMaxImage" wide />
+    <section class="products-grid" v-if="cart?.items?.length">
+      <ProductCard
+        class="product-item"
+        v-for="product in cart.items"
+        :title="product.title"
+        :currentPrice="product.currentPrice"
+        :id="product.id"
+        :key="product.id"
+        :image="airpodsMaxImage"
+        wide
+      />
     </section>
 
+    <section v-else>
+      <p>You don't have any products in cart yet...</p>
+    </section>
   </main>
 </template>
 

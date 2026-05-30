@@ -1,37 +1,30 @@
 <script lang="ts" setup>
-import z from 'zod';
+import { ProductCard } from "@repo/ui";
+import Featured from "~/components/Featured.vue";
+import { useCartLocal } from "~/stores/cartLocal";
+import { useCart } from "~/stores/cart";
 
-import { ProductCard } from '@repo/ui';
-import Featured from '~/components/Featured.vue';
-import { useCartLocal } from '~/stores/cartLocal';
-import { useCart } from '~/stores/cart';
-import { productsSchema } from '~~/server/schema';
+const { loggedIn } = useUserSession();
 
-type Product = z.infer<typeof productsSchema>
+const cart = loggedIn ? useCart() : useCartLocal();
 
-const { loggedIn, session } = useUserSession()
-
-const user = session.value?.user as string
-
-const cart = useCartLocal()
-
-const { data: products } = await useFetch('/api/products', {
+const { data: products, execute: refetch } = await useFetch("/api/products", {
   query: {
     limit: 8,
-    offset: 0
-  }
-})
+    offset: 0,
+  },
+});
 
 const buyNow = async (product: Product) => {
-  console.log(product)
   await cart.addProduct({
     id: product.id,
     currentPrice: product.currentPrice,
     title: product.title,
-    quantity: 1
-  }, user || "anonymous")
-}
+    quantity: 1,
+  });
 
+  await refetch();
+};
 </script>
 
 <template>
@@ -41,9 +34,18 @@ const buyNow = async (product: Product) => {
     <Featured />
 
     <section class="products-grid" v-if="products">
-      <ProductCard class="product-item" v-for="product in products" :key="product.id" :title="product.title"
-        :currentPrice="product.currentPrice" :id="product.id" :inCart="cart.hasProduct(product.id)" :wide="false"
-        @buy-now="buyNow(product)" />
+      <ProductCard
+        class="product-item"
+        v-for="product in products.items"
+        :key="product.id"
+        :title="product.title"
+        :currentPrice="product.currentPrice"
+        :id="product.id"
+        :inCart="cart.hasProduct(product.id)"
+        :wide="false"
+        @buy-now="buyNow(product)"
+        @go-to-cart="navigateTo('/cart')"
+      />
     </section>
   </main>
 </template>

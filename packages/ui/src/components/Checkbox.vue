@@ -1,5 +1,5 @@
 <script lang="ts" setup>
-import { ref } from 'vue';
+import { ref } from "vue";
 
 const checked = ref<boolean>(false);
 
@@ -9,19 +9,18 @@ const props = withDefaults(
      * The label of the checkbox
      */
     label: string;
-     /**
+    /**
      * onChange handler
      */
     onChange?: (event: EventInit) => void;
   }>(),
-  {}
+  {},
 );
-
 </script>
 
 <template>
   <label>
-    <input type="checkbox" v-model="checked"/>
+    <input type="checkbox" v-model="checked" />
     {{ props.label }}
     <slot></slot>
   </label>

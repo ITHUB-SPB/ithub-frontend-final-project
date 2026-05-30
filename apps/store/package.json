@@ -1,7 +1,7 @@
 {
   "name": "store",
-  "type": "module",
   "private": true,
+  "type": "module",
   "scripts": {
     "build": "nuxt build",
     "dev": "nuxt dev --dotenv .env.local",
@@ -14,6 +14,7 @@
   "dependencies": {
     "@pinia/nuxt": "^0.11.3",
     "@repo/ui": "workspace:*",
+    "@vueuse/core": "^14.3.0",
     "better-sqlite3": "12.2.0",
     "kysely": "^0.29.2",
     "nuxt": "4.3.1",

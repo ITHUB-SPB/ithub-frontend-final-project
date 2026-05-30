@@ -1,20 +1,16 @@
-import { type NuxtConfig } from "nuxt/schema"
-// import { nodePolyfills } from 'vite-plugin-node-polyfills'
+import { type NuxtConfig } from "nuxt/schema";
 
 // https://nuxt.com/docs/api/configuration/nuxt-config
 export default defineNuxtConfig({
-  compatibilityDate: '2025-07-15',
+  compatibilityDate: "2025-07-15",
   devtools: { enabled: false },
-  modules: ['@pinia/nuxt', 'pinia-plugin-persistedstate/nuxt', 'nuxt-auth-utils'],
+  modules: ["@pinia/nuxt", "pinia-plugin-persistedstate/nuxt", "nuxt-auth-utils"],
   pinia: {
-    storesDirs: ['./app/stores/**']
+    storesDirs: ["./app/stores/**"],
   },
   vite: {
     optimizeDeps: {
-      include: []
+      include: [],
     },
-    plugins: [
-      // nodePolyfills()
-    ],
   },
-} as NuxtConfig)
+} as NuxtConfig);

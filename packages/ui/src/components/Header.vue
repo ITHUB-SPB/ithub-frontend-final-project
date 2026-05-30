@@ -20,9 +20,9 @@ const emit = defineEmits<{
 }>();
 
 const props = defineProps<{
-  loggedIn: boolean
-  cartQuantity: number
-}>()
+  loggedIn: boolean;
+  cartQuantity: number;
+}>();
 </script>
 
 <template>
@@ -34,7 +34,12 @@ const props = defineProps<{
       </template>
     </Field>
     <div class="icons">
-      <Icon v-if="props.loggedIn" class="favorites" variant="favorites" @click="emit('favoritesClick')" />
+      <Icon
+        v-if="props.loggedIn"
+        class="favorites"
+        variant="favorites"
+        @click="emit('favoritesClick')"
+      />
       <section class="cart-wrapper" :class="{ 'cart-wrapper-empty': !props.cartQuantity }">
         <Icon variant="cart" @click="emit('cartClick')" />
         <span v-if="props.cartQuantity > 0" class="cart-label">{{ props.cartQuantity }}</span>
@@ -68,7 +73,7 @@ header {
   align-items: center;
 }
 
-.icons>button {
+.icons > button {
   height: 32px;
   padding: 0 8px;
 }
@@ -87,6 +92,8 @@ header {
   position: relative;
   cursor: pointer;
   user-select: none;
+  pointer-events: all;
+  opacity: 1;
 }
 
 .cart-wrapper-empty {

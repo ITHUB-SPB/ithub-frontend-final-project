@@ -1,14 +1,14 @@
-import type { Meta, StoryObj } from '@storybook/vue3-vite';
-import { fn } from 'storybook/test';
+import type { Meta, StoryObj } from "@storybook/vue3-vite";
+import { fn } from "storybook/test";
 
-import Checkbox from '@/components/Checkbox.vue';
+import Checkbox from "@/components/Checkbox.vue";
 
 const meta = {
-  title: 'Atoms/Checkbox',
+  title: "Atoms/Checkbox",
   component: Checkbox,
-  tags: ['autodocs'],
+  tags: ["autodocs"],
   argTypes: {
-    label: { control: 'text' },
+    label: { control: "text" },
   },
   args: {
     label: "Label",
@@ -29,7 +29,7 @@ export const WithSlot: Story = {
         <Checkbox label="Apple">
             <span>120</span>
         </Checkbox>
-      `
-    })
-  ]
+      `,
+    }),
+  ],
 };

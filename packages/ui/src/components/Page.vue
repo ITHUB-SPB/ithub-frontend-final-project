@@ -61,7 +61,7 @@
   color: #333;
   font-size: 14px;
   line-height: 24px;
-  font-family: 'Nunito Sans', 'Helvetica Neue', Helvetica, Arial, sans-serif;
+  font-family: "Nunito Sans", "Helvetica Neue", Helvetica, Arial, sans-serif;
 }
 
 .storybook-page h2 {
@@ -125,19 +125,19 @@
 </style>
 
 <script lang="ts" setup>
-import { ref } from 'vue';
+import { ref } from "vue";
 
-import MyHeader from '../components/Header.vue';
+import MyHeader from "../components/Header.vue";
 
 const user = ref<{ name: string } | null>(null);
 
 const onLogin = () => {
-  user.value = { name: 'Jane Doe' };
+  user.value = { name: "Jane Doe" };
 };
 const onLogout = () => {
   user.value = null;
 };
 const onCreateAccount = () => {
-  user.value = { name: 'Jane Doe' };
+  user.value = { name: "Jane Doe" };
 };
 </script>

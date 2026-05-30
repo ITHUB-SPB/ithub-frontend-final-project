@@ -1,69 +1,70 @@
-import path from 'node:path'
-import { readdir, readFile } from 'node:fs/promises';
-import { db } from './connection';
-
+import path from "node:path";
+import { readdir, readFile } from "node:fs/promises";
+import { db } from "./connection";
 
 const loadCharacteristics = async () => {
-  const dataDir = path.join(import.meta.filename, '..', '..', 'data')
-  const filePath = path.join(dataDir, 'characteristics.json')
-  const fileContent = await readFile(filePath, { encoding: 'utf-8' })
-  return JSON.parse(fileContent)
-}
+  const dataDir = path.join(import.meta.filename, "..", "..", "data");
+  const filePath = path.join(dataDir, "characteristics.json");
+  const fileContent = await readFile(filePath, { encoding: "utf-8" });
+  return JSON.parse(fileContent);
+};
 
 const loadCategories = async () => {
-  const dataDir = path.join(import.meta.filename, '..', '..', 'data')
-  const filePath = path.join(dataDir, 'categories.json')
-  const fileContent = await readFile(filePath, { encoding: 'utf-8' })
-  return JSON.parse(fileContent)
-}
+  const dataDir = path.join(import.meta.filename, "..", "..", "data");
+  const filePath = path.join(dataDir, "categories.json");
+  const fileContent = await readFile(filePath, { encoding: "utf-8" });
+  return JSON.parse(fileContent);
+};
 
 const loadProducts = async () => {
-  const dataDir = path.join(import.meta.filename, '..', '..', 'data')
+  const dataDir = path.join(import.meta.filename, "..", "..", "data");
 
-  const phonesFiles = await readdir(path.join(dataDir, 'phones'))
-  const watchesFiles = await readdir(path.join(dataDir, 'watch'))
+  const phonesFiles = await readdir(path.join(dataDir, "phones"));
+  const watchesFiles = await readdir(path.join(dataDir, "watch"));
 
-  const phonesData = []
-  const watchesData = []
+  const phonesData = [];
+  const watchesData = [];
 
   for (const filename of phonesFiles) {
-    const filePath = path.join(import.meta.filename, '..', '..', 'data', 'phones', filename)
+    const filePath = path.join(import.meta.filename, "..", "..", "data", "phones", filename);
 
-    const fileContent = await readFile(filePath, { encoding: 'utf-8' })
-    phonesData.push(JSON.parse(fileContent))
+    const fileContent = await readFile(filePath, { encoding: "utf-8" });
+    phonesData.push(JSON.parse(fileContent));
   }
 
   for (const filename of watchesFiles) {
-    const filePath = path.join(import.meta.filename, '..', '..', 'data', 'watch', filename)
+    const filePath = path.join(import.meta.filename, "..", "..", "data", "watch", filename);
 
-    const fileContent = await readFile(filePath, { encoding: 'utf-8' })
-    watchesData.push(JSON.parse(fileContent))
+    const fileContent = await readFile(filePath, { encoding: "utf-8" });
+    watchesData.push(JSON.parse(fileContent));
   }
 
   return {
     phonesData,
-    watchesData
-  }
-}
-
+    watchesData,
+  };
+};
 
 export const seedData = async () => {
-  const characteristicsData = await loadCharacteristics()
-  const categoriesData = await loadCategories()
+  const characteristicsData = await loadCharacteristics();
+  const categoriesData = await loadCategories();
 
   for (const { title, measure } of characteristicsData) {
-    await db.insertInto('characteristics').values({ title, measure }).execute()
+    await db.insertInto("characteristics").values({ title, measure }).execute();
   }
 
   for (const { title, value, active } of categoriesData) {
-    await db.insertInto('categories').values({
-      title,
-      value,
-      active: active ? 1 : 0
-    }).execute()
+    await db
+      .insertInto("categories")
+      .values({
+        title,
+        value,
+        active: active ? 1 : 0,
+      })
+      .execute();
   }
 
-  const { phonesData, watchesData } = await loadProducts()
+  const { phonesData, watchesData } = await loadProducts();
 
   for (const product of [...phonesData, ...watchesData]) {
     const {
@@ -73,51 +74,67 @@ export const seedData = async () => {
       category: categoryValue,
       brand: brandTitle,
       ...characteristics
-    } = product
+    } = product;
 
     let brandId: number;
 
-    const brand = await db.selectFrom('brands').selectAll().where('brands.title', '==', brandTitle).executeTakeFirst()
+    const brand = await db
+      .selectFrom("brands")
+      .selectAll()
+      .where("brands.title", "==", brandTitle)
+      .executeTakeFirst();
 
     if (brand) {
-      brandId = brand.id
+      brandId = brand.id;
     } else {
-      const createdBrand = await db.insertInto('brands').values({ title: brandTitle }).returning('brands.id').executeTakeFirst()
-      brandId = createdBrand!.id
+      const createdBrand = await db
+        .insertInto("brands")
+        .values({ title: brandTitle })
+        .returning("brands.id")
+        .executeTakeFirst();
+      brandId = createdBrand!.id;
     }
 
-    const category = await db.selectFrom('categories').selectAll().where('categories.value', '==', categoryValue).executeTakeFirstOrThrow()
+    const category = await db
+      .selectFrom("categories")
+      .selectAll()
+      .where("categories.value", "==", categoryValue)
+      .executeTakeFirstOrThrow();
 
-    const { id: productId } = await db.insertInto('products').values({
-      brandId,
-      categoryId: category.id,
-      currentPrice: rawPrice,
-      rawPrice,
-      title,
-      description
-    }).returning('products.id').executeTakeFirstOrThrow()
+    const { id: productId } = await db
+      .insertInto("products")
+      .values({
+        brandId,
+        categoryId: category.id,
+        currentPrice: rawPrice,
+        rawPrice,
+        title,
+        description,
+      })
+      .returning("products.id")
+      .executeTakeFirstOrThrow();
 
     for (const charTitle in characteristics) {
       const characteristic = await db
-        .selectFrom('characteristics')
-        .select(['id'])
-        .where('characteristics.title', '==', charTitle)
-        .executeTakeFirst()
+        .selectFrom("characteristics")
+        .select(["id"])
+        .where("characteristics.title", "==", charTitle)
+        .executeTakeFirst();
 
       if (!characteristic?.id) {
-        continue
+        continue;
       }
 
       await db
-        .insertInto('productsCharacteristics')
+        .insertInto("productsCharacteristics")
         .values({
           productId,
           characteristicId: characteristic.id,
-          value: String(characteristics[charTitle])
+          value: String(characteristics[charTitle]),
         })
-        .execute()
+        .execute();
     }
   }
 };
 
-await seedData()
+await seedData();

@@ -1,19 +1,22 @@
-import type { Meta, StoryObj } from '@storybook/vue3-vite';
+import type { Meta, StoryObj } from "@storybook/vue3-vite";
 
-import DetailCard from '@/components/DetailCard.vue';
+import DetailCard from "@/components/DetailCard.vue";
 
 const meta = {
-    title: 'Molecules/DetailCard',
+  title: "Molecules/DetailCard",
   component: DetailCard,
-  tags: ['autodocs'],
+  tags: ["autodocs"],
   args: {
-    variant: 'cpuCores',
-    value: '4'
+    variant: "cpuCores",
+    value: "4",
   },
   argTypes: {
-    variant: { control: 'select', options: ["screenSize", "cpu", "cpuCores", "mainCamera", "frontCamera", "battery"] },
-    value: { control: 'text' }
-  }
+    variant: {
+      control: "select",
+      options: ["screenSize", "cpu", "cpuCores", "mainCamera", "frontCamera", "battery"],
+    },
+    value: { control: "text" },
+  },
 } satisfies Meta<typeof DetailCard>;
 
 export default meta;

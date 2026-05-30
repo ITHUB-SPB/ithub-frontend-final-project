@@ -1,6 +1,6 @@
 <script lang="ts" setup>
-import { computed } from 'vue';
-import Icon from './Icon.vue';
+import { computed } from "vue";
+import Icon from "./Icon.vue";
 
 const props = withDefaults(
   defineProps<{
@@ -15,7 +15,7 @@ const props = withDefaults(
     /**
      * size of the button
      */
-    variant?: 'fill' | 'stroke';
+    variant?: "fill" | "stroke";
     /**
      * background color of the button
      */
@@ -25,16 +25,15 @@ const props = withDefaults(
      */
     icon?: "twitter" | "close" | "toEdit";
   }>(),
-  { small: false, variant: 'fill', color: "white" }
+  { small: false, variant: "fill", color: "white" },
 );
 
 const classes = computed(() => ({
-  'button': true,
-  'button--small': props.small,
-  [`button--${props.variant || 'fill'}`]: true,
-  [`button--${props.color || 'white'}`]: true,
+  button: true,
+  "button--small": props.small,
+  [`button--${props.variant || "fill"}`]: true,
+  [`button--${props.color || "white"}`]: true,
 }));
-
 </script>
 
 <template>
@@ -62,7 +61,7 @@ const classes = computed(() => ({
   max-width: 150px;
   font-size: 16px;
   gap: 8px;
-  font-family: 'Nunito Sans', 'Helvetica Neue', Helvetica, Arial, sans-serif;
+  font-family: "Nunito Sans", "Helvetica Neue", Helvetica, Arial, sans-serif;
 }
 
 .button--fill {

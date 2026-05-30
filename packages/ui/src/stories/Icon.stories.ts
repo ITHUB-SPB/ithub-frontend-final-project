@@ -1,19 +1,49 @@
-import { computed } from 'vue';
-import type { Meta, StoryObj } from '@storybook/vue3-vite';
+import { computed } from "vue";
+import type { Meta, StoryObj } from "@storybook/vue3-vite";
 
-import Icon from '../components/Icon.vue';
+import Icon from "../components/Icon.vue";
 
 const meta = {
-  title: 'Atoms/Icon',
+  title: "Atoms/Icon",
   component: Icon,
   // This component will have an automatically generated docsPage entry: https://storybook.js.org/docs/writing-docs/autodocs
-  tags: ['autodocs'],
+  tags: ["autodocs"],
   argTypes: {
     variant: {
-      control: 'select',
+      control: "select",
       options: [
-        "twitter", "facebook", "instagram", "tiktok", "close", "toEdit", "burger", "cameras", "headphones", "phones", "smartWatches", "delivery", "guaranteed", "stock", "computers", "gaming", "location", "shipping", "favorites", "cart", "search",
-        "computersLarge", "gamingLarge", "headphonesLarge", "arrow", "battery", "screenSize", "cpu", "core", "mainCamera", "frontCamera"]
+        "twitter",
+        "facebook",
+        "instagram",
+        "tiktok",
+        "close",
+        "toEdit",
+        "burger",
+        "cameras",
+        "headphones",
+        "phones",
+        "smartWatches",
+        "delivery",
+        "guaranteed",
+        "stock",
+        "computers",
+        "gaming",
+        "location",
+        "shipping",
+        "favorites",
+        "cart",
+        "search",
+        "computersLarge",
+        "gamingLarge",
+        "headphonesLarge",
+        "arrow",
+        "battery",
+        "screenSize",
+        "cpu",
+        "core",
+        "mainCamera",
+        "frontCamera",
+      ],
     },
   },
   decorators: [
@@ -22,18 +52,20 @@ const meta = {
         components: { story },
         setup() {
           const style = computed(() => ({
-            backgroundColor: ['twitter', 'facebook', 'instagram', 'tiktok'].includes(args.variant) ? 'black' : 'white',
-            width: 'max-content'
+            backgroundColor: ["twitter", "facebook", "instagram", "tiktok"].includes(args.variant)
+              ? "black"
+              : "white",
+            width: "max-content",
           }));
 
           return { style };
         },
-        template: '<div :style="style"><story /></div>'
-      }
-    }
+        template: '<div :style="style"><story /></div>',
+      };
+    },
   ],
   args: {
-    variant: 'twitter',
+    variant: "twitter",
   },
 } satisfies Meta<typeof Icon>;
 
@@ -41,4 +73,4 @@ export default meta;
 
 type Story = StoryObj<typeof meta>;
 
-export const Default: Story = {}
+export const Default: Story = {};

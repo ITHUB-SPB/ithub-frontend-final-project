@@ -17,9 +17,7 @@
   ],
   "compilerOptions": {
     "paths": {
-      "@repo/ui": [
-        "../../packages/ui"
-      ]
+      "@repo/ui": ["../../packages/ui"]
     }
   }
 }

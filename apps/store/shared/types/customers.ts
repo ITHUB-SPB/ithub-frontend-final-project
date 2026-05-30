@@ -1,10 +1,10 @@
-import z from 'zod'
-import type { Generated, Selectable } from 'kysely'
+import z from "zod";
+import type { Generated, Selectable } from "kysely";
 
-import { customersSchema } from '../schema/customers'
+import { customersSchema } from "../schema/customers";
 
 export type CustomersTable = z.infer<typeof customersSchema> & {
-    id: Generated<number>
-}
+  id: Generated<number>;
+};
 
-export type Customer = Selectable<CustomersTable>
+export type Customer = Selectable<CustomersTable>;

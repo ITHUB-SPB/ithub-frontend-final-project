@@ -1,45 +1,49 @@
 <script lang="ts" setup>
-import { ProductCard } from '@repo/ui';
+import { ProductCard } from "@repo/ui";
 
-import airpodsImage from '~/assets/images/products/airpods_max.png'
-import appleWatchImage from '~/assets/images/products/apple_watch.png'
+import airpodsImage from "~/assets/images/products/airpods_max.png";
+import appleWatchImage from "~/assets/images/products/apple_watch.png";
 
 definePageMeta({
-  middleware: ['authenticated']
-})
+  middleware: ["authenticated"],
+});
 
 // const { data: products, error } = await useConvexQuery(
-//   api.products.get, 
+//   api.products.get,
 //   {}
 // )
 
 const products = [
   {
     id: 1,
-    title: 'AirPods Max Silver',
-    image: airpodsImage
+    title: "AirPods Max Silver",
+    image: airpodsImage,
   },
   {
     id: 2,
-    title: 'Apple Watch Series 9 GPS 41mm Starlight Aluminium',
-    image: appleWatchImage
-  }
-]
+    title: "Apple Watch Series 9 GPS 41mm Starlight Aluminium",
+    image: appleWatchImage,
+  },
+];
 
-const error = null
-
+const error = null;
 </script>
 
 <template>
   <main class="page">
     <h2 class="page-title">Favorite</h2>
-    <p v-if="!products?.length">
-      Здесь пока нет товаров...
-    </p>
+    <p v-if="!products?.length">Здесь пока нет товаров...</p>
     <div v-if="!error">
       <section class="products-grid">
-        <ProductCard class="product-item" v-for="product in products" :key="product.id" :title="product.title"
-          :id="product.id" :image="product.image" wide />
+        <ProductCard
+          class="product-item"
+          v-for="product in products"
+          :key="product.id"
+          :title="product.title"
+          :id="product.id"
+          :image="product.image"
+          wide
+        />
       </section>
     </div>
   </main>

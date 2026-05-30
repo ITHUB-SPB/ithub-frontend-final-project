@@ -16,32 +16,35 @@ const props = withDefaults(
     placeholder: "",
     required: false,
     defaultValue: "",
-    justify: "left"
-  }
+    justify: "left",
+  },
 );
 
-const emits = defineEmits([ 'update:modelValue' ])
+const emits = defineEmits(["update:modelValue"]);
 
 const styles: Partial<CSSStyleDeclaration> = {
-  textAlign: props.justify ?? "left"
-}
+  textAlign: props.justify ?? "left",
+};
 </script>
 
 <template>
   <section class="wrapper">
-    <label :style="styles" v-if="props.label" :for="props.name" class="label">{{ props.label }}</label>
+    <label :style="styles" v-if="props.label" :for="props.name" class="label">{{
+      props.label
+    }}</label>
     <div class="input" :style="props.style">
       <slot name="icon-left"></slot>
-      <input 
-        :id="props.name" 
-        :type="props.type" 
-        :placeholder="props.placeholder" 
+      <input
+        :id="props.name"
+        :type="props.type"
+        :placeholder="props.placeholder"
         :required="props.required"
-        :name="props.name" 
-        :value="props.modelValue || props.defaultValue" 
+        :name="props.name"
+        :value="props.modelValue || props.defaultValue"
         @input="emits('update:modelValue', '$event.target.value')"
-        :style="styles" 
-        class="input__inner" />
+        :style="styles"
+        class="input__inner"
+      />
       <slot name="right"></slot>
     </div>
   </section>

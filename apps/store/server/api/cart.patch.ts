@@ -1,46 +1,51 @@
 import z from "zod";
 import { db } from "../database/connection";
 
-
 const cartUpdateSchema = z.object({
-    productId: z.number().int().positive(),
-    quantity: z.number().int().nonnegative(),
-})
+  productId: z.number().int().positive(),
+  quantity: z.number().int().nonnegative(),
+});
 
 export default defineEventHandler(async (event) => {
-    const { user } = await requireUserSession(event)
+  const { user } = await getUserSession(event);
 
-    const {
-        productId,
-        quantity,
-    } = await readValidatedBody(
-        event,
-        cartUpdateSchema.parse
-    )
+  if (!user) {
+    return;
+  }
 
-    const cartItem = await db
-        .selectFrom('carts')
-        .innerJoin('products', 'products.id', 'carts.productId')
-        .selectAll()
-        .where('carts.customerId', '==', user.id)
-        .where('carts.productId', '==', productId)
-        .executeTakeFirst()
+  const { productId, quantity } = await readValidatedBody(event, cartUpdateSchema.parse);
 
-    if (!cartItem) {
-        return await db.insertInto('carts').values({
-            customerId: user.id,
-            productId: productId,
-            quantity: quantity
-        }).execute()
-    }
+  const cartItem = await db
+    .selectFrom("carts")
+    .innerJoin("products", "products.id", "carts.productId")
+    .selectAll()
+    .where("carts.customerId", "=", user.id)
+    .where("carts.productId", "=", productId)
+    .executeTakeFirst();
 
-    if (quantity === 0) {
-        return await db.deleteFrom('carts').where('carts.id', '==', cartItem.id).execute()
-    }
+  if (!cartItem) {
+    await db
+      .insertInto("carts")
+      .values({
+        customerId: user.id,
+        productId: productId,
+        quantity: quantity,
+      })
+      .execute();
 
-    return await db.updateTable('carts').set({
-        quantity
-    }).where('carts.id', '==', cartItem.id).executeTakeFirst()
-})
+    return;
+  }
 
+  if (quantity === 0) {
+    await db.deleteFrom("carts").where("carts.id", "==", cartItem.id).execute();
+    return;
+  }
 
+  await db
+    .updateTable("carts")
+    .set({
+      quantity,
+    })
+    .where("carts.id", "==", cartItem.id)
+    .execute();
+});

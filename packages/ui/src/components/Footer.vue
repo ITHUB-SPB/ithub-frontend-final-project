@@ -4,29 +4,29 @@ import Icon, { type IconVariant } from "./Icon.vue";
 
 const links = {
   services: [
-    { text: 'Bonus program', link: '/bonus-program' },
-    { text: 'Gift cards', link: '/gift-card' },
-    { text: 'Credit and payment', link: '/credit-and-payment' },
-    { text: 'Service contracts', link: '/service-contracts' },
-    { text: 'Non-cash account', link: '/non-cash-account' },
-    { text: 'Payment', link: '/payment' },
+    { text: "Bonus program", link: "/bonus-program" },
+    { text: "Gift cards", link: "/gift-card" },
+    { text: "Credit and payment", link: "/credit-and-payment" },
+    { text: "Service contracts", link: "/service-contracts" },
+    { text: "Non-cash account", link: "/non-cash-account" },
+    { text: "Payment", link: "/payment" },
   ],
   assistance: [
-    { text: 'Find an order', link: '/find-order' },
-    { text: 'Terms of delivery', link: '/delivery-terms' },
-    { text: 'Exchange and return of goods', link: '/exchange-and-return' },
-    { text: 'Guarantee', link: '/guarantee' },
-    { text: 'Frequently asked questions', link: '/frequently-questions' },
-    { text: 'Terms of use of the site', link: '/site-terms' },
+    { text: "Find an order", link: "/find-order" },
+    { text: "Terms of delivery", link: "/delivery-terms" },
+    { text: "Exchange and return of goods", link: "/exchange-and-return" },
+    { text: "Guarantee", link: "/guarantee" },
+    { text: "Frequently asked questions", link: "/frequently-questions" },
+    { text: "Terms of use of the site", link: "/site-terms" },
   ],
-}
+};
 
-const socialLinks: Array<{ name: IconVariant, link: string }> = [
-  { name: 'twitter', link: 'https://twitter.com' },
-  { name: 'facebook', link: 'https://facebook.com' },
-  { name: 'tiktok', link: 'https://tiktok.com' },
-  { name: 'instagram', link: 'https://instagram.com' },
-]
+const socialLinks: Array<{ name: IconVariant; link: string }> = [
+  { name: "twitter", link: "https://twitter.com" },
+  { name: "facebook", link: "https://facebook.com" },
+  { name: "tiktok", link: "https://tiktok.com" },
+  { name: "instagram", link: "https://instagram.com" },
+];
 
 const fieldStyles: Partial<CSSStyleDeclaration> = {
   width: "372px",
@@ -40,8 +40,10 @@ const fieldStyles: Partial<CSSStyleDeclaration> = {
     <div class="links">
       <section class="about">
         <Logo color="white" />
-        <p class="about">We are a residential interior design firm located in Portland. Our boutique-studio offers more
-          than</p>
+        <p class="about">
+          We are a residential interior design firm located in Portland. Our boutique-studio offers
+          more than
+        </p>
       </section>
 
       <section class="links-services">
@@ -117,7 +119,7 @@ footer {
 .links-heading {
   color: #ffffff;
   font-size: 16px;
-  margin-bottom: 8px
+  margin-bottom: 8px;
 }
 
 @media (min-width: 600px) {

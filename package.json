@@ -2,15 +2,19 @@
   "name": "ithub-frontend-vue-final-project",
   "version": "1.0.0",
   "description": "",
+  "keywords": [],
+  "license": "ISC",
+  "author": "",
   "scripts": {
     "storybook": "pnpm -F @repo/ui storybook",
     "store:dev": "pnpm -F store dev",
     "db:init": "pnpm -F store db:init",
     "db:seed": "pnpm -F store db:seed",
-    "crawler:dev": "pnpm -F @repo/crawler dev"
+    "crawler:dev": "pnpm -F @repo/crawler dev",
+    "format": "pnpm -w oxfmt --write"
   },
-  "keywords": [],
-  "author": "",
-  "license": "ISC",
+  "dependencies": {
+    "oxfmt": "^0.37.0"
+  },
   "packageManager": "pnpm@11.1.3"
 }

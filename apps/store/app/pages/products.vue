@@ -1,55 +1,46 @@
 <script lang="ts" setup>
-import { ProductCard, Pagination, Slider, Button } from '@repo/ui';
+import { ProductCard, Pagination, Slider, Button } from "@repo/ui";
 
-import { useCartLocal } from '~/stores/cartLocal';
-import { useCart } from '~/stores/cart';
-import type { Product } from '~~/shared/types/products';
+import { useCartLocal } from "~/stores/cartLocal";
+import { useCart } from "~/stores/cart";
+import type { Product } from "~~/shared/types/products";
 
-const { loggedIn } = useUserSession()
+const { loggedIn } = useUserSession();
 
-const cart = loggedIn ? useCart() : useCartLocal()
+const cart = loggedIn ? useCart() : useCartLocal();
 
-const activePage = ref(1)
-const offset = computed(() => (activePage.value - 1) * 8)
+const activePage = ref(1);
+const offset = computed(() => (activePage.value - 1) * 8);
 
-const priceFilter = ref<[
-  number | null,
-  number | null
-]>([null, null])
+const priceFilter = ref<[number | null, number | null]>([null, null]);
 
-const filters = computed(() => [
-  { field: 'price', value: priceFilter.value }
-])
+const filters = computed(() => [{ field: "price", value: priceFilter.value }]);
 
-const { data } = await useFetch('/api/products', {
-  method: 'get',
+const { data, fetch: refetch } = await useFetch("/api/products", {
+  method: "get",
   query: {
     limit: 8,
     offset,
-    filters
-  }
-})
+    filters,
+  },
+});
 
 const applyFilters = (event: SubmitEvent) => {
-  const form = event.target as HTMLFormElement
-  const formData = new FormData(form)
+  const form = event.target as HTMLFormElement;
+  const formData = new FormData(form);
 
-  priceFilter.value = [
-    Number(formData.get('priceMin')),
-    Number(formData.get('priceMax')),
-  ]
-}
+  priceFilter.value = [Number(formData.get("priceMin")), Number(formData.get("priceMax"))];
+};
 
 const buyNow = async (product: Product) => {
-  console.log(product)
   await cart.addProduct({
     id: product.id,
     currentPrice: product.currentPrice,
     title: product.title,
-    quantity: 1
-  })
-}
-
+    quantity: 1,
+  });
+  await refetch();
+};
 </script>
 
 <template>
@@ -58,19 +49,33 @@ const buyNow = async (product: Product) => {
 
     <section v-else class="products-grid">
       <form class="products-filters" method="post" @submit.prevent="applyFilters">
-        <Slider class="products-slider" :min="Math.min(...data.items.map(item => item.currentPrice))"
-          :max="Math.max(...data.items.map(item => item.currentPrice))" />
+        <Slider
+          class="products-slider"
+          :min="Math.min(...data.items.map((item) => item.currentPrice))"
+          :max="Math.max(...data.items.map((item) => item.currentPrice))"
+        />
         <Button label="Apply" type="submit " />
       </form>
 
-      <ProductCard class="product-item" v-for="product in data.items" :key="product.id" :title="product.title"
-        :currentPrice="product.currentPrice" :id="product.id" :inCart="cart.hasProduct(product.id)" :wide="false"
-        @buy-now="buyNow(product)" />
+      <ProductCard
+        class="product-item"
+        v-for="product in data.items"
+        :key="product.id"
+        :title="product.title"
+        :currentPrice="product.currentPrice"
+        :id="product.id"
+        :inCart="cart.hasProduct(product.id)"
+        :wide="false"
+        @buy-now="buyNow(product)"
+      />
 
-      <Pagination class="products-pagination" :active-page="activePage" :page-quantity="Math.ceil(data.total / 8)"
-        @page-change="value => activePage = value" />
+      <Pagination
+        class="products-pagination"
+        :active-page="activePage"
+        :page-quantity="Math.ceil(data.total / 8)"
+        @page-change="(value) => (activePage = value)"
+      />
     </section>
-
   </main>
 </template>
 

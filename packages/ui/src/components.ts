@@ -11,15 +11,15 @@ import Footer from "./components/Footer.vue";
 import DetailCard from "./components/DetailCard.vue";
 
 export {
-    Button,
-    Checkbox,
-    Field,
-    Header,
-    Icon,
-    Pagination,
-    ProductCard,
-    Slider,
-    CategoryCard,
-    Footer,
-    DetailCard
-}
+  Button,
+  Checkbox,
+  Field,
+  Header,
+  Icon,
+  Pagination,
+  ProductCard,
+  Slider,
+  CategoryCard,
+  Footer,
+  DetailCard,
+};

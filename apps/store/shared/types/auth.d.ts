@@ -1,13 +1,11 @@
-declare module '#auth-utils' {
-    interface User extends Omit<Customer, 'password'> { }
+declare module "#auth-utils" {
+  interface User extends Omit<Customer, "password"> {}
 
-    interface UserSession {
-        user: User
-    }
+  interface UserSession {
+    user: User;
+  }
 
-    interface SecureSessionData {
-
-    }
+  interface SecureSessionData {}
 }
 
-export { }
+export {};
