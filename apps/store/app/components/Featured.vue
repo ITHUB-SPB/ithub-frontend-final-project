@@ -7,23 +7,27 @@ const products = [
     title: "Apple AirPods Max",
     description: "Computational audio. Listen, it's powerful",
     image: airPodsImage,
+    background: '#EDEDED'
   },
   {
     title: "Apple Vision Pro",
     description: "An immersive way to experience entertainment",
     image: airPodsImage,
+    background: '#353535'
   },
   {
     title: "Playstation 5",
     description:
       "Incredibly powerful CPUs, GPUs, and an SSD with integrated I/O will redefine your PlayStation experience.",
     image: airPodsImage,
+    background: '#FFF'
   },
   {
     title: "Macbook Air",
     description:
       "The new 15‑inch MacBook Air makes room for more of what you love with a spacious Liquid Retina display.",
     image: airPodsImage,
+    background: '#EDEDED'
   },
 ];
 </script>
