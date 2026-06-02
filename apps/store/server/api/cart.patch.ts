@@ -13,7 +13,10 @@ export default defineEventHandler(async (event) => {
     return;
   }
 
-  const { productId, quantity } = await readValidatedBody(event, cartUpdateSchema.parse);
+  const { 
+    productId, 
+    quantity 
+  } = await readValidatedBody(event, cartUpdateSchema.parse);
 
   const cartItem = await db
     .selectFrom("carts")
@@ -37,7 +40,11 @@ export default defineEventHandler(async (event) => {
   }
 
   if (quantity === 0) {
-    await db.deleteFrom("carts").where("carts.id", "==", cartItem.id).execute();
+    await db
+      .deleteFrom("carts")
+      .where('carts.customerId', '==', user.id)
+      .where("carts.productId", "==", cartItem.id)
+      .execute();
     return;
   }
 
@@ -46,6 +53,7 @@ export default defineEventHandler(async (event) => {
     .set({
       quantity,
     })
-    .where("carts.id", "==", cartItem.id)
+    .where('carts.customerId', '==', user.id)
+    .where("carts.productId", "==", cartItem.id)
     .execute();
 });

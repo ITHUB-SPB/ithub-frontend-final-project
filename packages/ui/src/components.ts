@@ -9,6 +9,7 @@ import Slider from "./components/Slider.vue";
 import CategoryCard from "./components/CategoryCard.vue";
 import Footer from "./components/Footer.vue";
 import DetailCard from "./components/DetailCard.vue";
+import CartPrice from "./components/CartPrice.vue";
 
 export {
   Button,
@@ -22,4 +23,5 @@ export {
   CategoryCard,
   Footer,
   DetailCard,
+  CartPrice
 };

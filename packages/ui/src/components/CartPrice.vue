@@ -1,31 +1,27 @@
 <script setup lang="ts">
-import { ref, computed } from "vue";
+import { computed } from "vue";
 
 const props = defineProps<{
   quantity: number;
   currentPrice: number;
-  onDelete: () => void;
 }>();
 
-const count = ref(props.quantity);
-
-const increment = () => count.value++;
-const decrement = () => count.value--;
+const emit = defineEmits(['increment', 'decrement', 'delete'])
 
 const priceUpdate = computed(() => {
-  return props.currentPrice * count.value;
+  return props.currentPrice * props.quantity;
 });
 </script>
 
 <template>
   <section class="cart-wrapper">
     <div class="cart-counter">
-      <button class="cart-decrement" @click="decrement" :disabled="count == 1">-</button>
-      <input type="number" class="cart-quantity" v-model="count" />
-      <button class="cart-increment" @click="increment">+</button>
+      <button class="cart-decrement" @click="emit('decrement')" :disabled="count == 1">-</button>
+      <span class="cart-quantity">{{ props.quantity }}</span>
+      <button class="cart-increment" @click="emit('increment')">+</button>
     </div>
     <span class="cart-price">{{ priceUpdate }}</span>
-    <button @click="props.onDelete" class="cart-delete">x</button>
+    <button @click="emit('delete')" class="cart-delete">x</button>
   </section>
 </template>
 
@@ -38,5 +34,3 @@ const priceUpdate = computed(() => {
   max-width: 40px;
 }
 </style>
-
-<!-- updateActivePage: (pageNumber: number) => void; -->

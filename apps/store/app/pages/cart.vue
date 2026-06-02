@@ -1,12 +1,12 @@
 <script lang="ts" setup>
-import { ProductCard } from "@repo/ui";
+import { ProductCard, CartPrice } from "@repo/ui";
 
 import { useCartLocal } from "~/stores/cartLocal";
 import { useCart } from "~/stores/cart";
 
 import airpodsMaxImage from "~/assets/images/products/airpods_max.png";
 
-const { user, loggedIn } = useUserSession();
+const { loggedIn } = useUserSession();
 
 const cart = loggedIn ? useCart() : useCartLocal();
 </script>
@@ -16,16 +16,34 @@ const cart = loggedIn ? useCart() : useCartLocal();
     <h2 class="page-title">Shopping Cart</h2>
 
     <section class="products-grid" v-if="cart?.items?.length">
-      <ProductCard
-        class="product-item"
-        v-for="product in cart.items"
-        :title="product.title"
-        :currentPrice="product.currentPrice"
-        :id="product.id"
-        :key="product.id"
-        :image="airpodsMaxImage"
-        wide
-      />
+      <div class="product-wrapper" v-for="product in cart.items">
+        <ProductCard
+          class="product-item"
+          :title="product.title"
+          :currentPrice="product.currentPrice"
+          :id="product.id"
+          :key="product.id"
+          :image="airpodsMaxImage"
+          wide
+        />
+        <CartPrice 
+          :key="product.id"
+          :quantity="product.quantity" 
+          :currentPrice="product.currentPrice" 
+          @decrement="cart.changeQuantity({
+            ...product,
+            quantity: product.quantity - 1
+          })"
+          @increment="cart.changeQuantity({
+            ...product,
+            quantity: product.quantity + 1
+          })"
+          @delete="cart.changeQuantity({
+            ...product,
+            quantity: 0
+          })"
+        />
+      </div>
     </section>
 
     <section v-else>
