@@ -179,6 +179,7 @@ const products = [
     order: 2;
     display: flex;
     align-items: center;
+    margin-left: auto;
   }
 
   .featured-product:nth-child(4) .product-image {
