@@ -77,14 +77,17 @@ import ctaImage from "~/assets/images/cta.png";
     justify-content: space-between;
     padding: 0 160px;
   }
+
   .image-wrapper {
     height: 632px;
     width: 406px;
     align-self: flex-end;
   }
+
   .image {
     width: 100%;
   }
+
   .block-content {
     align-items: flex-start;
   }
