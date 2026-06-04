@@ -31,26 +31,17 @@ const emit = defineEmits(["buyNow", "favorite", "goToCart"]);
       <Icon variant="favorites" class="product-icon" />
     </button>
 
-    <img
-      class="product-image"
-      :class="{ 'image-wide': props.wide }"
-      :src="props.image ?? productImage"
-      alt="iphone 14"
-    />
+    <img class="product-image" :class="{ 'image-wide': props.wide }" :src="props.image ?? productImage"
+      alt="iphone 14" />
 
-    <h3 class="product-title" :class="{ 'title-wide': props.wide }">{{ props.title }}</h3>
+    <div class="product-content">
+      <h3 class="product-title" :class="{ 'title-wide': props.wide }">{{ props.title }}</h3>
+      <span v-if="!props.wide" class="product-price">{{ props.currentPrice }}</span>
+      <span v-else="props.wide" class="product-sku">{{ props.id }}</span>
+      <slot></slot>
+    </div>
 
-    <span v-if="!props.wide" class="product-price">{{ props.currentPrice }}</span>
-    <span v-else="props.wide" class="product-sku">{{ props.id }}</span>
-
-    <Button
-      v-if="props.inCart"
-      small
-      variant="stroke"
-      color="black"
-      label="Go to Cart"
-      @click="emit('goToCart')"
-    />
+    <Button v-if="props.inCart" small variant="stroke" color="black" label="Go to Cart" @click="emit('goToCart')" />
     <Button v-else-if="!props.wide" small label="Buy Now" @click="emit('buyNow')" />
   </article>
 </template>
@@ -67,6 +58,12 @@ const emit = defineEmits(["buyNow", "favorite", "goToCart"]);
   justify-content: center;
   align-items: center;
   padding: 24px 16px;
+}
+
+.product-content {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
 }
 
 .card-wide {
@@ -110,8 +107,28 @@ const emit = defineEmits(["buyNow", "favorite", "goToCart"]);
 }
 
 .title-wide {
-  width: calc(100% - 8px - 90px);
   min-height: fit-content;
   text-align: left;
+}
+
+.product-sku {
+  font-size: 14px;
+}
+
+@media screen and (min-width: 1100px) {
+  .product-card {
+    width: 536px;
+  }
+
+  .product-content {
+    max-height: 104px;
+    flex-wrap: wrap;
+    justify-content: center;
+    justify-items: center;
+  }
+
+  .title-wide {
+    max-width: 190px;
+  }
 }
 </style>

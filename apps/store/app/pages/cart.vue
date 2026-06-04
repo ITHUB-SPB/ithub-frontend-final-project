@@ -17,32 +17,19 @@ const cart = loggedIn ? useCart() : useCartLocal();
 
     <section class="products-grid" v-if="cart?.items?.length">
       <div class="product-wrapper" v-for="product in cart.items">
-        <ProductCard
-          class="product-item"
-          :title="product.title"
-          :currentPrice="product.currentPrice"
-          :id="product.id"
-          :key="product.id"
-          :image="airpodsMaxImage"
-          wide
-        />
-        <CartPrice 
-          :key="product.id"
-          :quantity="product.quantity" 
-          :currentPrice="product.currentPrice" 
-          @decrement="cart.changeQuantity({
+        <ProductCard class="product-item" :title="product.title" :currentPrice="product.currentPrice" :id="product.id"
+          :key="product.id" :image="airpodsMaxImage" wide>
+          <CartPrice :key="product.id" :quantity="product.quantity" :currentPrice="product.currentPrice" @decrement="cart.changeQuantity({
             ...product,
             quantity: product.quantity - 1
-          })"
-          @increment="cart.changeQuantity({
+          })" @increment="cart.changeQuantity({
             ...product,
             quantity: product.quantity + 1
-          })"
-          @delete="cart.changeQuantity({
+          })" @delete="cart.changeQuantity({
             ...product,
             quantity: 0
-          })"
-        />
+          })" />
+        </ProductCard>
       </div>
     </section>
 
