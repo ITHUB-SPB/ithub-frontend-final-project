@@ -10,61 +10,71 @@ function handleSlider(ix: number) {
   selectedImageIx.value = ix;
 }
 
+const route = useRoute()
+
+const { data: product } = useFetch('/api/product', {
+  query: {
+    productId: route.params.id
+  }
+})
+
+console.log(product)
+
 const images = [image1Src, image2Src, image3Src, image4Src];
 
 const selectedImageIx = ref(0);
 
-const product = {
-  brand: "Apple",
-  category: "phones",
-  currentPrice: 1399,
-  rawPrice: 1499,
-  title: "Apple iPhone 14 Pro Max",
-  description:
-    "Just as a book is judged by its cover, the first thing you notice when you pick up a modern smartphone is the display. Nothing surprising, because advanced technologies allow you to practically level the display frames and cutouts for the front camera and speaker, leaving no room for bold design solutions. And how good that in such realities Apple everything is fine with displays. Both critics and mass consumers always praise the quality of the picture provided by the products of the Californian brand. And last year's 6.7-inch Retina panels, which had ProMotion, caused real admiration for many.",
-  characteristics: {
-    screenSize: {
-      value: 6.7,
-      measure: "in",
-    },
-    cpu: {
-      value: "Apple A16 Bionic",
-      measure: null,
-    },
-    cpuCores: {
-      value: 6,
-      measure: null,
-    },
-    mainCamera: {
-      value: 12,
-      measure: "MP",
-    },
-    frontCamera: {
-      value: 12,
-      measure: "MP",
-    },
-    batteryCapacity: {
-      value: 4323,
-      measure: "mAh",
-    },
-    screenResolution: {
-      value: "2796x1290",
-      measure: "px",
-    },
-    pixelDensity: {
-      value: 460,
-      measure: "ppi",
-    },
-    screenType: {
-      value: "OLED",
-      measure: null,
-    },
-    weight: {
-      value: 240,
-      measure: "g",
-    },
-  },
-} as const;
+// const product = {
+//   brand: "Apple",
+//   category: "phones",
+//   currentPrice: 1399,
+//   rawPrice: 1499,
+//   title: "Apple iPhone 14 Pro Max",
+//   description:
+//     "Just as a book is judged by its cover, the first thing you notice when you pick up a modern smartphone is the display. Nothing surprising, because advanced technologies allow you to practically level the display frames and cutouts for the front camera and speaker, leaving no room for bold design solutions. And how good that in such realities Apple everything is fine with displays. Both critics and mass consumers always praise the quality of the picture provided by the products of the Californian brand. And last year's 6.7-inch Retina panels, which had ProMotion, caused real admiration for many.",
+//   characteristics: {
+//     screenSize: {
+//       value: 6.7,
+//       measure: "in",
+//     },
+//     cpu: {
+//       value: "Apple A16 Bionic",
+//       measure: null,
+//     },
+//     cpuCores: {
+//       value: 6,
+//       measure: null,
+//     },
+//     mainCamera: {
+//       value: 12,
+//       measure: "MP",
+//     },
+//     frontCamera: {
+//       value: 12,
+//       measure: "MP",
+//     },
+//     batteryCapacity: {
+//       value: 4323,
+//       measure: "mAh",
+//     },
+//     screenResolution: {
+//       value: "2796x1290",
+//       measure: "px",
+//     },
+//     pixelDensity: {
+//       value: 460,
+//       measure: "ppi",
+//     },
+//     screenType: {
+//       value: "OLED",
+//       measure: null,
+//     },
+//     weight: {
+//       value: 240,
+//       measure: "g",
+//     },
+//   },
+// } as const;
 
 const mainCharacteristics = {
   phones: [
@@ -125,11 +135,7 @@ const additionalCharacteristics = {
       <img class="product-image product-image--main" :src="images[selectedImageIx]" />
       <div class="slider-thumbnails">
         <button class="slider-button" v-for="(imageSrc, ix) in images" @click="handleSlider(ix)">
-          <img
-            class="product-image"
-            :class="{ 'product-image--active': ix !== selectedImageIx }"
-            :src="imageSrc"
-          />
+          <img class="product-image" :class="{ 'product-image--active': ix !== selectedImageIx }" :src="imageSrc" />
         </button>
       </div>
     </section>
@@ -141,27 +147,17 @@ const additionalCharacteristics = {
     </section>
 
     <section class="characteristics">
-      <DetailCard
-        v-for="item in mainCharacteristics[product.category]"
-        :variant="item.title"
-        :value="product.characteristics[item.title].value"
-        class="characteristic"
-      />
+      <DetailCard v-for="item in mainCharacteristics[product.category]" :variant="item.title"
+        :value="product.characteristics[item.title].value" class="characteristic" />
     </section>
 
     <details class="details">
       <summary class="details-summary">
         <h3 class="details-title">Details</h3>
       </summary>
-      <p class="details-description">
-        Just as a book is judged by its cover, the first thing you notice when you pick up a modern
-        smartphone is the display. Nothing surprising, because advanced...
-      </p>
+      <div class="details-description" v-html="product.description"></div>
       <!-- перебрать дополнительные характеристики по аналогии с основными выше -->
-      <section
-        v-for="item in additionalCharacteristics[product.category]"
-        class="additional-characteristic"
-      >
+      <section v-for="item in additionalCharacteristics[product.category]" class="additional-characteristic">
         <p class="additional-characteristic-description">{{ item.description }}</p>
         <p class="additional-characteristic-value">
           {{ product.characteristics[item.title].value }}
