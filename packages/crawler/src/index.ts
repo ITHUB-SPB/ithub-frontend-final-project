@@ -1,6 +1,6 @@
-import { writeFileSync } from "node:fs";
+import { writeFileSync, appendFileSync } from "node:fs";
 import { PlaywrightCrawler, FileDownload, type PlaywrightCrawlingContext } from "crawlee";
-import { parseCharacteristic, selectTab } from "./helpers.js";
+import { parseCharacteristic } from "./helpers.js";
 import { crawlerDefault } from "./config.js";
 
 // import stealthPlugin from 'puppeteer-extra-plugin-stealth';
@@ -9,53 +9,69 @@ import { crawlerDefault } from "./config.js";
 
 const downloadCrawler = new FileDownload({
   async requestHandler({ body, request, contentType, getKeyValueStore }) {
-    const filename = request.userData.filename.replace(/[^a-z0-9_\.]/gi, "");
+    const filename = request.userData.filename.trim().replace(/[^а-яa-z0-9_\.]/gi, "_");
 
     const directory = `storage/images/${request.userData.category}/`;
     const filepath = directory + filename + ".png"
 
     writeFileSync(filepath, body);
-    writeFileSync('storage/images/meta.txt', `${request.userData.title}=${filepath}`);
+    appendFileSync('storage/images/meta.txt', `${request.userData.title}=${filepath}\n`);
   },
 });
 
 const parseWatchesPage = async (page: PlaywrightCrawlingContext["page"]) => {
-  await selectTab(page, "about");
+  // await page.waitForSelector('#tab-about');
   const description = await page.locator(".textoverflow__text").first().innerHTML() ?? null;
+  // await page.waitForSelector('#tab-specs');
 
-  await selectTab(page, "specs");
+  const compatibility = await parseCharacteristic(page, /Совместимость/)
+  const batteryCapacity = await parseCharacteristic(page, /Емкость аккумулятора/)
+  const brand = await parseCharacteristic(page, /Бренд/)
+  const screenResolution = await parseCharacteristic(page, /Разрешение экрана/)
+  const bluetooth = await parseCharacteristic(page, /Bluetooth/)
+  const navigation = await parseCharacteristic(page, /Системы навигации/)
 
   return {
     category: "watch",
     description,
-    compatibility: await parseCharacteristic(page, /Совместимость/),
-    batteryCapacity: await parseCharacteristic(page, /Емкость аккумулятора/),
-    brand: await parseCharacteristic(page, /Бренд/),
-    screenResolution: await parseCharacteristic(page, /Разрешение экрана/),
-    bluetooth: await parseCharacteristic(page, /Bluetooth/),
-    navigation: await parseCharacteristic(page, /Системы навигации/),
+    compatibility,
+    batteryCapacity,
+    brand,
+    screenResolution,
+    bluetooth,
+    navigation,
   };
 };
 
 const parsePhonesPage = async (page: PlaywrightCrawlingContext["page"]) => {
-  await selectTab(page, "about");
+  // await page.waitForSelector('#tab-about');
   const description = await page.locator(".textoverflow__text").first().innerHTML() ?? null;
+  // await page.waitForSelector('#tab-specs');
 
-  await selectTab(page, "specs");
+  const screenSize = await parseCharacteristic(page, /Диагональ/)
+  const cpu = await parseCharacteristic(page, /Процессор/)
+  const cpuCores = await parseCharacteristic(page, /Количество ядер/)
+  const mainCamera = await parseCharacteristic(page, /Камера фронтальной/)
+  const frontCamera = await parseCharacteristic(page, /Фронтальная камера/)
+  const batteryCapacity = await parseCharacteristic(page, /Емкость аккумулятора/)
+  const screenResolution = await parseCharacteristic(page, /Разрешение экрана/)
+  const pixelDensity = await parseCharacteristic(page, /Плотность пикселей/)
+  const screenType = await parseCharacteristic(page, /Технология экрана/)
+  const weight = await parseCharacteristic(page, /Вес, г/)
 
   return {
     category: "phones",
     description,
-    screenSize: await parseCharacteristic(page, /Диагональ/),
-    cpu: await parseCharacteristic(page, /Процессор/),
-    cpuCores: await parseCharacteristic(page, /Количество ядер/),
-    mainCamera: await parseCharacteristic(page, /Камера фронтальной/),
-    frontCamera: await parseCharacteristic(page, /Фронтальная камера/),
-    batteryCapacity: await parseCharacteristic(page, /Емкость аккумулятора/),
-    screenResolution: await parseCharacteristic(page, /Разрешение экрана/),
-    pixelDensity: await parseCharacteristic(page, /Плотность пикселей/),
-    screenType: await parseCharacteristic(page, /Технология экрана/),
-    weight: await parseCharacteristic(page, /Вес, г/),
+    screenSize,
+    cpu,
+    cpuCores,
+    mainCamera,
+    frontCamera,
+    batteryCapacity,
+    screenResolution,
+    pixelDensity,
+    screenType,
+    weight,
   };
 };
 
@@ -69,37 +85,35 @@ const crawler = new PlaywrightCrawler({
   async requestHandler({ request, page, enqueueLinks, log, pushData }) {
     if (
       page.url() !== "https://pitergsm.ru/catalog/watch/" &&
-      page.url() !== "https://pitergsm.ru/catalog/phones/"
+      page.url() !== "https://pitergsm.ru/catalog/phones/" &&
+      !(page.url().includes('PAGEN'))
     ) {
+      await page.waitForTimeout(10000)
+
       const label = page.url().slice("https://pitergsm.ru/catalog/".length).split("/")[0];
 
-      // const modalClose = page.locator(".popmechanic-close").first()
-
-      // if (modalClose) {
-      //   await modalClose.click()
-      // }
-
       const title = await page.locator(".section__title").first().innerText();
-      
+
       const rawPrice = await page.locator(".product__price")
         .first()
         .innerText()
 
-      const additionalData = Object.keys(parsers).includes(label) 
+      const additionalData = ['watch', 'phones'].includes(label)
         ? await parsers[label](page)
         : {};
 
-      await pushData({ 
-        title, 
+      await pushData({
+        title,
         rawPrice: Number(
           rawPrice
-            .slice(0, rawPrice.lastIndexOf(' ')-1)
-            .replace(/ /g, '')
-        ), 
-        ...additionalData 
+            .slice(0, rawPrice.lastIndexOf(' ') - 1)
+            .replace(/ /, '')
+        ),
+        ...additionalData
       }, label);
 
-      const image = await page.locator(".prodslider__pic-img").first().getAttribute("src");
+      const imageSelector = await page.waitForSelector('img.prodslider__pic-img')
+      const image = await imageSelector.getAttribute("src");
 
       await downloadCrawler.addRequests([
         {
@@ -119,20 +133,76 @@ const crawler = new PlaywrightCrawler({
   },
 });
 
-await crawler.run([
-  {
-    url: "https://pitergsm.ru/catalog/watch/",
-    crawlDepth: 2,
-    maxRetries: 1
-  },
-]);
+// await crawler.run([
+//   {
+//     url: "https://pitergsm.ru/catalog/watch/",
+//     maxRetries: 1,
+//   },
+//   {
+//     url: "https://pitergsm.ru/catalog/watch/?PAGEN_2=2",
+//     maxRetries: 1,
+//   },
+//   {
+//     url: "https://pitergsm.ru/catalog/watch/?PAGEN_2=3",
+//     maxRetries: 1,
+//   },
+//   {
+//     url: "https://pitergsm.ru/catalog/watch/?PAGEN_2=4",
+//     maxRetries: 1,
+//   },
+//   {
+//     url: "https://pitergsm.ru/catalog/watch/?PAGEN_2=5",
+//     maxRetries: 1,
+//   },
+//   {
+//     url: "https://pitergsm.ru/catalog/watch/?PAGEN_2=6",
+//     maxRetries: 1,
+//   },
+//   {
+//     url: "https://pitergsm.ru/catalog/watch/?PAGEN_2=7",
+//     maxRetries: 1,
+//   },
+//   {
+//     url: "https://pitergsm.ru/catalog/watch/?PAGEN_2=8",
+//     maxRetries: 1,
+//   },
+// ]);
+
+// await downloadCrawler.run();
 
 await crawler.run([
   {
     url: "https://pitergsm.ru/catalog/phones/",
-    crawlDepth: 2,
-    maxRetries: 1
+    maxRetries: 1,
   },
+  {
+    url: "https://pitergsm.ru/catalog/phones/?PAGEN_2=2",
+    maxRetries: 1,
+  },
+  {
+    url: "https://pitergsm.ru/catalog/phones/?PAGEN_2=3",
+    maxRetries: 1,
+  },
+  {
+    url: "https://pitergsm.ru/catalog/phones/?PAGEN_2=4",
+    maxRetries: 1,
+  },
+  {
+    url: "https://pitergsm.ru/catalog/phones/?PAGEN_2=5",
+    maxRetries: 1,
+  },
+  {
+    url: "https://pitergsm.ru/catalog/phones/?PAGEN_2=6",
+    maxRetries: 1,
+  },
+  {
+    url: "https://pitergsm.ru/catalog/phones/?PAGEN_2=7",
+    maxRetries: 1,
+  },
+  {
+    url: "https://pitergsm.ru/catalog/phones/?PAGEN_2=8",
+    maxRetries: 1,
+  }
 ]);
 
 await downloadCrawler.run();

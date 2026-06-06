@@ -1,22 +1,21 @@
 import type { PlaywrightCrawlerOptions } from "crawlee";
 import { BrowserName, DeviceCategory, OperatingSystemsName } from "@crawlee/browser-pool";
 import { launchOptions } from "camoufox-js";
-import { firefox } from "playwright-extra";
+// import { firefox } from "playwright-extra";
 
 export const crawlerDefault: PlaywrightCrawlerOptions = {
-  postNavigationHooks: [
-    async ({ handleCloudflareChallenge }) => {
-      await handleCloudflareChallenge();
-    },
-  ],
+  // postNavigationHooks: [
+  //   async ({ handleCloudflareChallenge }) => {
+  //     await handleCloudflareChallenge();
+  //   },
+  // ],
   browserPoolOptions: {
     useFingerprints: true,
     fingerprintOptions: {
       fingerprintGeneratorOptions: {
         browsers: [
           {
-            name: BrowserName.firefox,
-            minVersion: 96,
+            name: BrowserName.chrome,
           },
         ],
         devices: [DeviceCategory.desktop],
@@ -24,15 +23,17 @@ export const crawlerDefault: PlaywrightCrawlerOptions = {
       },
     },
   },
-  launchContext: {
-    launcher: firefox,
-    launchOptions: await launchOptions({
-      headless: false,
-    }),
-  },
+  // launchContext: {
+  //   launcher: firefox,
+  //   launchOptions: await launchOptions({
+  //     headless: false,
+  //   }),
+  // },
   failedRequestHandler({ request, log }) {
     log.error(`Request ${request.url} failed too many times.`);
   },
   maxRequestsPerCrawl: 100,
-  headless: false,
+  maxCrawlDepth: 1,
+  requestHandlerTimeoutSecs: 20,
+  headless: true,
 };
