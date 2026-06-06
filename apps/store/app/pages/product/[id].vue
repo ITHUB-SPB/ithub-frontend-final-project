@@ -18,63 +18,11 @@ const { data: product } = useFetch('/api/product', {
   }
 })
 
-console.log(product)
+console.log(product.value)
 
 const images = [image1Src, image2Src, image3Src, image4Src];
 
 const selectedImageIx = ref(0);
-
-// const product = {
-//   brand: "Apple",
-//   category: "phones",
-//   currentPrice: 1399,
-//   rawPrice: 1499,
-//   title: "Apple iPhone 14 Pro Max",
-//   description:
-//     "Just as a book is judged by its cover, the first thing you notice when you pick up a modern smartphone is the display. Nothing surprising, because advanced technologies allow you to practically level the display frames and cutouts for the front camera and speaker, leaving no room for bold design solutions. And how good that in such realities Apple everything is fine with displays. Both critics and mass consumers always praise the quality of the picture provided by the products of the Californian brand. And last year's 6.7-inch Retina panels, which had ProMotion, caused real admiration for many.",
-//   characteristics: {
-//     screenSize: {
-//       value: 6.7,
-//       measure: "in",
-//     },
-//     cpu: {
-//       value: "Apple A16 Bionic",
-//       measure: null,
-//     },
-//     cpuCores: {
-//       value: 6,
-//       measure: null,
-//     },
-//     mainCamera: {
-//       value: 12,
-//       measure: "MP",
-//     },
-//     frontCamera: {
-//       value: 12,
-//       measure: "MP",
-//     },
-//     batteryCapacity: {
-//       value: 4323,
-//       measure: "mAh",
-//     },
-//     screenResolution: {
-//       value: "2796x1290",
-//       measure: "px",
-//     },
-//     pixelDensity: {
-//       value: 460,
-//       measure: "ppi",
-//     },
-//     screenType: {
-//       value: "OLED",
-//       measure: null,
-//     },
-//     weight: {
-//       value: 240,
-//       measure: "g",
-//     },
-//   },
-// } as const;
 
 const mainCharacteristics = {
   phones: [
@@ -127,6 +75,7 @@ const additionalCharacteristics = {
   ],
   watches: [],
 } as const;
+
 </script>
 
 <template>

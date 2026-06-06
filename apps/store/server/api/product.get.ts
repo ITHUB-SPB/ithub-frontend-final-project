@@ -15,7 +15,25 @@ export default defineEventHandler(async (event) => {
     .where('products.id', '==', productId)
     .executeTakeFirst();
 
-  console.log(product)
+  const characteristics = await db
+    .selectFrom("productsCharacteristics")
+    .where('productsCharacteristics.productId', '==', productId)
+    .innerJoin(
+      'characteristics', 
+      'characteristics.id', 
+      'productsCharacteristics.characteristicId'
+    )
+    .select(['value', 'measure', 'title'])
+    .execute();
 
-  return product
+  return {
+    ...product,
+    characteristics: characteristics.reduce((acc, { value, measure, title }) => ({
+      ...acc,
+      [title] : {
+        value,
+        measure
+      }
+    }), {})
+  }
 });
