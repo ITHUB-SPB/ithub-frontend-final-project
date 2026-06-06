@@ -12,13 +12,16 @@ const downloadCrawler = new FileDownload({
     const filename = request.userData.filename.replace(/[^a-z0-9_\.]/gi, "");
 
     const directory = `storage/images/${request.userData.category}/`;
-    writeFileSync(directory + filename + ".png", body);
+    const filepath = directory + filename + ".png"
+
+    writeFileSync(filepath, body);
+    writeFileSync('storage/images/meta.txt', `${request.userData.title}=${filepath}`);
   },
 });
 
 const parseWatchesPage = async (page: PlaywrightCrawlingContext["page"]) => {
   await selectTab(page, "about");
-  const description = await page.locator(".textoverflow__text").innerHTML();
+  const description = await page.locator(".textoverflow__text").first().innerHTML() ?? null;
 
   await selectTab(page, "specs");
 
@@ -36,7 +39,7 @@ const parseWatchesPage = async (page: PlaywrightCrawlingContext["page"]) => {
 
 const parsePhonesPage = async (page: PlaywrightCrawlingContext["page"]) => {
   await selectTab(page, "about");
-  const description = await page.locator(".textoverflow__text").innerHTML();
+  const description = await page.locator(".textoverflow__text").first().innerHTML() ?? null;
 
   await selectTab(page, "specs");
 
@@ -59,7 +62,7 @@ const parsePhonesPage = async (page: PlaywrightCrawlingContext["page"]) => {
 const parsers = {
   watch: parseWatchesPage,
   phones: parsePhonesPage,
-};
+} as const;
 
 const crawler = new PlaywrightCrawler({
   ...crawlerDefault,
@@ -70,16 +73,31 @@ const crawler = new PlaywrightCrawler({
     ) {
       const label = page.url().slice("https://pitergsm.ru/catalog/".length).split("/")[0];
 
+      // const modalClose = page.locator(".popmechanic-close").first()
+
+      // if (modalClose) {
+      //   await modalClose.click()
+      // }
+
       const title = await page.locator(".section__title").first().innerText();
-      const rawPrice = await page.locator(".product__price").first().innerText();
-
-      const specsBrand = await page
-        .locator(".specs__name", { hasText: "Бренд" })
+      
+      const rawPrice = await page.locator(".product__price")
         .first()
-        .innerText();
-      const additionalData = await parsers[label](page);
+        .innerText()
 
-      await pushData({ title, rawPrice, ...additionalData }, label);
+      const additionalData = Object.keys(parsers).includes(label) 
+        ? await parsers[label](page)
+        : {};
+
+      await pushData({ 
+        title, 
+        rawPrice: Number(
+          rawPrice
+            .slice(0, rawPrice.lastIndexOf(' ')-1)
+            .replace(/ /g, '')
+        ), 
+        ...additionalData 
+      }, label);
 
       const image = await page.locator(".prodslider__pic-img").first().getAttribute("src");
 
@@ -87,6 +105,7 @@ const crawler = new PlaywrightCrawler({
         {
           url: "https://pitergsm.ru" + image,
           userData: {
+            title,
             filename: title,
             category: label,
           },
@@ -104,10 +123,15 @@ await crawler.run([
   {
     url: "https://pitergsm.ru/catalog/watch/",
     crawlDepth: 2,
+    maxRetries: 1
   },
+]);
+
+await crawler.run([
   {
     url: "https://pitergsm.ru/catalog/phones/",
     crawlDepth: 2,
+    maxRetries: 1
   },
 ]);
 

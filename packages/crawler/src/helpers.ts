@@ -22,6 +22,11 @@ export const parseCharacteristic = async (page: Page, name: RegExp) => {
       .locator(".specs__val")
       .first()
       .textContent();
+    
+    if (isFinite(Number(rawText?.trim()))) {
+      return Number(rawText?.trim())
+    }
+    
     return rawText?.trim();
   } catch {
     return null;
