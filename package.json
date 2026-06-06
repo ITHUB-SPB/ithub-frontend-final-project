@@ -10,7 +10,7 @@
     "store:dev": "pnpm -F store dev",
     "db:init": "pnpm -F store db:init",
     "db:seed": "pnpm -F store db:seed",
-    "crawler:dev": "pnpm -F @repo/crawler dev",
+    "crawl": "pnpm -F @repo/crawler dev",
     "format": "pnpm -w oxfmt --write"
   },
   "dependencies": {

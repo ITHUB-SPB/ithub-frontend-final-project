@@ -1,16 +1,17 @@
 {
-	"title": "Смартфон Tecno Spark Go 3 4/64 ГБ, синий",
-	"rawPrice": 719,
+	"title": "Смартфон Redmi A7 Pro 4/128 ГБ, голубой",
+	"rawPrice": 799,
 	"category": "phones",
 	"description": "",
-	"screenSize": 6.8,
+	"screenSize": 6.9,
 	"cpu": "Unisoc T7250 (T615)",
+	"brand": "Xiaomi",
 	"cpuCores": 8,
 	"mainCamera": "",
 	"frontCamera": "",
-	"batteryCapacity": 5000,
+	"batteryCapacity": 6000,
 	"screenResolution": "1600 × 720",
-	"pixelDensity": 260,
+	"pixelDensity": "260 ppi",
 	"screenType": "IPS",
-	"weight": 186
+	"weight": 198
 }

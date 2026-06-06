@@ -1,10 +1,11 @@
 {
-	"title": "Смартфон Tecno Spark Go 3 4/64 ГБ, черный",
+	"title": "Смартфон Tecno Spark Go 3 4/64 ГБ, синий",
 	"rawPrice": 719,
 	"category": "phones",
 	"description": "",
 	"screenSize": 6.8,
 	"cpu": "Unisoc T7250 (T615)",
+	"brand": "Tecno",
 	"cpuCores": 8,
 	"mainCamera": "",
 	"frontCamera": "",

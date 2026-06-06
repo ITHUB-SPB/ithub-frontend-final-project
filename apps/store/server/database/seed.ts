@@ -3,37 +3,35 @@ import { readdir, readFile } from "node:fs/promises";
 import { db } from "./connection";
 
 const loadCharacteristics = async () => {
-  const dataDir = path.join(import.meta.filename, "..", "..", "data");
-  const filePath = path.join(dataDir, "characteristics.json");
+  const filePath = path.join(import.meta.dirname, "characteristics.json");
   const fileContent = await readFile(filePath, { encoding: "utf-8" });
   return JSON.parse(fileContent);
 };
 
 const loadCategories = async () => {
-  const dataDir = path.join(import.meta.filename, "..", "..", "data");
-  const filePath = path.join(dataDir, "categories.json");
+  const filePath = path.join(import.meta.dirname, "categories.json");
   const fileContent = await readFile(filePath, { encoding: "utf-8" });
   return JSON.parse(fileContent);
 };
 
 const loadProducts = async () => {
-  const dataDir = path.join(import.meta.filename, "..", "..", "data");
+  const dataDir = path.join(import.meta.filename, "..", "..", "..", "..", "..", "packages", "crawler", "storage");
 
-  const phonesFiles = await readdir(path.join(dataDir, "phones"));
-  const watchesFiles = await readdir(path.join(dataDir, "watch"));
+  const phonesFiles = await readdir(path.join(dataDir, "datasets", "phones"));
+  const watchesFiles = await readdir(path.join(dataDir, "datasets", "watch"));
 
   const phonesData = [];
   const watchesData = [];
 
   for (const filename of phonesFiles) {
-    const filePath = path.join(import.meta.filename, "..", "..", "data", "phones", filename);
+    const filePath = path.join(dataDir, "datasets", "phones", filename);
 
     const fileContent = await readFile(filePath, { encoding: "utf-8" });
     phonesData.push(JSON.parse(fileContent));
   }
 
   for (const filename of watchesFiles) {
-    const filePath = path.join(import.meta.filename, "..", "..", "data", "watch", filename);
+    const filePath = path.join(dataDir, "datasets", "watch", filename);
 
     const fileContent = await readFile(filePath, { encoding: "utf-8" });
     watchesData.push(JSON.parse(fileContent));
@@ -75,6 +73,10 @@ export const seedData = async () => {
       brand: brandTitle,
       ...characteristics
     } = product;
+
+    if (!brandTitle) {
+      continue
+    }
 
     let brandId: number;
 

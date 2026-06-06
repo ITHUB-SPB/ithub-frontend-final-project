@@ -58,12 +58,14 @@ const parsePhonesPage = async (page: PlaywrightCrawlingContext["page"]) => {
   const pixelDensity = await parseCharacteristic(page, /Плотность пикселей/)
   const screenType = await parseCharacteristic(page, /Технология экрана/)
   const weight = await parseCharacteristic(page, /Вес, г/)
+  const brand = await parseCharacteristic(page, /Бренд/)
 
   return {
     category: "phones",
     description,
     screenSize,
     cpu,
+    brand,
     cpuCores,
     mainCamera,
     frontCamera,
